@@ -1,0 +1,50 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Applied Statistics" # opens index.qmd
+
+  navbar:
+    # currently nothing on left navbar
+    # left:
+      # - index.qmd
+  
+    right:
+      - Syllabus.qmd
+      - Schedule.qmd
+      - Content.qmd
+      - Examples.qmd
+      - Assignments.qmd
+      - Resources.qmd
+      - icon: github
+        href: https://github.com/kostis-christodoulou/am01
+        target: _blank
+      - icon: slack
+        href: https://mam2024.slack.com/
+        target: _blank
+  page-footer:
+    ## Icons in footer need to be fixed !!!
+    left: |
+      **AM01: Applied Statistics with Python**  
+      (Autumn 2024)  
+      London Business School  
+      [Kostis Christodoulou](https://www.kostischristodoulou.com)  
+      [kchristodoulou@london.edu](mailto:kchristodoulou@london.edu)  
+      all days     all times  
+      Sussex Place LTs
+    right: |
+      All content licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).  
+      Content © 2024 Kostis Christodoulou  
+      This site created with the [Academic theme](https://github.com/wowchemy/starter-hugo-academic) in [blogdown](https://bookdown.org/yihui/blogdown/) and [Hugo](https://gohugo.io/), with template modifications by [Andrew Heiss](https://www.andrewheiss.com/). Interactive tutorials were developed by [Mohannad Shaheen](https://mohannadshaheen.netlify.app/), LBS MAM 2020.
+
+format:
+  html:
+    theme: 
+      light: cosmo # was cosmo with toggle option
+      # mine is lux
+    css: styles.css
+    toc: true
+
+
+

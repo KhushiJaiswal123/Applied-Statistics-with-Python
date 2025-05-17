@@ -1,0 +1,388 @@
+---
+title: "Content"
+toc-title: "Course Content Overview"
+toc-location: left
+jupyter: python3
+---
+
+# Readings, lectures, etc.
+Each class session has a set of required readings that you should complete **before** the lecture or working through the lesson.
+
+I have included a set of questions that might guide your reflection response. You should not try to respond to all of these (or any of them if you don’t want to)– they’ll just help you know what to look for and think about as you read.
+
+# Before we Start
+
+> Read before class on Tuesday, August 20, 2024
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Data Analytics Survey](#Data-Analytics-Survey)
+- [Sign up and join course **Slack channel**](#sign-up)
+- [Datacamp](#datacamp)
+- [software installation](#software-installation)
+- [Getting Acquainted with Code + Comments](#getting-aquainted)
+- [Pre-course assignment due on Canvas on 20 Aug 2024](#pre-course)
+- [Further Resources on Data Visualization with Python](#further)
+:::
+
+### Data Analytics Survey {#Data-Analytics-Survey .unnumbered .unlisted}
+We will collect some anonymous student data, so please fill in this quick [Data Analytics Survey](https://docs.google.com/forms/d/e/1FAIpQLSfDLV4dgn4AMgKwX9JyG8FyL3XRbBQXcyg9iCrtX0mTeUL2Fg/viewform)
+
+### Sign up and join course Slack channel{#sign-up .unnumbered .unlisted}
+You should have received an invitation to sign up at the course Slack channel. This is where you can ask any questions you have and I will try to respond as quickly as I can. As most questions tend to be similar, it’s always a good idea to have a look at what has already been asked.
+
+If you haven’t received an email, please get in touch with me.
+
+### Datacamp{#datacamp .unnumbered .unlisted}
+* You should have received a link to sign up for an account at Datacamp. Please register and complete the following by 20 Aug 2024:
+* [Introduction to Python ](https://app.datacamp.com/learn/courses/intro-to-python-for-data-science) course
+
+### Software installation {#software-installation .unnumbered .unlisted}
+Install Python and Jupyter Notebook:
+
+* [Python 3.10+](https://www.python.org/downloads/)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* Install the Python Extension in VS Code (search for "Python" in Extensions panel)
+* Install Required Packages :
+
+```python
+pip install pandas numpy matplotlib seaborn plotly
+```
+
+### Getting Acquainted with Code + Comments Markdown {#getting-aquainted .unnumbered .unlisted}
+In VS Code, you’ll work in .py files, writing both:
+* Markdown-style comments using #
+* Executable Python code
+
+```python
+# This is a heading: Data Summary
+import pandas as pd
+print("ok")
+
+df = pd.read_csv("data.csv")
+print(df.describe())
+```
+
+### Pre-course assignment due on Canvas on 20 Aug 2024 {#pre-course .unnumbered .unlisted}
+
+The aim of the pre-course assignment is to ensure that you successfully install the software, that you get some practice with markdown, and that you are able to knit an R Markdown (.Rmd) document into an HTML file.
+
+Specifically you will need to: 
+############ ADD AN ASSIGNMENT ########## 
+
+
+### Further Resources on Data Visualization with Python {#further .unnumbered .unlisted}
+
+We'll begin data visualization by learning how to summarize and plot data directly with pandas, using its built-in `.plot()` methods
+Here’s a quick example:
+```python 
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load example data
+df = pd.read_csv("your_data.csv")
+
+# Quick line plot
+df['sales'].plot(title="Sales Over Time")
+plt.show()
+
+# Histogram
+df['age'].plot(kind='hist', bins=20, title="Age Distribution")
+plt.show()
+```
+Once you're comfortable with .plot(), you can move on to seaborn or matplotlib for more customized charts.
+
+<!--#################################################-->
+
+# 1. Exploratory Data Analysis
+
+> **Read before class on Wednesday, August 28, 2024** 
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Readings](#ReadingsOn1)
+  - [Questions to Reflect on](#QuestionsOn1)
+- [Session Files](#filesOn1)
+
+:::
+
+### Readings {#ReadingsOn1 .unnumbered .unlisted}
+* The [Syllabus](Syllabus.qmd) for this class
+* ModernDive Substitute
+* [Study: Charts change hearts and minds better than words do](https://www.washingtonpost.com/news/wonk/wp/2018/06/15/study-charts-change-hearts-and-minds-better-than-words-do/?utm_term=.4474599c0d5e)
+
+#### Questions to Reflect on {#QuestionsOn1 .unnumbered .unlisted}
+[Graduate Masters Student Survey](https://am01-sep24.netlify.app/content/01-content/) contains data from the anonymous online survey of Early Career students. How would we describe the shape, centre, and spread of the following variables:
+
+* `height`, a respondent’s height in cm
+* `exercise_hours`, number of hours exercising last week
+* `online_hours`, number of hours spent online last week
+* `handedness`, an indicator from -1 (exclusively left handed) to 0 (ambidextrous) to +1 (exclusively right handed)
+* `haircut_spend`, amount of money spent on last haircut, expressed in USD$.
+
+### Session Files {#filesOn1 .unnumbered .unlisted}
+* Slides for today’s session are available on Canvas.
+* You can download all session files (data, code, etc.) by pulling from [course Github repo](https://github.com/kostis-christodoulou/am01).
+
+```python
+git clone https://github.com/kostis-christodoulou/am01.git
+
+```
+Alternatively, download the zipped files directly from [here](https://github.com/kostis-christodoulou/am01/archive/refs/heads/master.zip). Then unzip and open them in your Python IDE (e.g., Jupyter, VS Code, or Spyder).
+
+
+<!--#################################################-->
+
+# 2. Data Science Basics 
+## Workshop 1: Import, visualise, and manipulate data
+
+> Read before class on Wednesday, August 28, 2024
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Readings](#ReadingsOn2)
+   - [Recommended](#recommendedOn2)
+- [Questions to Reflect on](#QuestionsOn2)
+- [Session Files](#filesOn2)
+
+:::
+
+### Readings {#ReadingsOn2 .unnumbered .unlisted}
+* Hans Rosling, [“200 Countries, 200 Years, 4 Minutes”](https://www.youtube.com/watch?v=jbkSRLYSojo)
+* [Chapter 2](https://clauswilke.com/dataviz/aesthetic-mapping.html) in Claus Wilke, Fundamentals of Data Visualization
+* [Chapter 3](http://socviz.co/makeplot.html) in Kieran Healy, Data Visualization
+
+#### Recommended {#recommendedOn2 .unnumbered .unlisted}
+* [The fullest look yet at the racial inequality of Coronavirus](https://www.nytimes.com/interactive/2020/07/05/us/coronavirus-latinos-african-americans-cdc-data.html)
+
+### Questions to Reflect on {#QuestionsOn2 .unnumbered .unlisted}
+* What data was mapped to which aesthetics in Rosling’s video?
+* What data would you need to create the bar plot in NYT’s article?
+
+### Session Files {#filesOn2 .unnumbered .unlisted}
+
+* Slides for today’s session are available on Canvas.
+* You can download all session files (data, code, etc.) by pulling from [course Github repo](https://github.com/kostis-christodoulou/am01).
+
+```python
+git clone https://github.com/kostis-christodoulou/am01.git
+
+```
+Alternatively, download the zipped files directly from [here](https://github.com/kostis-christodoulou/am01/archive/refs/heads/master.zip). Then unzip and open them in your Python IDE (e.g., Jupyter, VS Code, or Spyder).
+
+
+<!--#################################################-->
+
+# 3. Sampling; Probability Distributions
+
+> Read before class on Friday, August 30, 2024
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Readings](#ReadingsOn3)
+- [Session Files](#filesOn3)
+
+:::
+
+### Readings {#ReadingsOn3 .unnumbered .unlisted}
+* ModernDive Chapter 7
+* How popular is Joe Biden?
+
+### Session Files {#filesOn3 .unnumbered .unlisted}
+
+* Slides for today’s session are available on Canvas.
+* You can download all session files (data, code, etc.) by pulling from [course Github repo](https://github.com/kostis-christodoulou/am01).
+
+```python
+git clone https://github.com/kostis-christodoulou/am01.git
+
+```
+Alternatively, download the zipped files directly from [here](https://github.com/kostis-christodoulou/am01/archive/refs/heads/master.zip). Then unzip and open them in your Python IDE (e.g., Jupyter, VS Code, or Spyder).
+
+
+<!--#################################################-->
+
+# 4. Workshop 2: Confidence Intervals; reshape data
+
+> Read before class on Friday, August 30, 2024
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Readings](#ReadingsOn4)
+- [Session Files](#filesOn4)
+
+:::
+
+### Readings {#ReadingsOn4 .unnumbered .unlisted}
+* [ModernDive Chapter 7](https://moderndive.com/)
+* [R4DS Chapter 5 - Data Tidying](https://r4ds.hadley.nz/data-tidy)
+* [Coronavirus Case Counts Are Meaningless](https://fivethirtyeight.com/features/coronavirus-case-counts-are-meaningless/)
+
+### Session Files {#filesOn4 .unnumbered .unlisted}
+
+* Slides for today’s session are available on Canvas.
+* You can download all session files (data, code, etc.) by pulling from [course Github repo](https://github.com/kostis-christodoulou/am01).
+
+```python
+git clone https://github.com/kostis-christodoulou/am01.git
+
+```
+Alternatively, download the zipped files directly from [here](https://github.com/kostis-christodoulou/am01/archive/refs/heads/master.zip). Then unzip and open them in your Python IDE (e.g., Jupyter, VS Code, or Spyder).
+
+
+<!--#################################################-->
+
+# 5. Inferential Statistics
+
+> Read before class on Wednesday, September 4, 2024
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Readings](#ReadingsOn5)
+- [Session Files](#filesOn5)
+:::
+
+### Readings {#ReadingsOn5 .unnumbered .unlisted}
+* [How Obama Raised $60 Million by Running a Simple Experiment](https://blog.optimizely.com/2010/11/29/how-obama-raised-60-million-by-running-a-simple-experiment/)
+* [“Scientific Studies: Last Week Tonight with John Oliver”](https://www.youtube.com/watch?v=0Rnq1NpHdmw)
+
+
+### Session Files {#filesOn5 .unnumbered .unlisted}
+
+* Slides for today’s session are available on Canvas.
+* You can download all session files (data, code, etc.) by pulling from [course Github repo](https://github.com/kostis-christodoulou/am01).
+
+```python
+git clone https://github.com/kostis-christodoulou/am01.git
+
+```
+Alternatively, download the zipped files directly from [here](https://github.com/kostis-christodoulou/am01/archive/refs/heads/master.zip). Then unzip and open them in your Python IDE (e.g., Jupyter, VS Code, or Spyder).
+
+
+<!--#################################################-->
+
+# 6. Hypothesis Testing
+
+> Read before class on Wednesday, September 4, 2024
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Readings](#ReadingsOn6)
+    - [Questions to Reflect on](#questionsOn6)
+- [Session Files](#filesOn6)
+:::
+
+### Readings {#ReadingsOn6 .unnumbered .unlisted}
+* [Bertrand M, Mullainathan S. (2004). Are Emily and Greg More Employable than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination. The American Economic Review 94:4 (991-1013).](https://www.nber.org/papers/w9873)
+
+### Questions to Reflect on {#questionsOn6 .unnumbered .unlisted}
+
+* In the Bertrand and Mullainathan (2004) experiment, the authors randomly assigned first names, and thus race and gender, to fictitious candidate resumes submitted to online job ads. Since other candidate attributes and overall candidate quality were assigned independent of name, the authors wanted to measure differences in callback rates for interviews.
+    * Would you expect to see any statistical differences in callback rates between races? The authors state that Job applicants with white names needed to send about 10 resumes to get one callback; those with African-American names needed to send around 15 resumes to get one callback.
+    * Is the effect of race causal?
+
+
+### Session Files {#filesOn6 .unnumbered .unlisted}
+
+* Slides for today’s session are available on Canvas.
+* You can download all session files (data, code, etc.) by pulling from [course Github repo](https://github.com/kostis-christodoulou/am01).
+
+```python
+git clone https://github.com/kostis-christodoulou/am01.git
+
+```
+Alternatively, download the zipped files directly from [here](https://github.com/kostis-christodoulou/am01/archive/refs/heads/master.zip). Then unzip and open them in your Python IDE (e.g., Jupyter, VS Code, or Spyder).
+
+<!--#################################################-->
+
+# 7. Introduction to Regression
+
+> Read before class on Monday, September 9, 2024
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Readings](#ReadingsOn7)
+- [Session Files](#filesOn7)
+:::
+
+
+### Session Files {#filesOn7 .unnumbered .unlisted}
+
+* Slides for today’s session are available on Canvas.
+* You can download all session files (data, code, etc.) by pulling from [course Github repo](https://github.com/kostis-christodoulou/am01).
+
+```python
+git clone https://github.com/kostis-christodoulou/am01.git
+
+```
+Alternatively, download the zipped files directly from [here](https://github.com/kostis-christodoulou/am01/archive/refs/heads/master.zip). Then unzip and open them in your Python IDE (e.g., Jupyter, VS Code, or Spyder).
+
+
+<!--#################################################-->
+
+# 8. Workshop on regression
+
+> Read before class on Monday, September 9, 2024
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Readings](#ReadingsOn8)
+- [Session Files](#filesOn8)
+:::
+
+### Readings {#ReadingsOn8 .unnumbered .unlisted}
+
+### Session Files {#filesOn8 .unnumbered .unlisted}
+
+* Slides for today’s session are available on Canvas.
+* You can download all session files (data, code, etc.) by pulling from [course Github repo](https://github.com/kostis-christodoulou/am01).
+
+```python
+git clone https://github.com/kostis-christodoulou/am01.git
+
+```
+Alternatively, download the zipped files directly from [here](https://github.com/kostis-christodoulou/am01/archive/refs/heads/master.zip). Then unzip and open them in your Python IDE (e.g., Jupyter, VS Code, or Spyder).
+
+
+<!--#################################################-->
+
+# 9. Further regression topics; regression diagnostics
+
+> Read before class on Wednesday, September 11, 2024
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Readings](#ReadingsOn9)
+- [Session Files](#filesOn9)
+:::
+
+### Readings {#ReadingsOn9 .unnumbered .unlisted}
+
+### Session Files {#filesOn9 .unnumbered .unlisted}
+
+* Slides for today’s session are available on Canvas.
+* You can download all session files (data, code, etc.) by pulling from [course Github repo](https://github.com/kostis-christodoulou/am01).
+
+```python
+git clone https://github.com/kostis-christodoulou/am01.git
+
+```
+Alternatively, download the zipped files directly from [here](https://github.com/kostis-christodoulou/am01/archive/refs/heads/master.zip). Then unzip and open them in your Python IDE (e.g., Jupyter, VS Code, or Spyder).
+
+
+<!--#################################################-->
+
+# 10. Final Group Project; course wrap up 
+::: {.callout-tip collapse=false}
+## Contents
+- [Group Project](#groupProject10)
+- [Course Wrap-up](#wrapUp10)
+:::
+
+### Session Files {#groupProject10 .unnumbered .unlisted}
+
+You will work on a group project. The dataset will be released at 12:00 and you have to submit your work by 23:59. Teams are not simply assessed on having the highest R^2, or lowest RMSE, but rather on how their best model behaves with unseen, test data.
+
+### Course Wrap-up {#wrapUp10 .unnumbered .unlisted}
+
+<!--#################################################-->

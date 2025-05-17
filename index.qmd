@@ -1,0 +1,24 @@
+---
+title: "Applied Statistics with Python"
+---
+
+
+::: {.columns}
+  
+::: {.column width="33%"}
+### Instructor
+****
+
+:::
+
+::: {.column width="33%"}
+### Course details 
+**** 
+:::
+
+::: {.column width="33%"}
+### Contact me  
+****
+:::
+
+:::

@@ -1,0 +1,30 @@
+/* css styles */
+
+/* styling for footer*/
+.footer {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-top: 1px solid #e9ecef;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/*.footer-left {
+  color: #6c757d;
+}*/
+
+/*.footer-right {
+  color: #6c757d;
+  font-size: 0.875rem;
+}*/
+
+/*.footer-icon {
+  margin-right: 0.5rem;
+  color: #6c757d;
+}*/
+
+/*.footer p {
+  margin-bottom: 0.5rem;
+}*/
+
+/* Add icons styling if needed */

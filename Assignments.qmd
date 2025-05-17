@@ -1,0 +1,119 @@
+---
+title: "Assignments"
+toc-title: "Overview"
+toc-location: left
+jupyter: python3
+---
+
+# **Assignment details** 
+::: {.callout-tip collapse=false}
+## Contents
+- [Weekly Homeworks](#weekly)
+- [Final Project](#finalProject)
+- [Final Exam](#finalExam)
+
+:::
+
+<!--#################################################-->
+
+### Weekly Homeworks {#weekly}
+To practice writing R code, exploring datasets, and running statistical models you will complete a series of weekly homeworks.
+
+There are 3 weekly homeworks to be undertaken with your group and these will be graded using a check system:
+
+* 5/5: Problem set is 100% completed. Every question was attempted and answered, and most answers are correct. Document is clean and easy to follow. Work is exceptional. I will not assign these often.
+* 3/5: Problem set is 70–99% complete and most answers are correct. **This is the expected level of performance**.
+* 1/5: Problem set is less than 70% complete and/or most answers are incorrect. This indicates that you need to improve next time. I will hopefully not assign these often.
+
+<!--#################################################-->
+
+### Final Project {#finalProject}
+
+At the end of the course, you will demonstrate your knowledge by working on a group assignment… Complete details for the final project will be made available here.
+
+
+<!--#################################################-->
+
+### Final Exam {#finalExam}
+
+There will be a final exam that will cover:
+  * 1. Programming in R and the tidyverse (about a third of total marks)
+  * the core statistical tools of inferential statistics and linear models.
+
+You will take the final exam in-person in a lecture theatre. This is a closed-book, 1.5-hour exam. A formula sheet will be provided, but you will not have online access to Google.
+
+
+<!--#################################################-->
+
+# **Homeworks** 
+
+<!--#################################################-->
+
+### Homework 1
+::: {.callout-tip collapse=false}
+## Contents
+- [`homework1.Rmd`](#HWrmd)
+- [Instruction](#Instructions)
+- [Rubric](#rubric)
+
+:::
+
+
+<!--#################################################-->
+
+### Homework 2
+::: {.callout-tip collapse=false}
+## Contents
+- [`homework1.Rmd`](#HWrmd)
+- [Instruction](#Instructions)
+- [Rubric](#rubric)
+
+:::
+
+<!--#################################################-->
+
+
+### Homework 3
+::: {.callout-tip collapse=false}
+## Contents
+- [`homework1.Rmd`](#HWrmd)
+- [Instruction](#Instructions)
+- [Rubric](#rubric)
+
+:::
+
+
+
+<!--#################################################-->
+
+# **Projects**
+
+<!--#################################################-->
+
+### Final Group Project
+::: {.callout-tip collapse=false}
+## Contents
+- [ ](# )
+
+:::
+
+
+<!--#################################################-->
+
+
+### Final Exam 
+::: {.callout-tip collapse=false}
+## Contents
+- [ ](# )
+
+:::
+
+
+
+> Due by 11:59 PM on Friday, September 20, 2024
+
+
+
+
+
+
