@@ -335,8 +335,368 @@ According to Phil Karlton, there are only two [hard things in Computer Science: 
 <!--#################################################-->
 
 ## 4. Visualise Data
+::: {.callout-tip collapse=false}
+## Contents
+- [Overview](#overviewof4)
+- [Layers](#layers)
+- [Faucetting](#faucetting)
+- [Animated Graphs](#animated)
+- [Why you should always plot your data](#whyPlot)
+    - [what data Patterns can lie behind a correlation coefficient?](#hiddenPatterns)
+- [Further resources](#furtherResources4)
 
-[gapminder Dataset](https://www.kaggle.com/datasets/albertovidalrod/gapminder-dataset?resource=download)
+:::
+<!--#################################################-->
+> Learning Objectives
+> 1. Produce scatter plots, boxplots, and time series plots using matplotlib and seaborn.
+> 2. Set universal plot settings.
+> 3. Describe what faceting is and apply faceting using seaborn
+> 4. Modify the aesthetics of an existing plot (including axis labels and colour).
+> 5. Build complex and customised plots from data in a DataFrame.
+
+<!--#################################################-->
+
+### Overview {#overviewof4 .unnumbered .unlisted}
+
+> “Visualization is a powerful tool for understanding data. You can often discover patterns, spot anomalies, and develop an intuition for the data just by looking at it.”  
+>  
+> — Wes McKinney, creator of pandas  
+
+We will explore how to create insightful and aesthetically pleasing data visualisations using two powerful Python libraries: `matplotlib` and `seaborn`.  
+We will work through examples of various plot types - scatter plots, boxplots, and histograms - and learn to customise them for clarity and impact.  
+
+It may seem verbose and unwieldy, but the idea of building a plot on a layer-by-layer basis is very powerful.
+
+* You begin a plot by defining the dataset you will use. 
+* Then, specify aesthetics, namely (x, y) coordinates, colour, size, etc. 
+* Finally, choose the geometric shape to represent your data, and add more layers like legends, labels, facets, etc.
+
+For example, using the [Gapminder](https://www.kaggle.com/datasets/albertovidalrod/gapminder-dataset?resource=download) dataset with data on life expectancy (life_exp), human development index (hdi_index), and GDP (gdp) for a number of countries, we can build a graph that shows the relationship between GDP and life expectancy.
+
+As we said, first we define the dataset we are using
+```python
+import pandas as pd
+gapminder = pd.read_csv(r"filepath-to-your-dataset")
+```
+
+The next thing is to map aesthetics. In our case, we will map gdpPercap to the x-axis, and lifeExp to the y-axis.
+
+```python 
+# Basic Plot Setup
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=gapminder, x='gdp', y='life_exp')
+plt.title('Life Expectancy vs GDP')
+plt.xlabel('GDP')
+plt.ylabel('Life Expectancy')
+plt.show()
+```
+![](Images/BasicPlotSetup.png)
+
+* `plt.figure(figsize=(10, 6))`: Defines the size of the plot.
+* `sns.scatterplot(...)`: Uses Seaborn to draw a scatter plot from the gapminder dataset.
+* `plt.title(...)`, `plt.xlabel(...)`, `plt.ylabel(...)`: Add meaningful labels and a title to make the chart easy to understand.
+* `plt.show()`: Renders the plot in your output window or notebook.
+
+
+What if we wanted to colour the points by the continent each country is in? For this we will need to use the "continent" column from our gapminder dataset. Seaborn makes this easy using the hue parameter.
+
+
+```python 
+# Colored Scatter Plot by Continent
+plt.figure(figsize=(10, 6))  # Set figure size
+sns.scatterplot(data=gapminder, x='gdp', y='life_exp', hue='continent')  # Color points by continent
+plt.title('Life Expectancy vs GDP by Continent')  # Updated title
+plt.xlabel('GDP')
+plt.ylabel('Life Expectancy')
+plt.legend(title='Continent')  # Add a legend with a title
+plt.show()
+```
+
+![](Images/ColouredScatterPlot.png)
+
+* `hue='continent'`: Tells Seaborn to color the points based on the continent each country belongs to.
+* `plt.legend(...)`: Makes sure the legend is clear and labeled.
+
+What if instead of a scatter plot we wanted to create a line plot? For this we need to: 
+
+* change the `sns.scatterplot` to `sns.lineplot`
+
+
+```python 
+# Colored Line Plot by Continent
+plt.figure(figsize=(10, 6))  # Set figure size
+sns.lineplot(data=gapminder, x='gdp', y='life_exp', hue='continent')  # Color points by continent
+plt.title('Life Expectancy vs GDP by Continent')  # Updated title
+plt.xlabel('GDP')
+plt.ylabel('Life Expectancy')
+plt.legend(title='Continent')  # Add a legend with a title
+plt.show()
+```
+
+
+![](Images/LineGraph.png)
+
+However, this is not a particularly useful plot, so let us go back to our scatter plot.
+
+What if we wanted to have the size of each point correspond to the HDI index of the country?
+For this we will :
+
+* add the `size='hdi_index'` parameter in the `scatterplot()` function
+* add the `sizes=(20, 200)` parameter in the `scatterplot()` function to specify the range of sizes of scatter points we want to use. 
+
+```python
+# going back to scatter plot but now the size of points coresspond to the population of the country
+# Basic Plot Setup with size mapped to population
+plt.figure(figsize=(10, 6))
+sns.scatterplot(
+    data=gapminder,
+    x='gdp',
+    y='life_exp',
+    size='hdi_index',                  # map size to population
+    sizes=(20, 200),             # scale point size (min, max)
+)
+
+plt.title('Life Expectancy vs GDP (Point Size = hdi_index)')
+plt.xlabel('GDP')
+plt.ylabel('Life Expectancy')
+plt.legend(title='hdi_index', loc='upper left', bbox_to_anchor=(1, 1))
+plt.tight_layout()
+plt.show()
+```
+
+![](Images/hdi_index.png)
+But the points above are overlapping with each other. We can set the `alpha` variable between 0 and 1 to specify how transparent each point will be. This will let us see all the points better.
+
+```python 
+# Adding Alpha
+plt.figure(figsize=(10, 6))
+sns.scatterplot(
+    data=gapminder,
+    x='gdp',
+    y='life_exp',
+    size='hdi_index',                  # map size to population
+    sizes=(20, 200),             # scale point size (min, max)
+    alpha=0.4                    # make points a bit transparent
+)
+
+plt.title('Life Expectancy vs GDP (Point Size = hdi_index)')
+plt.xlabel('GDP')
+plt.ylabel('Life Expectancy')
+plt.legend(title='hdi_index', loc='upper left', bbox_to_anchor=(1, 1))
+plt.tight_layout()
+plt.show()
+
+```
+![](Images/Alpha.png)
+
+Our graph is still not very clear after adding the `alpha` this is because all the points are bunched up in only a small section of the graph. We can *log* the x-axis to make the points more spread out across the GDP axis.
+
+```python 
+# Logging the axis
+plt.figure(figsize=(10, 6))
+sns.scatterplot(
+    data=gapminder,
+    x='gdp',
+    y='life_exp',
+    size='hdi_index',                  # map size to population
+    sizes=(20, 200),             # scale point size (min, max)
+    alpha=0.4                    # make points a bit transparent
+)
+
+plt.title('Life Expectancy vs GDP (Point Size = hdi_index)')
+plt.xlabel('GDP')
+plt.ylabel('Life Expectancy')
+plt.legend(title='hdi_index', loc='upper left', bbox_to_anchor=(1, 1))
+plt.tight_layout()
+plt.xscale('log')
+plt.show()
+
+```
+![](Images/AxisLogged.png)
+We will now add the colour by continent parameter back. 
+
+For this notice that we are splitting the legends' code into 2 separate sections. 
+```python 
+# Adding color by continent parameter back 
+plt.figure(figsize=(10, 6))
+scatter = sns.scatterplot(
+    data=gapminder,
+    x='gdp',
+    y='life_exp',
+    size='hdi_index',                  # map size to population
+    sizes=(20, 200),             # scale point size (min, max)
+    alpha=0.4,                       # make points a bit transparent
+    hue='continent'
+)
+plt.title('Life Expectancy vs GDP (Point Size = hdi_index)')
+plt.xlabel('GDP per capita (USD)')
+plt.ylabel('Life Expectancy (years)')
+
+# Separate legends for hue and size
+plt.legend(title='hdi_index', loc='upper left', bbox_to_anchor=(1, 1))
+sns.move_legend(scatter, title='Continent', loc='upper left', bbox_to_anchor=(0.7, 0.65))
+
+plt.tight_layout # making sure the legends are in the frame
+plt.xscale('log')
+plt.show()
+```
+![](Images/twoLegends.png)
+
+<!--#################################################-->
+
+### Layers {#layers .unnumbered .unlisted}
+
+Once you define your data and aesthetics (such as (x, y) coordinates, colour, size, etc.), you can add more layers to modify and enhance your plots.
+
+* *Geometric Object*s: These are the graphical objects to be drawn, such as histograms, boxplots, density plots, etc.
+* *Statistics*: These can be applied to your data, like calculating density or fitting a regression line.
+* *Position Adjustments*: These modify how elements are placed, such as jittering points or stacking bars.
+
+Example: Creating a Base plot - a histogram
+
+```python 
+# Histogram with Position Adjustments
+plt.figure(figsize=(10, 6))
+sns.histplot(data=gapminder, x='life_exp', hue='continent', element='step', fill=True, alpha=0.3)
+plt.title('Histogram of Life Expectancy by Continent')
+plt.xlabel('Life Expectancy')
+plt.ylabel('Frequency')
+plt.show()
+
+```
+![](Images/Histogram.png)
+
+the "element" attribute can be one of "step", "poly" or "bars" depending of what is needed. Try it out yourself.
+
+We will now plot a density plot, a smoothed version of a histogram using geom_density; its default position is identity and both plots are equivalent.
+
+* A histogram displays the frequency of data within bins, while a density plot represents the probability density function of the data, providing a smoothed continuous curve.
+* To convert a histogram to a density plot, you typically use `sns.kdeplot`, which computes and plots the kernel density estimate.
+
+In our code below, the kdeplot function is used to create a density plot, and the common_norm=False ensures that the densities for each continent are normalized separately, allowing for a fair comparison of the distribution shapes without being influenced by the differing sizes of the groups.
+```python 
+# filled Density Plot
+plt.figure(figsize=(10, 6))
+sns.kdeplot(data=gapminder, x='life_exp', hue='continent', fill=True, common_norm=False, alpha=0.3)
+plt.title('Density Plot of Life Expectancy by Continent')
+plt.xlabel('Life Expectancy')
+plt.ylabel('Density')
+plt.show()
+```
+
+![](Images/densityPlot.png)
+
+The "Multiple Parameter"
+The multiple Parameter can be set to any of these values: 
+* `layer` - Overlays categories, allowing overlap.
+* `stack` - Stacks categories cumulatively.
+* `fill` - Stacks and scales categories to equal height.
+* `dodge` - Positions categories side by side.
+
+e.g. using the dodge version: 
+
+```python 
+plt.figure(figsize=(10, 6))
+sns.histplot(data=gapminder, x='life_exp', hue='continent', multiple='dodge', alpha=0.3)
+plt.title('Life Expectancy Distribution by Continent')
+plt.xlabel('Life Expectancy')
+plt.ylabel('Frequency')
+plt.show()
+```
+![](Images/Dodged.png)
+<!--#################################################-->
+
+### Faucetting {#faucetting .unnumbered .unlisted}
+
+Facetting is a powerful technique in data visualisation that allows you to split one plot into multiple plots based on a factor included in the dataset. Python's `seaborn` library provides this functionality.
+
+
+In the Gapminder scatterplot example, we can use faceting to produce one scatter plot for each continent separately, using `FacetGrid.`
+
+#### Define the Core Scatter Plot
+
+First, let's define the core scatter plot of life expectancy vs GDP and store it in an object for easy reuse:
+```python 
+# Base graph
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=gapminder, x='gdp', y='life_exp', hue='continent', alpha=0.5)
+plt.xscale('log')
+plt.title('Life Expectancy vs GDP per capita, 1998-2002')
+plt.xlabel('GDP per capita')
+plt.ylabel('Life Expectancy')
+plt.show()
+```
+![](Images/baseGraph.png)
+
+Now, let's add a new layer to our base plot using FacetGrid to facet by continent:
+```python 
+# Ensure 'continent' is treated as a categorical variable
+gapminder['continent'] = gapminder['continent'].astype('category')
+
+# Facet the scatter plot by continent with hue
+g = sns.FacetGrid(gapminder, col='continent', col_wrap=3, height=4)
+g.map_dataframe(sns.scatterplot, x='gdp', y='life_exp', hue='continent', alpha=0.5)
+g.set_titles("{col_name}")
+g.set_axis_labels('GDP per capita', 'Life Expectancy')
+g.add_legend()
+plt.show()
+```
+
+* `g.map_dataframe(...)`: Maps the sns.scatterplot function to each facet, passing the data explicitly and ensuring that 
+* `hue='continent'` colours the points appropriately in each facet.
+
+![](Images/faucetGraph.png)
+
+* `FacetGrid`: This is used to create a grid of plots, allowing you to facet by a specified variable (continent in this case).
+* `col_wrap`: This parameter controls the number of columns in the facet grid, making it adaptable to different screen sizes.
+* `map`: This method maps a plotting function (sns.scatterplot) to each facet.
+
+
+Finally, if you want to create a boxplot of life expectancy by continent instead of a scatter plot, you can use similar aesthetics with Python libraries like matplotlib and seaborn. The key difference is the type of plot you choose to represent your data.
+
+```python 
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=gapminder, x='continent', y='life_exp', hue='continent')
+
+# Add labels and title
+plt.title("Life Expectancy among the continents, 1952-2007")
+plt.xlabel(" ")  # Empty, as the levels of the x-variable are the continents
+plt.ylabel("Life Expectancy")
+plt.figtext(0.9, 0.01, "Source: Gapminder", horizontalalignment='right')
+
+# Apply a minimal theme
+sns.set_theme(style="whitegrid")
+
+# Show the plot
+plt.show()
+```
+![](Images/boxAndWhiskers.png)
+
+<!--#################################################-->
+
+### Animated Graphs {#animated .unnumbered .unlisted}
+
+
+<!--#################################################-->
+
+### Why you should always plot your data {#whyPlot .unnumbered .unlisted}
+
+<!--#################################################-->
+
+### what data Patterns can lie behind a correlation coefficient? {#hiddenPatterns .unnumbered .unlisted}
+
+
+<!--#################################################-->
+
+### Further resources {#furtherResources4 .unnumbered .unlisted}
+
+<!--#################################################-->
+
+
+<!--#################################################-->
+
+
+<!--#################################################-->
 
 <!--#################################################-->
 
