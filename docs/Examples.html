@@ -553,11 +553,11 @@ Contents
 <li><a href="#overviewof4">Overview</a></li>
 <li><a href="#layers">Layers</a></li>
 <li><a href="#faucetting">Faucetting</a></li>
-<li><a href="#animated">Animated Graphs</a></li>
-<li><a href="#whyPlot">Why you should always plot your data</a>
+<li><a href="#animated">Animated Graphs</a>
 <ul>
-<li><a href="#hiddenPatterns">what data Patterns can lie behind a correlation coefficient?</a></li>
+<li><a href="#matplotLibrary">matplotlib</a></li>
 </ul></li>
+<li><a href="#whyPlot">Why you should always plot your data</a></li>
 <li><a href="#furtherResources4">Further resources</a></li>
 </ul>
 </div>
@@ -565,7 +565,16 @@ Contents
 </div>
 <!--#################################################-->
 <blockquote class="blockquote">
-<p>Learning Objectives 1. Produce scatter plots, boxplots, and time series plots using matplotlib and seaborn. 2. Set universal plot settings. 3. Describe what faceting is and apply faceting using seaborn 4. Modify the aesthetics of an existing plot (including axis labels and colour). 5. Build complex and customised plots from data in a DataFrame.</p>
+<p>Learning Objectives</p>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Produce scatter plots, boxplots, and time series plots using matplotlib and seaborn.</li>
+<li>Set universal plot settings.</li>
+<li>Describe what faceting is and apply faceting using seaborn</li>
+<li>Modify the aesthetics of an existing plot (including axis labels and colour).</li>
+<li>Build complex and customised plots from data in a DataFrame.</li>
+</ol>
 </blockquote>
 <!--#################################################-->
 <section id="overviewof4" class="level3 unnumbered unlisted">
@@ -582,7 +591,7 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <li>Then, specify aesthetics, namely (x, y) coordinates, colour, size, etc.</li>
 <li>Finally, choose the geometric shape to represent your data, and add more layers like legends, labels, facets, etc.</li>
 </ul>
-<p>For example, using the <a href="https://www.kaggle.com/datasets/albertovidalrod/gapminder-dataset?resource=download">Gapminder</a> dataset with data on life expectancy (life_exp), human development index (hdi_index), and GDP (gdp) for a number of countries, we can build a graph that shows the relationship between GDP and life expectancy.</p>
+<p>For example, using the <a href="https://www.kaggle.com/datasets/albertovidalrod/gapminder-dataset?resource=download" target="_blank">Gapminder dataset</a> with data on life expectancy (life_exp), human development index (hdi_index), and GDP (gdp) for a number of countries, we can build a graph that shows the relationship between GDP and life expectancy.</p>
 <p>As we said, first we define the dataset we are using</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="vs">r"filepath-to-your-dataset"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -739,7 +748,7 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <li>A histogram displays the frequency of data within bins, while a density plot represents the probability density function of the data, providing a smoothed continuous curve.</li>
 <li>To convert a histogram to a density plot, you typically use <code>sns.kdeplot</code>, which computes and plots the kernel density estimate.</li>
 </ul>
-<p>In our code below, the kdeplot function is used to create a density plot, and the common_norm=False ensures that the densities for each continent are normalized separately, allowing for a fair comparison of the distribution shapes without being influenced by the differing sizes of the groups.</p>
+<p>In our code below, the <code>kdeplot</code> function is used to create a density plot, and the <code>common_norm=False</code> ensures that the densities for each continent are normalized separately, allowing for a fair comparison of the distribution shapes without being influenced by the differing sizes of the groups.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filled Density Plot</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>, fill<span class="op">=</span><span class="va">True</span>, common_norm<span class="op">=</span><span class="va">False</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
@@ -748,7 +757,13 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Density'</span>)</span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="Images/densityPlot.png" class="img-fluid"></p>
-<p>The “Multiple Parameter” The multiple Parameter can be set to any of these values: * <code>layer</code> - Overlays categories, allowing overlap. * <code>stack</code> - Stacks categories cumulatively. * <code>fill</code> - Stacks and scales categories to equal height. * <code>dodge</code> - Positions categories side by side.</p>
+<p>The “Multiple Parameter” The multiple Parameter can be set to any of these values:</p>
+<ul>
+<li><code>layer</code> - Overlays categories, allowing overlap.</li>
+<li><code>stack</code> - Stacks categories cumulatively.</li>
+<li><code>fill</code> - Stacks and scales categories to equal height.</li>
+<li><code>dodge</code> - Positions categories side by side.</li>
+</ul>
 <p>e.g.&nbsp;using the dodge version:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>, multiple<span class="op">=</span><span class="st">'dodge'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
@@ -816,18 +831,271 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 </section>
 <section id="animated" class="level3 unnumbered unlisted">
 <h3 class="unnumbered unlisted anchored" data-anchor-id="animated">Animated Graphs</h3>
+<p>Animated graphs are a powerful way to visualize how data changes over time. In Python, one of the most commonly used tools for creating animations is Matplotlib’s <code>FuncAnimation</code> class. This function updates a plot frame-by-frame, allowing you to illustrate dynamic processes such as moving trends, changing patterns, or simulations. The final animation can be displayed directly in a notebook or exported as a GIF or video using writers like <code>pillow</code> or <code>ffmpeg.</code> Keep in mind that generating animations may take a few seconds, especially for longer sequences, as each frame is rendered individually.</p>
 <!--#################################################-->
+<section id="matplotLibrary" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="matplotLibrary">matplotlib.animation</h4>
+<p>To implement animations, we will need to understand the concept of functions in Python. These are <em>reusable blocks of code that perform specific tasks and can be called with different inputs to produce different outputs</em>.</p>
+<p>In the context of animations, a function—like <code>update()</code> in the code below - is used to define how each frame of the animation should be rendered based on changing input (e.g., the year). This function is then repeatedly called by FuncAnimation, allowing us to dynamically update the plot for each time step.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.animation <span class="im">as</span> animation</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure and axis</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Get unique years sorted</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> <span class="bu">sorted</span>(gapminder[<span class="st">'year'</span>].unique())</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(year_index):</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    ax.clear()  <span class="co"># Clear previous frame</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> years[year_index]</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    yearly_data <span class="op">=</span> gapminder[gapminder[<span class="st">'year'</span>] <span class="op">==</span> year]</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create boxplot grouped by continent</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>    yearly_data.boxplot(column<span class="op">=</span><span class="st">'life_exp'</span>, by<span class="op">=</span><span class="st">'continent'</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Customize plot appearance</span></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'Life Expectancy by Continent (</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">)'</span>)</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Continent'</span>)</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>    plt.suptitle(<span class="st">''</span>)  <span class="co"># Remove automatic title added by Pandas boxplot</span></span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Create animation</span></span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>ani <span class="op">=</span> animation.FuncAnimation(fig, update, frames<span class="op">=</span><span class="bu">len</span>(years), interval<span class="op">=</span><span class="dv">800</span>, repeat<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Save as GIF (requires 'pillow')</span></span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>ani.save(<span class="st">'life_expectancy_boxplot.gif'</span>, writer<span class="op">=</span><span class="st">'pillow'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="GIFs/life_expectancy_boxplot.gif" class="img-fluid"></p>
+<p>Similarly, we can create an animated visualisation showing the relationship between GDP and life expectancy over time for different countries, segmented by continent.</p>
+<ul>
+<li><em>X-axis (GDP)</em>: Logarithmic scale representing each country’s GDP.</li>
+<li><em>Y-axis (Life Expectancy)</em>: Life expectancy of each country’s population.</li>
+<li><em>Data Points</em>
+<ul>
+<li>Each point represents a country for a specific year.</li>
+<li>Colour-coded by continent:
+<ul>
+<li>Asia: Red</li>
+<li>Europe: Blue</li>
+<li>Africa: Green</li>
+<li>Americas: Yellow</li>
+<li>Oceania: Purple</li>
+<li>Unknown: Grey</li>
+</ul></li>
+</ul></li>
+<li><em>Animation</em>
+<ul>
+<li>Displays changes over time, with each frame representing a different year.</li>
+<li>Title updates dynamically to reflect the current year.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill NaN values in the 'continent' column with a default value</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>gapminder[<span class="st">'continent'</span>] <span class="op">=</span> gapminder[<span class="st">'continent'</span>].fillna(<span class="st">'Unknown'</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure and axis</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get unique years sorted</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> <span class="bu">sorted</span>(gapminder[<span class="st">'year'</span>].unique())</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(year_index):</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    ax.clear()  <span class="co"># Clear previous frame</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> years[year_index]</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    yearly_data <span class="op">=</span> gapminder[gapminder[<span class="st">'year'</span>] <span class="op">==</span> year]</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ensure there are no NaN values in the data used for plotting</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    yearly_data <span class="op">=</span> yearly_data.dropna(subset<span class="op">=</span>[<span class="st">'gdp'</span>, <span class="st">'life_exp'</span>])</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Map continents to colours, handling 'Unknown' as grey</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>    continent_colors <span class="op">=</span> yearly_data[<span class="st">'continent'</span>].<span class="bu">map</span>({</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Asia'</span>: <span class="st">'red'</span>, <span class="st">'Europe'</span>: <span class="st">'blue'</span>, <span class="st">'Africa'</span>: <span class="st">'green'</span>, </span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Americas'</span>: <span class="st">'yellow'</span>, <span class="st">'Oceania'</span>: <span class="st">'purple'</span>, <span class="st">'Unknown'</span>: <span class="st">'grey'</span></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>    }).fillna(<span class="st">'grey'</span>)  <span class="co"># Fill any remaining NaN values with 'grey'</span></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create scatter plot</span></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>    scatter <span class="op">=</span> ax.scatter(yearly_data[<span class="st">'gdp'</span>], yearly_data[<span class="st">'life_exp'</span>], </span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>                         c<span class="op">=</span>continent_colors, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Customize plot appearance</span></span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'Year: </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'GDP'</span>)</span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>    ax.set_xscale(<span class="st">'log'</span>)  <span class="co"># Use logarithmic scale for GDP</span></span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(gapminder[<span class="st">'gdp'</span>].<span class="bu">min</span>(), gapminder[<span class="st">'gdp'</span>].<span class="bu">max</span>())</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(gapminder[<span class="st">'life_exp'</span>].<span class="bu">min</span>(), gapminder[<span class="st">'life_exp'</span>].<span class="bu">max</span>())</span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Create animation</span></span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>ani <span class="op">=</span> animation.FuncAnimation(fig, update, frames<span class="op">=</span><span class="bu">len</span>(years), interval<span class="op">=</span><span class="dv">800</span>, repeat<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Save as GIF (requires 'pillow')</span></span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>ani.save(<span class="st">'life_expectancy_vs_gdp.gif'</span>, writer<span class="op">=</span><span class="st">'pillow'</span>, dpi<span class="op">=</span><span class="dv">80</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="GIFs/life_expectancy_vs_gdp.gif" class="img-fluid"></p>
+<!--#################################################-->
+</section>
 </section>
 <section id="whyPlot" class="level3 unnumbered unlisted">
 <h3 class="unnumbered unlisted anchored" data-anchor-id="whyPlot">Why you should always plot your data</h3>
-<!--#################################################-->
-</section>
-<section id="hiddenPatterns" class="level3 unnumbered unlisted">
-<h3 class="unnumbered unlisted anchored" data-anchor-id="hiddenPatterns">what data Patterns can lie behind a correlation coefficient?</h3>
+<p>We have touched on the basics of <strong>python</strong> visualisations, but in this section we wanted to discuss why one should <strong>always plot the data</strong> and not just rely on tables of summary statistics.</p>
+<p>Let us consider thirteen datasets all of which have 142 observations of (x,y) values. The table below shows the average value of X and Y, the standard deviation of X and Y, as well as the correlation coefficient between X and Y.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">n</th>
+<th style="text-align: left;">mean_x</th>
+<th style="text-align: left;">mean_y</th>
+<th style="text-align: left;">sd_x</th>
+<th style="text-align: left;">sd_y</th>
+<th style="text-align: left;">correlation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.064</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.069</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.068</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.064</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.060</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.062</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.069</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.069</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.069</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.063</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.069</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.067</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">142</td>
+<td style="text-align: left;">54.3</td>
+<td style="text-align: left;">47.8</td>
+<td style="text-align: left;">6.82</td>
+<td style="text-align: left;">6.9</td>
+<td style="text-align: left;">-0.066</td>
+</tr>
+</tbody>
+</table>
+<p>Since our datasets contain values for X and Y, we can estimate 13 regression models and plot the values for each of the 13 intercepts and slope for X.</p>
+<p><img src="Images/LinearRegression_with95Confidence.png" class="img-fluid"></p>
+<p>If we just looked at either the summary statistics table, or the plots of intercepts and slopes, we may be tempted to conclude that the 13 datasets are either identical or very much alike. However, this is far from the truth, as this is what the 13 individual datasets look like.</p>
+<p><img src="Images/13_correlation_plots.png" class="img-fluid"></p>
+<p>You can read more about why you <a href="https://www.research.autodesk.com/publications/same-stats-different-graphs/" target="_blank">should never trust summary statistics alone and should always visualize your data</a>.</p>
 <!--#################################################-->
 </section>
 <section id="furtherResources4" class="level3 unnumbered unlisted">
 <h3 class="unnumbered unlisted anchored" data-anchor-id="furtherResources4">Further resources</h3>
+<ul>
+<li><a href="https://seaborn.pydata.org/tutorial.html" target="_blank">Official <code>seaborn</code> Tutorial</a></li>
+<li><a href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html" target="_blank"><code>matplotlib</code> Pyplot Tutorial</a></li>
+<li><a href="https://www.datacamp.com/courses/introduction-to-data-visualization-with-seaborn?dc_referrer=https%3A%2F%2Fam01-sep24.netlify.app%2F" target="_blank">DataCamp - Data Visualization with Seaborn</a></li>
+<li><a href="https://www.datacamp.com/courses/introduction-to-data-visualization-with-matplotlib" target="_blank">Datacamp - Introduction to Data Visualization with Matplotlib</a></li>
+<li><a href="https://seaborn.pydata.org/examples/index.html" target="_blank"><code>seaborn</code> Gallery</a></li>
+<li><a href="https://matplotlib.org/stable/gallery/index.html" target="_blank"><code>matplotlib</code> Examples</a></li>
+</ul>
 <!--#################################################-->
 <!--#################################################-->
 <!--#################################################-->

@@ -341,13 +341,15 @@ According to Phil Karlton, there are only two [hard things in Computer Science: 
 - [Layers](#layers)
 - [Faucetting](#faucetting)
 - [Animated Graphs](#animated)
+    - [matplotlib](#matplotLibrary)
 - [Why you should always plot your data](#whyPlot)
-    - [what data Patterns can lie behind a correlation coefficient?](#hiddenPatterns)
 - [Further resources](#furtherResources4)
 
 :::
 <!--#################################################-->
+
 > Learning Objectives
+
 > 1. Produce scatter plots, boxplots, and time series plots using matplotlib and seaborn.
 > 2. Set universal plot settings.
 > 3. Describe what faceting is and apply faceting using seaborn
@@ -371,7 +373,7 @@ It may seem verbose and unwieldy, but the idea of building a plot on a layer-by-
 * Then, specify aesthetics, namely (x, y) coordinates, colour, size, etc. 
 * Finally, choose the geometric shape to represent your data, and add more layers like legends, labels, facets, etc.
 
-For example, using the [Gapminder](https://www.kaggle.com/datasets/albertovidalrod/gapminder-dataset?resource=download) dataset with data on life expectancy (life_exp), human development index (hdi_index), and GDP (gdp) for a number of countries, we can build a graph that shows the relationship between GDP and life expectancy.
+For example, using the <a href="https://www.kaggle.com/datasets/albertovidalrod/gapminder-dataset?resource=download" target="_blank">Gapminder dataset</a> with data on life expectancy (life_exp), human development index (hdi_index), and GDP (gdp) for a number of countries, we can build a graph that shows the relationship between GDP and life expectancy.
 
 As we said, first we define the dataset we are using
 ```python
@@ -573,7 +575,7 @@ We will now plot a density plot, a smoothed version of a histogram using geom_de
 * A histogram displays the frequency of data within bins, while a density plot represents the probability density function of the data, providing a smoothed continuous curve.
 * To convert a histogram to a density plot, you typically use `sns.kdeplot`, which computes and plots the kernel density estimate.
 
-In our code below, the kdeplot function is used to create a density plot, and the common_norm=False ensures that the densities for each continent are normalized separately, allowing for a fair comparison of the distribution shapes without being influenced by the differing sizes of the groups.
+In our code below, the `kdeplot` function is used to create a density plot, and the `common_norm=False` ensures that the densities for each continent are normalized separately, allowing for a fair comparison of the distribution shapes without being influenced by the differing sizes of the groups.
 ```python 
 # filled Density Plot
 plt.figure(figsize=(10, 6))
@@ -588,6 +590,7 @@ plt.show()
 
 The "Multiple Parameter"
 The multiple Parameter can be set to any of these values: 
+
 * `layer` - Overlays categories, allowing overlap.
 * `stack` - Stacks categories cumulatively.
 * `fill` - Stacks and scales categories to equal height.
@@ -676,19 +679,165 @@ plt.show()
 
 ### Animated Graphs {#animated .unnumbered .unlisted}
 
+Animated graphs are a powerful way to visualize how data changes over time. In Python, one of the most commonly used tools for creating animations is Matplotlib's `FuncAnimation` class. This function updates a plot frame-by-frame, allowing you to illustrate dynamic processes such as moving trends, changing patterns, or simulations. The final animation can be displayed directly in a notebook or exported as a GIF or video using writers like `pillow` or `ffmpeg.` Keep in mind that generating animations may take a few seconds, especially for longer sequences, as each frame is rendered individually.
+
+<!--#################################################-->
+#### matplotlib.animation {#matplotLibrary .unnumbered .unlisted}
+
+To implement animations, we will need to understand the concept of functions in Python. These are *reusable blocks of code that perform specific tasks and can be called with different inputs to produce different outputs*. 
+
+In the context of animations, a function—like `update()` in the code below - is used to define how each frame of the animation should be rendered based on changing input (e.g., the year). This function is then repeatedly called by FuncAnimation, allowing us to dynamically update the plot for each time step.
+
+```python 
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+
+# Set up the figure and axis
+fig, ax = plt.subplots(figsize=(8, 6))
+plt.xticks(rotation=45)
+
+# Get unique years sorted
+years = sorted(gapminder['year'].unique())
+
+def update(year_index):
+    ax.clear()  # Clear previous frame
+    year = years[year_index]
+    yearly_data = gapminder[gapminder['year'] == year]
+
+    # Create boxplot grouped by continent
+    yearly_data.boxplot(column='life_exp', by='continent', ax=ax)
+
+    # Customize plot appearance
+    ax.set_title(f'Life Expectancy by Continent ({year})')
+    ax.set_xlabel('Continent')
+    ax.set_ylabel('Life Expectancy')
+    plt.suptitle('')  # Remove automatic title added by Pandas boxplot
+
+# Create animation
+ani = animation.FuncAnimation(fig, update, frames=len(years), interval=800, repeat=True)
+
+plt.tight_layout()
+plt.show()
+
+# Optional: Save as GIF (requires 'pillow')
+ani.save('life_expectancy_boxplot.gif', writer='pillow')
+```
+
+![](GIFs/life_expectancy_boxplot.gif)
+
+Similarly, we can create an animated visualisation showing the relationship between GDP and life expectancy over time for different countries, segmented by continent.
+
+* *X-axis (GDP)*: Logarithmic scale representing each country's GDP.
+* *Y-axis (Life Expectancy)*: Life expectancy of each country's population.
+* *Data Points*
+    * Each point represents a country for a specific year.
+    * Colour-coded by continent:
+        * Asia: Red
+        * Europe: Blue
+        * Africa: Green
+        * Americas: Yellow
+        * Oceania: Purple
+        * Unknown: Grey
+* *Animation*
+    * Displays changes over time, with each frame representing a different year.
+    * Title updates dynamically to reflect the current year.
+
+
+
+```python 
+# Fill NaN values in the 'continent' column with a default value
+gapminder['continent'] = gapminder['continent'].fillna('Unknown')
+
+# Set up the figure and axis
+fig, ax = plt.subplots(figsize=(6, 6))
+plt.xticks(rotation=45)
+
+# Get unique years sorted
+years = sorted(gapminder['year'].unique())
+
+def update(year_index):
+    ax.clear()  # Clear previous frame
+    year = years[year_index]
+    yearly_data = gapminder[gapminder['year'] == year]
+
+    # Ensure there are no NaN values in the data used for plotting
+    yearly_data = yearly_data.dropna(subset=['gdp', 'life_exp'])
+
+    # Map continents to colours, handling 'Unknown' as grey
+    continent_colors = yearly_data['continent'].map({
+        'Asia': 'red', 'Europe': 'blue', 'Africa': 'green', 
+        'Americas': 'yellow', 'Oceania': 'purple', 'Unknown': 'grey'
+    }).fillna('grey')  # Fill any remaining NaN values with 'grey'
+
+    # Create scatter plot
+    scatter = ax.scatter(yearly_data['gdp'], yearly_data['life_exp'], 
+                         c=continent_colors, alpha=0.5)
+
+    # Customize plot appearance
+    ax.set_title(f'Year: {year}')
+    ax.set_xlabel('GDP')
+    ax.set_ylabel('Life Expectancy')
+    ax.set_xscale('log')  # Use logarithmic scale for GDP
+    ax.set_xlim(gapminder['gdp'].min(), gapminder['gdp'].max())
+    ax.set_ylim(gapminder['life_exp'].min(), gapminder['life_exp'].max())
+
+# Create animation
+ani = animation.FuncAnimation(fig, update, frames=len(years), interval=800, repeat=True)
+
+plt.tight_layout()
+plt.show()
+
+# Optional: Save as GIF (requires 'pillow')
+ani.save('life_expectancy_vs_gdp.gif', writer='pillow', dpi=80)
+```
+![](GIFs/life_expectancy_vs_gdp.gif)
 
 <!--#################################################-->
 
 ### Why you should always plot your data {#whyPlot .unnumbered .unlisted}
 
-<!--#################################################-->
+We have touched on the basics of **python** visualisations, but in this section we wanted to discuss why one should **always plot the data** and not just rely on tables of summary statistics.
 
-### what data Patterns can lie behind a correlation coefficient? {#hiddenPatterns .unnumbered .unlisted}
+Let us consider thirteen datasets all of which have 142 observations of (x,y) values. The table below shows the average value of X and Y, the standard deviation of X and Y, as well as the correlation coefficient between X and Y.
 
+| id | n | mean_x | mean_y | sd_x | sd_y | correlation |
+|:---|:--|:-------|:-------|:-----|:-----|:------------|
+| 1  | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.064      |
+| 2  | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.069      |
+| 3  | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.068      |
+| 4  | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.064      |
+| 5  | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.060      |
+| 6  | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.062      |
+| 7  | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.069      |
+| 8  | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.069      |
+| 9  | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.069      |
+| 10 | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.063      |
+| 11 | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.069      |
+| 12 | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.067      |
+| 13 | 142 | 54.3   | 47.8   | 6.82 | 6.9  | -0.066      |
+
+Since our datasets contain values for X and Y, we can estimate 13 regression models and plot the values for each of the 13 intercepts and slope for X.
+
+![](Images/LinearRegression_with95Confidence.png)
+
+If we just looked at either the summary statistics table, or the plots of intercepts and slopes, we may be tempted to conclude that the 13 datasets are either identical or very much alike. However, this is far from the truth, as this is what the 13 individual datasets look like.
+
+![](Images/13_correlation_plots.png)
+
+You can read more about why you <a href="https://www.research.autodesk.com/publications/same-stats-different-graphs/" target="_blank">should never trust summary statistics alone and should always visualize your data</a>.
 
 <!--#################################################-->
 
 ### Further resources {#furtherResources4 .unnumbered .unlisted}
+
+* <a href="https://seaborn.pydata.org/tutorial.html" target="_blank">Official `seaborn` Tutorial</a>
+* <a href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html" target="_blank">`matplotlib` Pyplot Tutorial</a>
+* <a href="https://www.datacamp.com/courses/introduction-to-data-visualization-with-seaborn?dc_referrer=https%3A%2F%2Fam01-sep24.netlify.app%2F" target="_blank">DataCamp - Data Visualization with Seaborn</a>
+* <a href="https://www.datacamp.com/courses/introduction-to-data-visualization-with-matplotlib" target="_blank">Datacamp - Introduction to Data Visualization with Matplotlib</a>
+* <a href="https://seaborn.pydata.org/examples/index.html" target="_blank">`seaborn` Gallery</a>
+* <a href="https://matplotlib.org/stable/gallery/index.html" target="_blank">`matplotlib` Examples</a>
 
 <!--#################################################-->
 
