@@ -11,7 +11,63 @@
     "href": "Resources.html",
     "title": "Resources",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Contents\n\n\n\n\n\n\nInstalling Python\nInstalling vs Code\nOther tools\n\n\n\n\n\n\nTo install Python:\n\nDownload from the official website: python.org\nRecommended version: 3.10 or higher\nFor Mac: Consider using Homebrew\n\nFor Windows: Use the Microsoft Store or installer\n\n\n\n\nSteps to install VS Code:\n\nDownload from: code.visualstudio.com\nRecommended extensions:\n\nPython\nQuarto\nGitLens\nJupyter\n\n\n\n\n\nComing soon…"
+  },
+  {
+    "objectID": "Resources.html#installing",
+    "href": "Resources.html#installing",
+    "title": "Resources",
+    "section": "",
+    "text": "To install Python:\n\nDownload from the official website: python.org\nRecommended version: 3.10 or higher\nFor Mac: Consider using Homebrew\n\nFor Windows: Use the Microsoft Store or installer"
+  },
+  {
+    "objectID": "Resources.html#code",
+    "href": "Resources.html#code",
+    "title": "Resources",
+    "section": "",
+    "text": "Steps to install VS Code:\n\nDownload from: code.visualstudio.com\nRecommended extensions:\n\nPython\nQuarto\nGitLens\nJupyter"
+  },
+  {
+    "objectID": "Resources.html#tools",
+    "href": "Resources.html#tools",
+    "title": "Resources",
+    "section": "",
+    "text": "Coming soon…"
+  },
+  {
+    "objectID": "Resources.html#github",
+    "href": "Resources.html#github",
+    "title": "Resources",
+    "section": "Using GitHub",
+    "text": "Using GitHub\nTo get started with GitHub:\n\nSign up at github.com\nLearn basic commands:\n\ngit clone\ngit add\ngit commit\ngit push\n\nTry GitHub Desktop if you’re not comfortable with the command line interface (CLI)"
+  },
+  {
+    "objectID": "Resources.html#textbooks",
+    "href": "Resources.html#textbooks",
+    "title": "Resources",
+    "section": "Textbooks",
+    "text": "Textbooks\n\ntest"
+  },
+  {
+    "objectID": "Resources.html#videos",
+    "href": "Resources.html#videos",
+    "title": "Resources",
+    "section": "Videos",
+    "text": "Videos\n\ntest"
+  },
+  {
+    "objectID": "Resources.html#finance",
+    "href": "Resources.html#finance",
+    "title": "Resources",
+    "section": "Finance Data",
+    "text": "Finance Data\n\nYahoo Finance: finance.yahoo.com\nAlpha Vantage: alphavantage.co\nQuandl: quandl.com"
+  },
+  {
+    "objectID": "Resources.html#worldBank",
+    "href": "Resources.html#worldBank",
+    "title": "Resources",
+    "section": "World Bank",
+    "text": "World Bank\n\nWorld Bank Open Data: data.worldbank.org\nWDI R package: WDI on CRAN"
   },
   {
     "objectID": "Examples.html",

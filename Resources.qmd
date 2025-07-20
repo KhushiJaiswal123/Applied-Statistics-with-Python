@@ -1,9 +1,107 @@
 ---
 title: "Resources"
+toc: true
+toc-title: "Contents"
+toc-location: left
+format: html
+jupyter: python3
 ---
 
-About this site
 
-```{r}
-1 + 1
-```
+# **Resources**
+::: {.callout-tip collapse=false}
+
+## Contents
+- [Installing Python](#installing)
+- [Installing vs Code](#code)
+- [Other tools](#tools)
+
+:::
+
+## Installing Python {#installing}
+
+To install Python:
+
+- Download from the official website: [python.org](https://www.python.org)
+- Recommended version: 3.10 or higher
+- For Mac: Consider using Homebrew  
+- For Windows: Use the Microsoft Store or installer
+
+## Installing VS Code {#code}
+
+Steps to install VS Code:
+
+- Download from: [code.visualstudio.com](https://code.visualstudio.com/)
+- Recommended extensions:
+  - Python
+  - Quarto
+  - GitLens
+  - Jupyter
+
+## Other Tools {#tools}
+
+Coming soon...
+
+<!--#################################################-->
+
+# **Guides**
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Using GitHub](#github)
+:::
+
+## Using GitHub {#github}
+
+To get started with GitHub:
+
+- Sign up at [github.com](https://github.com)
+- Learn basic commands:
+  - `git clone`
+  - `git add`
+  - `git commit`
+  - `git push`
+- Try GitHub Desktop if you're not comfortable with the command line interface (CLI)
+
+<!--#################################################-->
+
+# **Textbooks**
+
+::: {.callout-tip collapse=false}
+## Contents
+ - [Textbooks](#textbooks)
+ - [Videos](#videos)
+ 
+:::
+
+## Textbooks {#textbooks}
+ - test
+
+## Videos{#videos}
+ - test
+
+
+<!--#################################################-->
+
+# **Data Sources**
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Finance Data](#finance)
+- [World Bank](#worldBank)
+:::
+
+## Finance Data {#finance}
+
+- Yahoo Finance: [finance.yahoo.com](https://finance.yahoo.com)
+- Alpha Vantage: [alphavantage.co](https://www.alphavantage.co)
+- Quandl: [quandl.com](https://www.quandl.com)
+
+## World Bank {#worldBank}
+
+- World Bank Open Data: [data.worldbank.org](https://data.worldbank.org)
+- WDI R package: `WDI` on CRAN
+
+
+
+
