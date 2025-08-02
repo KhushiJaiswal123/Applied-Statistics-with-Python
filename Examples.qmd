@@ -9,11 +9,113 @@ jupyter: python3
 
 ::: {.callout-tip collapse=false}
 ## Contents
+- [The Basics](#basics)
 - [Exploratory Data Analysis](#EDA)
 - [Data Modelling](#Modelling)
 :::
 
-This section contains worked examples, most of them with fully annotated Python code that you can use as reference.
+<!--#################################################-->
+
+### The Basics {#basics .unnumbered .unlisted}
+
+<!--#################################################-->
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Variables and Data Types](#varAndData)
+- [Basic Operations](#basicOperations)
+- [Data Structures](#dataStructs)
+- [Control flow](#control flow)
+
+
+:::
+
+This section covers fundamental Python concepts that are essential for working with data and understanding the examples in the rest of this course. If you're new to Python, spend some time here to get comfortable with the syntax and common operations.
+
+
+<!--#################################################-->
+
+#### Variables and Data Types {#varAndData}
+* **What are variables?** (Containers for storing data)
+* **Common Data Types:**
+    * `int` (Integers: `5`, `-10`)
+    * `float` (Floating-point numbers: `3.14`, `-0.5`)
+    * `str` (Strings: `'hello'`, `"Python Course"`)
+    * `bool` (Booleans: `True`, `False`)
+* **How to assign variables:** `my_number = 10`, `my_text = "Data"`
+* **Checking data type:** `type(my_number)`
+
+```python
+# Example
+age = 30
+temperature = 25.5
+name = "Alice"
+is_student = True
+
+print(f"Age: {age}, Type: {type(age)}")
+print(f"Temperature: {temperature}, Type: {type(temperature)}")
+print(f"Name: {name}, Type: {type(name)}")
+print(f"Is Student: {is_student}, Type: {type(is_student)}")
+
+```
+#### Basic Operations {#basicOperations}
+* Arithmetic Operators: `+`, `-`, `*`, `/`, `**` (exponentiation), `%` (modulo)
+* Comparison Operators: `==`, `!=`, `<`, `>`, `<=`, `>=`
+* Logical Operators: and, or, not
+
+```python
+# Example
+result = 10 + 5 * 2
+print(f"Calculation: {result}") # Output: 20
+
+is_greater = (result > 15) and (age < 40)
+print(f"Is greater and age within range: {is_greater}")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--#################################################-->
+
+
+This section next section contains worked examples, most of them with fully annotated Python code that you can use as reference.
 
 ### Exploratory Data Analysis {#EDA .unnumbered .unlisted}
 Before starting any analysis, we first need to import a dataset, understand its variables, visualize it, and manipulate it systematically using tools like `pandas`, `matplotlib`, and `seaborn.` This might seem like a tedious step, but it's a critical foundation that must precede any form of statistical modelling.
@@ -841,23 +943,450 @@ You can read more about why you <a href="https://www.research.autodesk.com/publi
 
 <!--#################################################-->
 
-
-<!--#################################################-->
-
-
 <!--#################################################-->
 
 <!--#################################################-->
 
 ## 5. Manipulate Data
 
+::: {.callout-tip collapse=false}
+## Contents
+- [Selecting and Filtering Data](#select)
+- [Handling Missing Values](#filter)
+- [Creating New Variables (Feature Engineering Basics)](#FeatureEng)
+- [Combining Datasets](#combiningDatasets)
+- [Reshaping Data (Pivoting and Melting)](#groupData)
+
+:::
+
+Once you've imported and inspected your data, the next crucial step in any data science workflow is data manipulation. This involves transforming raw data into a clean, structured, and analysis-ready format. Think of it as refining raw materials before building something incredible – whether it's an insightful visualization or a powerful predictive model.
+
+This section will introduce you to essential techniques using pandas, your go-to library for efficient data manipulation in Python. We'll cover how to select and filter data, handle missing values, create new variables, and combine datasets.
+
 <!--#################################################-->
 
-## 6. Reshape Data 
+### Selecting and Filtering Data {#select .unnumbered .unlisted}
+
+Effectively extracting specific subsets of your data is fundamental. This allows you to focus on relevant information, analyze particular groups, or prepare data for specific operations.
+
+You can select one or multiple columns from a pandas DataFrame using single or double square brackets.
+
+- Selecting a single column
+```python
+import pandas as pd
+
+# Assuming 'gapminder' DataFrame is loaded from previous sections
+# (e.g., gapminder = pd.read_csv("filepath-to-your-dataset"))
+
+# Select the 'life_exp' column
+life_expectancy = gapminder['life_exp']
+print(life_expectancy.head())
+print(type(life_expectancy)) # Output will be <class 'pandas.core.series.Series'>
+```
+
+- Selecting multiple columns:
+``` python 
+# Select 'gdp' and 'life_exp' columns
+gdp_life_exp = gapminder[['gdp', 'life_exp']]
+print(gdp_life_exp.head())
+print(type(gdp_life_exp)) # Output will be <class 'pandas.core.frame.DataFrame'>
+```
+
+Notice the difference in output type: a single column selection returns a Series, while multiple columns return a DataFrame.
 
 <!--#################################################-->
 
-## 7. EDA for Modelling
+## Handling Missing Values {#filter .unnumbered .unlisted}
+
+Filtering rows, also known as subsetting, allows you to select data based on specific conditions. This is often done using boolean indexing.
+
+- Filtering by a single condition: Let's say we want to look at data only for the 'Europe' continent.
+```python 
+# Filter for data where continent is 'Europe'
+europe_data = gapminder[gapminder['continent'] == 'Europe']
+print(europe_data.head())
+print(f"Number of rows for Europe: {len(europe_data)}")
+```
+
+- Filtering by multiple conditions: You can combine multiple conditions using logical operators (& for AND, | for OR, ~ for NOT). Remember to wrap each condition in parentheses.
+```python
+# Filter for data where continent is 'Asia' AND life expectancy is greater than 70
+asia_high_life_exp = gapminder[(gapminder['continent'] == 'Asia') & (gapminder['life_exp'] > 70)]
+print(asia_high_life_exp.head())
+print(f"Number of rows for Asia with high life expectancy: {len(asia_high_life_exp)}")
+```
+
+Real-world datasets are rarely perfect and often contain missing values (represented as NaN - Not a Number in pandas). Dealing with these is a critical step in data cleaning, as they can lead to errors or biased results in your analysis.
+
+You've briefly touched on dropna() when saving a cleaned file, but here we'll delve deeper into strategies.
+
+- Identifying Missing Values: Use isnull() or isna() to get a boolean DataFrame indicating missing values, and sum() to count them per column.
+
+```python 
+# Check for missing values across the entire DataFrame
+print(gapminder.isnull().sum())
+
+# Check for missing values in a specific column, e.g., 'gdp'
+print(f"Missing values in 'gdp' column: {gapminder['gdp'].isnull().sum()}")
+```
+
+- Dropping Missing Values: dropna() Removes rows or columns containing missing values.
+```python 
+# Drop rows with ANY missing values
+df_cleaned_rows = gapminder.dropna()
+print(f"Original rows: {len(gapminder)}, Rows after dropping NaNs: {len(df_cleaned_rows)}")
+
+# Drop columns with ANY missing values
+df_cleaned_cols = gapminder.dropna(axis=1) # axis=1 for columns
+print(f"Original columns: {gapminder.shape[1]}, Columns after dropping NaNs: {df_cleaned_cols.shape[1]}")
+
+# Drop rows only if ALL values are missing
+df_cleaned_all = gapminder.dropna(how='all')
+
+```
+Caution: Be careful when dropping data, especially rows. This can lead to significant data loss and might not always be the best approach, particularly with small datasets or if missingness carries important information.
+
+- Imputing Missing Values (Filling): fillna() Replaces missing values with a specified value or method. This is generally preferred over dropping when you want to retain as much data as possible.
+```python 
+# Fill missing 'gdp' values with the mean of the 'gdp' column
+mean_gdp = gapminder['gdp'].mean()
+gapminder_filled_mean = gapminder['gdp'].fillna(mean_gdp)
+print(f"GDP after filling with mean:\n{gapminder_filled_mean.head()}")
+
+# Fill missing values in 'continent' with 'Unknown' (as done in animation example)
+gapminder['continent'] = gapminder['continent'].fillna('Unknown')
+print(f"Continent column after filling NaNs:\n{gapminder['continent'].value_counts()}")
+
+# Forward fill (propagates last valid observation forward to next valid)
+gapminder_ffill = gapminder['life_exp'].fillna(method='ffill')
+
+# Backward fill (propagates next valid observation backward to next valid)
+gapminder_bfill = gapminder['life_exp'].fillna(method='bfill')
+
+```
+Choosing an imputation strategy depends heavily on the nature of your data and the reason for the missingness. Common strategies include using the mean, median, mode, or more advanced techniques like interpolation.
+
+
+<!--#################################################-->
+
+
+### Creating New Variables (Feature Engineering Basics) {#FeatureEng .unnumbered .unlisted}
+Feature engineering is the process of creating new variables (features) from existing ones to improve the performance of predictive models or reveal new insights. This can be as simple as a mathematical transformation or as complex as extracting information from text.
+- Mathematical Operations: You can easily perform arithmetic operations on existing columns to create new ones.
+```python 
+# Create a new 'gdp_per_person' column
+gapminder['gdp_per_person'] = gapminder['gdp'] / gapminder['population']
+print(gapminder[['gdp', 'population', 'gdp_per_person']].head())
+
+```
+- Applying Functions: Use the .apply() method to apply a custom function to a Series or DataFrame.
+```python 
+# Categorize countries into 'High' or 'Low' life expectancy based on a threshold
+def categorize_life_exp(life_exp):
+    return 'High' if life_exp > 70 else 'Low'
+
+gapminder['life_exp_category'] = gapminder['life_exp'].apply(categorize_life_exp)
+print(gapminder[['life_exp', 'life_exp_category']].head())
+
+```
+
+- Using numpy for Conditional Logic: For more complex conditional logic, numpy.where is very useful.
+```python
+import numpy as np
+
+# Create a 'wealth_category' based on GDP
+gapminder['wealth_category'] = np.where(gapminder['gdp'] > 1000000000000, 'Very High',
+                                        np.where(gapminder['gdp'] > 100000000000, 'High', 'Medium/Low'))
+print(gapminder[['gdp', 'wealth_category']].head())
+```
+
+<!--#################################################-->
+
+### Combining Datasets {#combiningDatasets .unnumbered .unlisted}
+
+Often, the data you need for an analysis is spread across multiple files or DataFrames. pandas provides powerful functions to combine them.
+- Concatenating DataFrames (pd.concat()): Used to stack DataFrames vertically (rows) or horizontally (columns).
+```python
+# Create two small DataFrames for demonstration
+df1 = pd.DataFrame({'A': ['A0', 'A1'], 'B': ['B0', 'B1']}, index=[0, 1])
+df2 = pd.DataFrame({'A': ['A2', 'A3'], 'B': ['B2', 'B3']}, index=[2, 3])
+
+# Concatenate vertically (default)
+result_concat_rows = pd.concat([df1, df2])
+print("Concatenated Rows:\n", result_concat_rows)
+
+# Concatenate horizontally
+df3 = pd.DataFrame({'C': ['C0', 'C1'], 'D': ['D0', 'D1']}, index=[0, 1])
+result_concat_cols = pd.concat([df1, df3], axis=1)
+print("\nConcatenated Columns:\n", result_concat_cols)
+```
+
+- Merging DataFrames (pd.merge()): Similar to SQL joins, merge() combines DataFrames based on common columns (keys). This is crucial for combining related information from different sources.
+```python 
+# Create two sample DataFrames: one with country info, one with additional stats
+country_info = pd.DataFrame({
+    'country': ['Afghanistan', 'Albania', 'Algeria', 'Angola'],
+    'capital': ['Kabul', 'Tirana', 'Algiers', 'Luanda']
+})
+
+country_stats = pd.DataFrame({
+    'country': ['Afghanistan', 'Albania', 'Algeria', 'Argentina'],
+    'population_2020': [38928346, 2877797, 43851044, 45195774]
+})
+
+# Inner merge: only includes rows where the 'country' key exists in both DataFrames
+merged_data_inner = pd.merge(country_info, country_stats, on='country', how='inner')
+print("\nInner Merge:\n", merged_data_inner)
+
+# Left merge: includes all rows from the left DataFrame and matching rows from the right
+merged_data_left = pd.merge(country_info, country_stats, on='country', how='left')
+print("\nLeft Merge:\n", merged_data_left)
+
+# Right merge: includes all rows from the right DataFrame and matching rows from the left
+merged_data_right = pd.merge(country_info, country_stats, on='country', how='right')
+print("\nRight Merge:\n", merged_data_right)
+
+# Outer merge: includes all rows from both DataFrames, filling missing with NaN
+merged_data_outer = pd.merge(country_info, country_stats, on='country', how='outer')
+print("\nOuter Merge:\n", merged_data_outer)
+```
+Choosing the correct how argument (inner, left, right, outer) is essential depending on how you want to handle non-matching keys.
+
+<!--#################################################-->
+
+### Reshaping Data (Pivoting and Melting) {#groupData .unnumbered .unlisted}
+
+Reshaping data involves changing the layout of your DataFrame. This is particularly useful when you need to transform data from a "long" format to a "wide" format, or vice-versa, for analysis or visualization.
+
+**Pivoting (df.pivot_table() or df.pivot())**
+Pivoting transforms unique values from one or more columns into new columns, typically aggregating data in the process. pivot_table is more flexible as it can handle duplicate entries in the index and allows for aggregation.
+
+Imagine your gapminder data has multiple entries for a country across different years, and you want to see life expectancy for each continent as columns, with years as rows.
+```python 
+# Let's create a simplified DataFrame for pivoting example
+pivot_df = gapminder[['year', 'continent', 'life_exp']]
+# Calculate the mean life expectancy per continent per year
+avg_life_exp_pivot = pivot_df.pivot_table(index='year',
+                                          columns='continent',
+                                          values='life_exp',
+                                          aggfunc='mean')
+print("Pivoted Average Life Expectancy:\n", avg_life_exp_pivot.head())
+```
+
+
+**Melting (pd.melt())**
+
+Melting is the opposite of pivoting; it transforms data from a "wide" format into a "long" format. This is useful for reshaping dataframes for certain types of analysis or plotting libraries (like Seaborn, which often prefers long-format data).
+
+Consider our avg_life_exp_pivot from above. If we wanted to "unpivot" it back into a long format.
+```python 
+# Reset index to make 'year' a regular column
+avg_life_exp_pivot_reset = avg_life_exp_pivot.reset_index()
+
+# Melt the DataFrame
+melted_life_exp = pd.melt(avg_life_exp_pivot_reset,
+                         id_vars=['year'], # Columns to keep as identifier variables
+                         var_name='continent', # Name for the new column storing melted column headers
+                         value_name='average_life_expectancy') # Name for the new column storing values
+print("\nMelted Average Life Expectancy:\n", melted_life_exp.head())
+```
+
+<!--#################################################-->
+
+## 6. Group and Aggregate Data
+
+::: {.callout-tip collapse=false}
+## Contents
+- [The groupby() Method](#groupBy)
+- [Common Aggregation Functions](#agg)
+- [Grouping by Multiple Columns](#multiColGroup)
+- [Applying Multiple Aggregations](#multiArg)
+- [Using agg() with Custom Functions](#Customfunctions)
+- [Pivot Tables Revisited for Aggregation](#pivotTables)
+
+:::
+
+After you've cleaned and manipulated your data, you often need to summarize it to uncover patterns, trends, or characteristics within different categories. This is where grouping and aggregation become indispensable. These techniques allow you to perform calculations on subsets of your data, rather than on the entire dataset at once.
+
+Think of it like getting summary reports for different departments in a company, rather than looking at every single transaction. You're combining rows based on shared characteristics and then applying functions (like sum, average, count) to those groups.
+
+This section will introduce you to groupby() and various aggregation functions in pandas, enabling you to derive meaningful insights from your prepared data
+
+<!--#################################################-->
+
+
+### The groupby() Method {#groupBy .unnumbered .unlisted}
+
+The core of grouping in pandas is the `groupby()` method. It allows you to split your DataFrame into groups based on one or more columns, apply a function to each group independently, and then combine the results into a single DataFrame. This process is often referred to as the "split-apply-combine" strategy.
+
+**Basic Grouping**
+Let's use the gapminder dataset. A common task might be to find the average life expectancy for each continent.
+
+```python 
+import pandas as pd
+
+# Assuming 'gapminder' DataFrame is loaded and 'continent' column is clean
+# (e.g., gapminder = pd.read_csv("filepath-to-your-dataset"))
+# If 'continent' has NaNs, ensure they are handled as per the previous chapter, e.g.,
+# gapminder['continent'] = gapminder['continent'].fillna('Unknown')
+
+# Group by 'continent' and calculate the mean of 'life_exp'
+avg_life_exp_by_continent = gapminder.groupby('continent')['life_exp'].mean()
+print("Average Life Expectancy by Continent:\n", avg_life_exp_by_continent)
+
+```
+
+In this example:
+
+1. gapminder.groupby('continent') splits the DataFrame into separate groups for each unique continent (e.g., 'Asia', 'Europe', 'Africa').
+2. ['life_exp'] selects the life_exp column from each of these groups.
+3. `.mean()` applies the mean function to the life_exp values within each continent group.
+4. Pandas then combines these results into a new Series.
+
+<!--#################################################-->
+
+### Common Aggregation Functions {#agg .unnumbered .unlisted}
+
+After grouping, you can apply various aggregation functions. Some of the most common include:
+- `.mean()`: Calculates the average.
+- `.sum()`: Calculates the total.
+- `.count()`: Counts non-null observations.
+- `.median()`: Calculates the median.
+- `.min()`: Finds the minimum value.
+- `.max()`: Finds the maximum value.
+- `.std()`: Calculates the standard deviation.
+- `.var()`: Calculates the variance.
+- `.size()`: Counts the total number of rows in each group (including NaNs).
+
+```python
+# Group by 'continent' and find the sum of 'population'
+total_pop_by_continent = gapminder.groupby('continent')['population'].sum()
+print("\nTotal Population by Continent:\n", total_pop_by_continent)
+
+# Group by 'year' and find the median 'gdp'
+median_gdp_by_year = gapminder.groupby('year')['gdp'].median()
+print("\nMedian GDP by Year:\n", median_gdp_by_year.head())
+
+# Group by 'continent' and find the number of unique countries
+country_count_by_continent = gapminder.groupby('continent')['country'].nunique()
+print("\nNumber of Unique Countries by Continent:\n", country_count_by_continent)
+```
+
+
+<!--#################################################-->
+
+### Grouping by Multiple Columns {#multiColGroup .unnumbered .unlisted}
+You can group your data using more than one column. This creates hierarchical groups, allowing for more granular analysis.
+```python 
+# Group by 'year' AND 'continent' to find average life expectancy
+avg_life_exp_year_continent = gapminder.groupby(['year', 'continent'])['life_exp'].mean()
+print("\nAverage Life Expectancy by Year and Continent:\n", avg_life_exp_year_continent.head(10))
+
+# The result is a Series with a MultiIndex. You can access specific levels:
+print("\nLife expectancy for Europe in 1952:", avg_life_exp_year_continent.loc[(1952, 'Europe')])
+```
+This multi-level index (MultiIndex) is very powerful for slicing and dicing your data further.
+
+<!--#################################################-->
+
+### Applying Multiple Aggregations {#multiArg .unnumbered .unlisted}
+
+Sometimes, you need to calculate several summary statistics for each group simultaneously. The `.agg()` method (or `.aggregate()`) is perfect for this.
+
+**Aggregating a Single Column with Multiple Functions**
+```python
+# Group by 'continent' and calculate mean, min, and max of 'life_exp'
+multi_agg_life_exp = gapminder.groupby('continent')['life_exp'].agg(['mean', 'min', 'max', 'std'])
+print("\nMultiple Aggregations of Life Expectancy by Continent:\n", multi_agg_life_exp)
+
+```
+**Aggregating Multiple Columns with Multiple Functions**
+You can specify different aggregation functions for different columns using a dictionary.
+```python 
+# Group by 'continent' and aggregate 'life_exp' and 'gdp'
+multi_col_agg = gapminder.groupby('continent').agg(
+    avg_life_exp=('life_exp', 'mean'), # Renames the output column to 'avg_life_exp'
+    total_gdp=('gdp', 'sum'),
+    min_pop=('population', 'min')
+)
+print("\nMulti-Column Aggregation by Continent:\n", multi_col_agg)
+
+```
+
+This gives you fine-grained control over your summary statistics, allowing you to name the resulting columns clearly.
+
+<!--#################################################-->
+
+### Using agg() with Custom Functions {#Customfunctions .unnumbered .unlisted}
+
+The `agg()` method is highly flexible and can even apply custom functions you define.
+
+```python 
+# Define a custom function to calculate the range (max - min)
+def data_range(series):
+    return series.max() - series.min()
+
+# Group by 'continent' and apply the custom 'data_range' function to 'life_exp'
+custom_agg_life_exp = gapminder.groupby('continent')['life_exp'].agg(data_range)
+print("\nLife Expectancy Range by Continent (Custom Function):\n", custom_agg_life_exp)
+
+# You can also pass a lambda function directly
+lambda_agg_gdp = gapminder.groupby('continent')['gdp'].agg(lambda x: x.quantile(0.75) - x.quantile(0.25))
+print("\nInterquartile Range of GDP by Continent (Lambda Function):\n", lambda_agg_gdp)
+
+```
+
+<!--#################################################-->
+
+### Pivot Tables Revisited for Aggregation {#pivotTables .unnumbered .unlisted}
+
+You've seen pivot_table used for reshaping. It's also incredibly powerful for aggregation, often providing a more intuitive syntax than `groupby().agg()` for certain types of summaries.
+
+Recall our example of average life expectancy by year and continent:
+
+```python
+# Calculate the mean life expectancy using pivot_table
+# index: the column(s) to become the new DataFrame index (rows)
+# columns: the column(s) whose unique values will become the new DataFrame columns
+# values: the column(s) to aggregate
+# aggfunc: the aggregation function (default is 'mean')
+avg_life_exp_pivot_table = pd.pivot_table(gapminder,
+                                          index='year',
+                                          columns='continent',
+                                          values='life_exp',
+                                          aggfunc='mean')
+print("\nAverage Life Expectancy by Year and Continent (using pivot_table):\n", avg_life_exp_pivot_table.head())
+
+```
+
+The result is the same as the groupby(['year', 'continent'])['life_exp'].mean() with an `unstack()` operation, but pivot_table often makes the intention clearer when you want a cross-tabulated summary.
+
+You can also apply multiple aggregation functions in pivot_table:
+
+```python 
+# Pivot table with multiple aggregation functions for 'life_exp'
+multi_agg_pivot_table = pd.pivot_table(gapminder,
+                                       index='continent',
+                                       values='life_exp',
+                                       aggfunc=['mean', 'median', 'std'])
+print("\nMultiple Aggregations of Life Expectancy (using pivot_table):\n", multi_agg_pivot_table)
+
+```
+
+Mastering grouping and aggregation allows you to transform large datasets into concise, insightful summaries that are essential for reporting, making decisions, and preparing data for more advanced analytical techniques.
+
+<!--#################################################-->
+
+
+
+
+
+
+
+
+
+
+
 
 
 

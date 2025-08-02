@@ -179,8 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#clean-data" id="toc-clean-data" class="nav-link" data-scroll-target="#clean-data">3. Clean Data</a></li>
   <li><a href="#visualise-data" id="toc-visualise-data" class="nav-link" data-scroll-target="#visualise-data">4. Visualise Data</a></li>
   <li><a href="#manipulate-data" id="toc-manipulate-data" class="nav-link" data-scroll-target="#manipulate-data">5. Manipulate Data</a></li>
-  <li><a href="#reshape-data" id="toc-reshape-data" class="nav-link" data-scroll-target="#reshape-data">6. Reshape Data</a></li>
-  <li><a href="#eda-for-modelling" id="toc-eda-for-modelling" class="nav-link" data-scroll-target="#eda-for-modelling">7. EDA for Modelling</a></li>
+  <li><a href="#group-and-aggregate-data" id="toc-group-and-aggregate-data" class="nav-link" data-scroll-target="#group-and-aggregate-data">6. Group and Aggregate Data</a></li>
   </ul></li>
   <li><a href="#statistical-inference" id="toc-statistical-inference" class="nav-link" data-scroll-target="#statistical-inference"><strong>Statistical Inference</strong></a></li>
   <li><a href="#data-modelling" id="toc-data-modelling" class="nav-link" data-scroll-target="#data-modelling"><strong>Data Modelling</strong></a></li>
@@ -228,13 +227,82 @@ Contents
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
+<li><a href="#basics">The Basics</a></li>
 <li><a href="#EDA">Exploratory Data Analysis</a></li>
 <li><a href="#Modelling">Data Modelling</a></li>
 </ul>
 </div>
 </div>
 </div>
-<p>This section contains worked examples, most of them with fully annotated Python code that you can use as reference.</p>
+<!--#################################################-->
+<section id="basics" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="basics">The Basics</h3>
+<!--#################################################-->
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Contents
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="#varAndData">Variables and Data Types</a></li>
+<li><a href="#basicOperations">Basic Operations</a></li>
+<li><a href="#dataStructs">Data Structures</a></li>
+<li><a href="#control%20flow">Control flow</a></li>
+</ul>
+</div>
+</div>
+</div>
+<p>This section covers fundamental Python concepts that are essential for working with data and understanding the examples in the rest of this course. If you’re new to Python, spend some time here to get comfortable with the syntax and common operations.</p>
+<!--#################################################-->
+<section id="varAndData" class="level4">
+<h4 class="anchored" data-anchor-id="varAndData">Variables and Data Types</h4>
+<ul>
+<li><strong>What are variables?</strong> (Containers for storing data)</li>
+<li><strong>Common Data Types:</strong>
+<ul>
+<li><code>int</code> (Integers: <code>5</code>, <code>-10</code>)</li>
+<li><code>float</code> (Floating-point numbers: <code>3.14</code>, <code>-0.5</code>)</li>
+<li><code>str</code> (Strings: <code>'hello'</code>, <code>"Python Course"</code>)</li>
+<li><code>bool</code> (Booleans: <code>True</code>, <code>False</code>)</li>
+</ul></li>
+<li><strong>How to assign variables:</strong> <code>my_number = 10</code>, <code>my_text = "Data"</code></li>
+<li><strong>Checking data type:</strong> <code>type(my_number)</code></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>temperature <span class="op">=</span> <span class="fl">25.5</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"Alice"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>is_student <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Age: </span><span class="sc">{</span>age<span class="sc">}</span><span class="ss">, Type: </span><span class="sc">{</span><span class="bu">type</span>(age)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Temperature: </span><span class="sc">{</span>temperature<span class="sc">}</span><span class="ss">, Type: </span><span class="sc">{</span><span class="bu">type</span>(temperature)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">, Type: </span><span class="sc">{</span><span class="bu">type</span>(name)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Is Student: </span><span class="sc">{</span>is_student<span class="sc">}</span><span class="ss">, Type: </span><span class="sc">{</span><span class="bu">type</span>(is_student)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="basicOperations" class="level4">
+<h4 class="anchored" data-anchor-id="basicOperations">Basic Operations</h4>
+<ul>
+<li>Arithmetic Operators: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>**</code> (exponentiation), <code>%</code> (modulo)</li>
+<li>Comparison Operators: <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
+<li>Logical Operators: and, or, not</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="dv">10</span> <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Calculation: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Output: 20</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>is_greater <span class="op">=</span> (result <span class="op">&gt;</span> <span class="dv">15</span>) <span class="kw">and</span> (age <span class="op">&lt;</span> <span class="dv">40</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Is greater and age within range: </span><span class="sc">{</span>is_greater<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!--#################################################-->
+<p>This section next section contains worked examples, most of them with fully annotated Python code that you can use as reference.</p>
+</section>
+</section>
 <section id="EDA" class="level3 unnumbered unlisted">
 <h3 class="unnumbered unlisted anchored" data-anchor-id="EDA">Exploratory Data Analysis</h3>
 <p>Before starting any analysis, we first need to import a dataset, understand its variables, visualize it, and manipulate it systematically using tools like <code>pandas</code>, <code>matplotlib</code>, and <code>seaborn.</code> This might seem like a tedious step, but it’s a critical foundation that must precede any form of statistical modelling.</p>
@@ -242,8 +310,8 @@ Contents
 <section id="Modelling" class="level3 unnumbered unlisted">
 <h3 class="unnumbered unlisted anchored" data-anchor-id="Modelling">Data Modelling</h3>
 <p>Data modelling allows us to move beyond describing individual variables — instead, we use models to learn from data. At the core of this is understanding the relationship:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># General form of a predictive model</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>outcome <span class="op">=</span> f(features) <span class="op">+</span> error</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># General form of a predictive model</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>outcome <span class="op">=</span> f(features) <span class="op">+</span> error</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We begin with Exploratory Data Analysis tailored for modelling, and then proceed with three key approaches:</p>
 <ol type="1">
 <li><p><strong>EDA for Modelling</strong> After importing and cleaning the data (using pandas), we start looking at summary statistics and plots that will be useful in framing our modelling approach</p></li>
@@ -260,7 +328,7 @@ Contents
 <section id="import-data" class="level2">
 <h2 class="anchored" data-anchor-id="import-data">1. Import Data</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -269,7 +337,7 @@ Contents
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="#overview">Overview</a>
@@ -304,29 +372,29 @@ Contents
 <section id="importing" class="level3 unnumbered unlisted">
 <h3 class="unnumbered unlisted anchored" data-anchor-id="importing">Importing CSV files: pandas.read_csv()</h3>
 <p>CSV files can be imported using the <code>read_csv()</code> function from the <code>pandas</code> library. This function is fast and user-friendly, allowing you to read flat data without complex configurations.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing CSV file from a URL</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://data.giss.nasa.gov/gistemp/tabledata_v4/NH.Ts+dSST.csv"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>weather <span class="op">=</span> pd.read_csv(url, skiprows<span class="op">=</span><span class="dv">1</span>, na_values<span class="op">=</span><span class="st">"***"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing CSV file from a URL</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://data.giss.nasa.gov/gistemp/tabledata_v4/NH.Ts+dSST.csv"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>weather <span class="op">=</span> pd.read_csv(url, skiprows<span class="op">=</span><span class="dv">1</span>, na_values<span class="op">=</span><span class="st">"***"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Options Used: * <code>skiprows=1</code>: This skips the first row, assuming the actual data starts from the second row. * <code>na_values= "***"</code> : This treats astriks’ as missing values, converting them to NaN.</p>
 <p>To view the structure of the dataframe, you can use:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(weather.info())</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(weather.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(weather.info())</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(weather.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!--#################################################-->
 </section>
 <section id="localImport" class="level3 unnumbered unlisted">
 <h3 class="unnumbered unlisted anchored" data-anchor-id="localImport">Importing CSV files saved locally</h3>
 <p>To import a CSV file saved locally, simply provide the file path to the <code>read_csv()</code> function:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>weather_local <span class="op">=</span> pd.read_csv(<span class="st">"path/to/your/localfile.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>weather_local <span class="op">=</span> pd.read_csv(<span class="st">"path/to/your/localfile.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!--#################################################-->
 </section>
 <section id="speed" class="level3 unnumbered unlisted">
 <h3 class="unnumbered unlisted anchored" data-anchor-id="speed">Need for speed: <code>dask</code> and <code>vaex</code></h3>
 <p>For handling large datasets, libraries like dask and vaex can be used, which offer faster data processing capabilities compared to pandas.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.dataframe <span class="im">as</span> dd</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>weather_large <span class="op">=</span> dd.read_csv(<span class="st">"path/to/largefile.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.dataframe <span class="im">as</span> dd</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>weather_large <span class="op">=</span> dd.read_csv(<span class="st">"path/to/largefile.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!--#################################################-->
 </section>
 <section id="OtherFormats" class="level3 unnumbered unlisted">
@@ -347,8 +415,8 @@ Contents
 <p><img src="Images/raw_data_example.png" class="img-fluid"></p>
 <p>As a most important rule, please do not work on the raw data; it’s unlikely you will have Cecilia Giménez’s good fortune to become (in)famous for your not-so-brilliant work.</p>
 <p>Make sure you always work on a copy of your raw data. Use Python’s data manipulation libraries to clean and transform your data, and save the results to a new file, ensuring the original data remains intact.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>weather_cleaned <span class="op">=</span> weather.dropna()  <span class="co"># Example of cleaning data</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>weather_cleaned.to_csv(<span class="st">"cleaned_data.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>weather_cleaned <span class="op">=</span> weather.dropna()  <span class="co"># Example of cleaning data</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>weather_cleaned.to_csv(<span class="st">"cleaned_data.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!--#################################################-->
 </section>
 <section id="otherLinks" class="level3 unnumbered unlisted">
@@ -364,7 +432,7 @@ Contents
 <section id="inspect-data" class="level2">
 <h2 class="anchored" data-anchor-id="inspect-data">2. Inspect Data</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -373,7 +441,7 @@ Contents
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="#overviewof2">Overview</a></li>
@@ -401,33 +469,33 @@ Contents
 <p>In Python, you can use pandas to view and inspect your data. The pandas library provides several functions to achieve this.</p>
 <p><code>pandas.DataFrame.info()</code> and <code>pandas.DataFrame.describe()</code></p>
 <p>These functions help you understand the structure and summary statistics of your data.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"path/to/gapminder.csv"</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># View the structure of the dataframe</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gapminder.info())</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gapminder.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="st">"path/to/gapminder.csv"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># View the structure of the dataframe</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gapminder.info())</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gapminder.describe())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Using <code>info()</code>: Provides the number of rows, columns, and data types of each column. Using <code>describe()</code> : Offers summary statistics for numeric columns, including count, mean, standard deviation, min, and max values.</p>
 <!--#################################################-->
 </section>
 <section id="inspections" class="level3 unnumbered unlisted">
 <h3 class="unnumbered unlisted anchored" data-anchor-id="inspections">Detailed Inspection</h3>
 <p>For a detailed inspection, you can use the pandas_profiling library, which provides an extensive report on your dataframe.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas_profiling <span class="im">import</span> ProfileReport</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a report</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span> ProfileReport(gapminder)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>profile.to_file(<span class="st">"gapminder_report.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas_profiling <span class="im">import</span> ProfileReport</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a report</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>profile <span class="op">=</span> ProfileReport(gapminder)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>profile.to_file(<span class="st">"gapminder_report.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Example Analysis on London Bikes Data</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bikes <span class="op">=</span> pd.read_csv(<span class="st">"path/to/londonBikes.csv"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pandas_profiling for a detailed report</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>bikes_profile <span class="op">=</span> ProfileReport(bikes)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>bikes_profile.to_file(<span class="st">"london_bikes_report.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bikes <span class="op">=</span> pd.read_csv(<span class="st">"path/to/londonBikes.csv"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pandas_profiling for a detailed report</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>bikes_profile <span class="op">=</span> ProfileReport(bikes)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>bikes_profile.to_file(<span class="st">"london_bikes_report.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!--#################################################-->
 </section>
 <section id="questions" class="level3 unnumbered unlisted">
@@ -438,30 +506,30 @@ Contents
 <ul>
 <li>date is typically a string or datetime variable. You can convert it using <code>pd.to_datetime()</code>.</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>bikes[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(bikes[<span class="st">'date'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>bikes[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(bikes[<span class="st">'date'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li>What kind of variable is <strong>season</strong>?
 <ul>
 <li>season is likely a categorical variable. You can convert it using <code>pd.Categorical()</code>.</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bikes[<span class="st">'season'</span>] <span class="op">=</span> pd.Categorical(bikes[<span class="st">'season'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>bikes[<span class="st">'season'</span>] <span class="op">=</span> pd.Categorical(bikes[<span class="st">'season'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li>How often does it rain in London?
 <ul>
 <li>Count the occurrences in the rain column.</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rain_count <span class="op">=</span> bikes[<span class="st">'rain'</span>].<span class="bu">sum</span>()</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"It rains </span><span class="sc">{</span>rain_count<span class="sc">}</span><span class="ss"> times in the dataset."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>rain_count <span class="op">=</span> bikes[<span class="st">'rain'</span>].<span class="bu">sum</span>()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"It rains </span><span class="sc">{</span>rain_count<span class="sc">}</span><span class="ss"> times in the dataset."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li>What is the average annual temperature (in degrees C)?
 <ul>
 <li>Calculate the mean of the temperature columns.</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>avg_temp <span class="op">=</span> bikes[[<span class="st">'max_temp'</span>, <span class="st">'min_temp'</span>, <span class="st">'avg_temp'</span>]].mean().mean()</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The average annual temperature is </span><span class="sc">{</span>avg_temp<span class="sc">:.2f}</span><span class="ss"> degrees C."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>avg_temp <span class="op">=</span> bikes[[<span class="st">'max_temp'</span>, <span class="st">'min_temp'</span>, <span class="st">'avg_temp'</span>]].mean().mean()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The average annual temperature is </span><span class="sc">{</span>avg_temp<span class="sc">:.2f}</span><span class="ss"> degrees C."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li>What is the maximum rainfall?
 <ul>
 <li>Find the maximum value in the <code>rainfall_mm</code> column.</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>max_rainfall <span class="op">=</span> bikes[<span class="st">'rainfall_mm'</span>].<span class="bu">max</span>()</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The maximum rainfall recorded is </span><span class="sc">{</span>max_rainfall<span class="sc">}</span><span class="ss"> mm."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>max_rainfall <span class="op">=</span> bikes[<span class="st">'rainfall_mm'</span>].<span class="bu">max</span>()</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The maximum rainfall recorded is </span><span class="sc">{</span>max_rainfall<span class="sc">}</span><span class="ss"> mm."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 <!--#################################################-->
 </section>
@@ -469,7 +537,7 @@ Contents
 <section id="clean-data" class="level2">
 <h2 class="anchored" data-anchor-id="clean-data">3. Clean Data</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -478,7 +546,7 @@ Contents
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="#overviewof3">Overview</a></li>
@@ -498,23 +566,23 @@ Contents
 <section id="cleaning" class="level3 unnumbered unlisted">
 <h3 class="unnumbered unlisted anchored" data-anchor-id="cleaning">Cleaning Variable Names with pandas</h3>
 <p>In <code>Python</code>, we can use pandas and custom code to read data and clean column names to make them more suitable for analysis.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Excel file</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>roster <span class="op">=</span> pd.read_excel(<span class="st">"path/to/dirty_data.xlsx"</span>)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean column names using pandas string methods</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>roster.columns <span class="op">=</span> (</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    roster.columns</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">str</span>.strip()  <span class="co"># Remove leading and trailing spaces</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">str</span>.lower()  <span class="co"># Convert to lowercase</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">str</span>.replace(<span class="st">' '</span>, <span class="st">'_'</span>)  <span class="co"># Replace spaces with underscores</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">str</span>.replace(<span class="st">'%'</span>, <span class="st">'percent'</span>)  <span class="co"># Replace '%' with 'percent'</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">str</span>.replace(<span class="st">'[^a-zA-Z0-9_]'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>)  <span class="co"># Remove special characters</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect cleaned dataframe</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(roster.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Excel file</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>roster <span class="op">=</span> pd.read_excel(<span class="st">"path/to/dirty_data.xlsx"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean column names using pandas string methods</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>roster.columns <span class="op">=</span> (</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    roster.columns</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">str</span>.strip()  <span class="co"># Remove leading and trailing spaces</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">str</span>.lower()  <span class="co"># Convert to lowercase</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">str</span>.replace(<span class="st">' '</span>, <span class="st">'_'</span>)  <span class="co"># Replace spaces with underscores</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">str</span>.replace(<span class="st">'%'</span>, <span class="st">'percent'</span>)  <span class="co"># Replace '%' with 'percent'</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        .<span class="bu">str</span>.replace(<span class="st">'[^a-zA-Z0-9_]'</span>, <span class="st">''</span>, regex<span class="op">=</span><span class="va">True</span>)  <span class="co"># Remove special characters</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect cleaned dataframe</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(roster.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>The custom code directly modifies the column names using pandas string methods. It removes spaces, converts to lowercase, replaces spaces with underscores, and removes special characters using a regular expression.</li>
 <li>Regular Expression: [^a-zA-Z0-9_] is used to remove any character that is not alphanumeric or an underscore.</li>
@@ -538,7 +606,7 @@ Contents
 <section id="visualise-data" class="level2">
 <h2 class="anchored" data-anchor-id="visualise-data">4. Visualise Data</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -547,7 +615,7 @@ Contents
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="#overviewof4">Overview</a></li>
@@ -593,16 +661,16 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 </ul>
 <p>For example, using the <a href="https://www.kaggle.com/datasets/albertovidalrod/gapminder-dataset?resource=download" target="_blank">Gapminder dataset</a> with data on life expectancy (life_exp), human development index (hdi_index), and GDP (gdp) for a number of countries, we can build a graph that shows the relationship between GDP and life expectancy.</p>
 <p>As we said, first we define the dataset we are using</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="vs">r"filepath-to-your-dataset"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>gapminder <span class="op">=</span> pd.read_csv(<span class="vs">r"filepath-to-your-dataset"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The next thing is to map aesthetics. In our case, we will map gdpPercap to the x-axis, and lifeExp to the y-axis.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic Plot Setup</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'gdp'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP'</span>)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP'</span>)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic Plot Setup</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'gdp'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP'</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP'</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="Images/BasicPlotSetup.png" class="img-fluid"></p>
 <ul>
 <li><code>plt.figure(figsize=(10, 6))</code>: Defines the size of the plot.</li>
@@ -611,14 +679,14 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <li><code>plt.show()</code>: Renders the plot in your output window or notebook.</li>
 </ul>
 <p>What if we wanted to colour the points by the continent each country is in? For this we will need to use the “continent” column from our gapminder dataset. Seaborn makes this easy using the hue parameter.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colored Scatter Plot by Continent</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))  <span class="co"># Set figure size</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'gdp'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>)  <span class="co"># Color points by continent</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP by Continent'</span>)  <span class="co"># Updated title</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP'</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Continent'</span>)  <span class="co"># Add a legend with a title</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colored Scatter Plot by Continent</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))  <span class="co"># Set figure size</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'gdp'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>)  <span class="co"># Color points by continent</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP by Continent'</span>)  <span class="co"># Updated title</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP'</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Continent'</span>)  <span class="co"># Add a legend with a title</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="Images/ColouredScatterPlot.png" class="img-fluid"></p>
 <ul>
 <li><code>hue='continent'</code>: Tells Seaborn to color the points based on the continent each country belongs to.</li>
@@ -628,14 +696,14 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <ul>
 <li>change the <code>sns.scatterplot</code> to <code>sns.lineplot</code></li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colored Line Plot by Continent</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))  <span class="co"># Set figure size</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'gdp'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>)  <span class="co"># Color points by continent</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP by Continent'</span>)  <span class="co"># Updated title</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP'</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Continent'</span>)  <span class="co"># Add a legend with a title</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colored Line Plot by Continent</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))  <span class="co"># Set figure size</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'gdp'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>)  <span class="co"># Color points by continent</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP by Continent'</span>)  <span class="co"># Updated title</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP'</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Continent'</span>)  <span class="co"># Add a legend with a title</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="Images/LineGraph.png" class="img-fluid"></p>
 <p>However, this is not a particularly useful plot, so let us go back to our scatter plot.</p>
 <p>What if we wanted to have the size of each point correspond to the HDI index of the country? For this we will :</p>
@@ -643,52 +711,15 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <li>add the <code>size='hdi_index'</code> parameter in the <code>scatterplot()</code> function</li>
 <li>add the <code>sizes=(20, 200)</code> parameter in the <code>scatterplot()</code> function to specify the range of sizes of scatter points we want to use.</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># going back to scatter plot but now the size of points coresspond to the population of the country</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic Plot Setup with size mapped to population</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>gapminder,</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'gdp'</span>,</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'life_exp'</span>,</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="st">'hdi_index'</span>,                  <span class="co"># map size to population</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    sizes<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">200</span>),             <span class="co"># scale point size (min, max)</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP (Point Size = hdi_index)'</span>)</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP'</span>)</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'hdi_index'</span>, loc<span class="op">=</span><span class="st">'upper left'</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="Images/hdi_index.png" class="img-fluid"> But the points above are overlapping with each other. We can set the <code>alpha</code> variable between 0 and 1 to specify how transparent each point will be. This will let us see all the points better.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding Alpha</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>gapminder,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'gdp'</span>,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'life_exp'</span>,</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="st">'hdi_index'</span>,                  <span class="co"># map size to population</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    sizes<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">200</span>),             <span class="co"># scale point size (min, max)</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.4</span>                    <span class="co"># make points a bit transparent</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP (Point Size = hdi_index)'</span>)</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP'</span>)</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'hdi_index'</span>, loc<span class="op">=</span><span class="st">'upper left'</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="Images/Alpha.png" class="img-fluid"></p>
-<p>Our graph is still not very clear after adding the <code>alpha</code> this is because all the points are bunched up in only a small section of the graph. We can <em>log</em> the x-axis to make the points more spread out across the GDP axis.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Logging the axis</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>gapminder,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'gdp'</span>,</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'life_exp'</span>,</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="st">'hdi_index'</span>,                  <span class="co"># map size to population</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    sizes<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">200</span>),             <span class="co"># scale point size (min, max)</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.4</span>                    <span class="co"># make points a bit transparent</span></span>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># going back to scatter plot but now the size of points coresspond to the population of the country</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic Plot Setup with size mapped to population</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>gapminder,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'gdp'</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'life_exp'</span>,</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="st">'hdi_index'</span>,                  <span class="co"># map size to population</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    sizes<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">200</span>),             <span class="co"># scale point size (min, max)</span></span>
 <span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP (Point Size = hdi_index)'</span>)</span>
@@ -696,32 +727,69 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'hdi_index'</span>, loc<span class="op">=</span><span class="st">'upper left'</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">'log'</span>)</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="Images/AxisLogged.png" class="img-fluid"> We will now add the colour by continent parameter back.</p>
-<p>For this notice that we are splitting the legends’ code into 2 separate sections.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding color by continent parameter back </span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="Images/hdi_index.png" class="img-fluid"> But the points above are overlapping with each other. We can set the <code>alpha</code> variable between 0 and 1 to specify how transparent each point will be. This will let us see all the points better.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding Alpha</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>scatter <span class="op">=</span> sns.scatterplot(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>gapminder,</span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'gdp'</span>,</span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'life_exp'</span>,</span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="st">'hdi_index'</span>,                  <span class="co"># map size to population</span></span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    sizes<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">200</span>),             <span class="co"># scale point size (min, max)</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.4</span>,                       <span class="co"># make points a bit transparent</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">'continent'</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.4</span>                    <span class="co"># make points a bit transparent</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP (Point Size = hdi_index)'</span>)</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP per capita (USD)'</span>)</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy (years)'</span>)</span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate legends for hue and size</span></span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'hdi_index'</span>, loc<span class="op">=</span><span class="st">'upper left'</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>sns.move_legend(scatter, title<span class="op">=</span><span class="st">'Continent'</span>, loc<span class="op">=</span><span class="st">'upper left'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.7</span>, <span class="fl">0.65</span>))</span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>plt.tight_layout <span class="co"># making sure the legends are in the frame</span></span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">'log'</span>)</span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP'</span>)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'hdi_index'</span>, loc<span class="op">=</span><span class="st">'upper left'</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="Images/Alpha.png" class="img-fluid"></p>
+<p>Our graph is still not very clear after adding the <code>alpha</code> this is because all the points are bunched up in only a small section of the graph. We can <em>log</em> the x-axis to make the points more spread out across the GDP axis.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Logging the axis</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>gapminder,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'gdp'</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'life_exp'</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="st">'hdi_index'</span>,                  <span class="co"># map size to population</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    sizes<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">200</span>),             <span class="co"># scale point size (min, max)</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.4</span>                    <span class="co"># make points a bit transparent</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP (Point Size = hdi_index)'</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP'</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'hdi_index'</span>, loc<span class="op">=</span><span class="st">'upper left'</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">'log'</span>)</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="Images/AxisLogged.png" class="img-fluid"> We will now add the colour by continent parameter back.</p>
+<p>For this notice that we are splitting the legends’ code into 2 separate sections.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding color by continent parameter back </span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>scatter <span class="op">=</span> sns.scatterplot(</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>gapminder,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'gdp'</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'life_exp'</span>,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="st">'hdi_index'</span>,                  <span class="co"># map size to population</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    sizes<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">200</span>),             <span class="co"># scale point size (min, max)</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.4</span>,                       <span class="co"># make points a bit transparent</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">'continent'</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP (Point Size = hdi_index)'</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP per capita (USD)'</span>)</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy (years)'</span>)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate legends for hue and size</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'hdi_index'</span>, loc<span class="op">=</span><span class="st">'upper left'</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>sns.move_legend(scatter, title<span class="op">=</span><span class="st">'Continent'</span>, loc<span class="op">=</span><span class="st">'upper left'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.7</span>, <span class="fl">0.65</span>))</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>plt.tight_layout <span class="co"># making sure the legends are in the frame</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">'log'</span>)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="Images/twoLegends.png" class="img-fluid"></p>
 <!--#################################################-->
 </section>
@@ -734,13 +802,13 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <li><em>Position Adjustments</em>: These modify how elements are placed, such as jittering points or stacking bars.</li>
 </ul>
 <p>Example: Creating a Base plot - a histogram</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram with Position Adjustments</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>, element<span class="op">=</span><span class="st">'step'</span>, fill<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Histogram of Life Expectancy by Continent'</span>)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Life Expectancy'</span>)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram with Position Adjustments</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>, element<span class="op">=</span><span class="st">'step'</span>, fill<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Histogram of Life Expectancy by Continent'</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="Images/Histogram.png" class="img-fluid"></p>
 <p>the “element” attribute can be one of “step”, “poly” or “bars” depending of what is needed. Try it out yourself.</p>
 <p>We will now plot a density plot, a smoothed version of a histogram using geom_density; its default position is identity and both plots are equivalent.</p>
@@ -749,13 +817,13 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <li>To convert a histogram to a density plot, you typically use <code>sns.kdeplot</code>, which computes and plots the kernel density estimate.</li>
 </ul>
 <p>In our code below, the <code>kdeplot</code> function is used to create a density plot, and the <code>common_norm=False</code> ensures that the densities for each continent are normalized separately, allowing for a fair comparison of the distribution shapes without being influenced by the differing sizes of the groups.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filled Density Plot</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>, fill<span class="op">=</span><span class="va">True</span>, common_norm<span class="op">=</span><span class="va">False</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Density Plot of Life Expectancy by Continent'</span>)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Life Expectancy'</span>)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Density'</span>)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filled Density Plot</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>, fill<span class="op">=</span><span class="va">True</span>, common_norm<span class="op">=</span><span class="va">False</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Density Plot of Life Expectancy by Continent'</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Density'</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="Images/densityPlot.png" class="img-fluid"></p>
 <p>The “Multiple Parameter” The multiple Parameter can be set to any of these values:</p>
 <ul>
@@ -765,12 +833,12 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <li><code>dodge</code> - Positions categories side by side.</li>
 </ul>
 <p>e.g.&nbsp;using the dodge version:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>, multiple<span class="op">=</span><span class="st">'dodge'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy Distribution by Continent'</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Life Expectancy'</span>)</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>, multiple<span class="op">=</span><span class="st">'dodge'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy Distribution by Continent'</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="Images/Dodged.png" class="img-fluid"> <!--#################################################--></p>
 </section>
 <section id="faucetting" class="level3 unnumbered unlisted">
@@ -780,26 +848,26 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <section id="define-the-core-scatter-plot" class="level4">
 <h4 class="anchored" data-anchor-id="define-the-core-scatter-plot">Define the Core Scatter Plot</h4>
 <p>First, let’s define the core scatter plot of life expectancy vs GDP and store it in an object for easy reuse:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base graph</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'gdp'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">'log'</span>)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP per capita, 1998-2002'</span>)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP per capita'</span>)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base graph</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'gdp'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">'log'</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Life Expectancy vs GDP per capita, 1998-2002'</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'GDP per capita'</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="Images/baseGraph.png" class="img-fluid"></p>
 <p>Now, let’s add a new layer to our base plot using FacetGrid to facet by continent:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure 'continent' is treated as a categorical variable</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>gapminder[<span class="st">'continent'</span>] <span class="op">=</span> gapminder[<span class="st">'continent'</span>].astype(<span class="st">'category'</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Facet the scatter plot by continent with hue</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.FacetGrid(gapminder, col<span class="op">=</span><span class="st">'continent'</span>, col_wrap<span class="op">=</span><span class="dv">3</span>, height<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>g.map_dataframe(sns.scatterplot, x<span class="op">=</span><span class="st">'gdp'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>g.set_titles(<span class="st">"</span><span class="sc">{col_name}</span><span class="st">"</span>)</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>g.set_axis_labels(<span class="st">'GDP per capita'</span>, <span class="st">'Life Expectancy'</span>)</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>g.add_legend()</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure 'continent' is treated as a categorical variable</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>gapminder[<span class="st">'continent'</span>] <span class="op">=</span> gapminder[<span class="st">'continent'</span>].astype(<span class="st">'category'</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Facet the scatter plot by continent with hue</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.FacetGrid(gapminder, col<span class="op">=</span><span class="st">'continent'</span>, col_wrap<span class="op">=</span><span class="dv">3</span>, height<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>g.map_dataframe(sns.scatterplot, x<span class="op">=</span><span class="st">'gdp'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>g.set_titles(<span class="st">"</span><span class="sc">{col_name}</span><span class="st">"</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>g.set_axis_labels(<span class="st">'GDP per capita'</span>, <span class="st">'Life Expectancy'</span>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>g.add_legend()</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>g.map_dataframe(...)</code>: Maps the sns.scatterplot function to each facet, passing the data explicitly and ensuring that</li>
 <li><code>hue='continent'</code> colours the points appropriately in each facet.</li>
@@ -811,20 +879,20 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <li><code>map</code>: This method maps a plotting function (sns.scatterplot) to each facet.</li>
 </ul>
 <p>Finally, if you want to create a boxplot of life expectancy by continent instead of a scatter plot, you can use similar aesthetics with Python libraries like matplotlib and seaborn. The key difference is the type of plot you choose to represent your data.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'continent'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels and title</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Life Expectancy among the continents, 1952-2007"</span>)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">" "</span>)  <span class="co"># Empty, as the levels of the x-variable are the continents</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Life Expectancy"</span>)</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>plt.figtext(<span class="fl">0.9</span>, <span class="fl">0.01</span>, <span class="st">"Source: Gapminder"</span>, horizontalalignment<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply a minimal theme</span></span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>gapminder, x<span class="op">=</span><span class="st">'continent'</span>, y<span class="op">=</span><span class="st">'life_exp'</span>, hue<span class="op">=</span><span class="st">'continent'</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels and title</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Life Expectancy among the continents, 1952-2007"</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">" "</span>)  <span class="co"># Empty, as the levels of the x-variable are the continents</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Life Expectancy"</span>)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>plt.figtext(<span class="fl">0.9</span>, <span class="fl">0.01</span>, <span class="st">"Source: Gapminder"</span>, horizontalalignment<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply a minimal theme</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="Images/boxAndWhiskers.png" class="img-fluid"></p>
 <!--#################################################-->
 </section>
@@ -837,40 +905,40 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <h4 class="unnumbered unlisted anchored" data-anchor-id="matplotLibrary">matplotlib.animation</h4>
 <p>To implement animations, we will need to understand the concept of functions in Python. These are <em>reusable blocks of code that perform specific tasks and can be called with different inputs to produce different outputs</em>.</p>
 <p>In the context of animations, a function—like <code>update()</code> in the code below - is used to define how each frame of the animation should be rendered based on changing input (e.g., the year). This function is then repeatedly called by FuncAnimation, allowing us to dynamically update the plot for each time step.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.animation <span class="im">as</span> animation</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure and axis</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Get unique years sorted</span></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> <span class="bu">sorted</span>(gapminder[<span class="st">'year'</span>].unique())</span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(year_index):</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    ax.clear()  <span class="co"># Clear previous frame</span></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> years[year_index]</span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    yearly_data <span class="op">=</span> gapminder[gapminder[<span class="st">'year'</span>] <span class="op">==</span> year]</span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create boxplot grouped by continent</span></span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>    yearly_data.boxplot(column<span class="op">=</span><span class="st">'life_exp'</span>, by<span class="op">=</span><span class="st">'continent'</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Customize plot appearance</span></span>
-<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'Life Expectancy by Continent (</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">)'</span>)</span>
-<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Continent'</span>)</span>
-<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Life Expectancy'</span>)</span>
-<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>    plt.suptitle(<span class="st">''</span>)  <span class="co"># Remove automatic title added by Pandas boxplot</span></span>
-<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Create animation</span></span>
-<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>ani <span class="op">=</span> animation.FuncAnimation(fig, update, frames<span class="op">=</span><span class="bu">len</span>(years), interval<span class="op">=</span><span class="dv">800</span>, repeat<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Save as GIF (requires 'pillow')</span></span>
-<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>ani.save(<span class="st">'life_expectancy_boxplot.gif'</span>, writer<span class="op">=</span><span class="st">'pillow'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.animation <span class="im">as</span> animation</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure and axis</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Get unique years sorted</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> <span class="bu">sorted</span>(gapminder[<span class="st">'year'</span>].unique())</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(year_index):</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>    ax.clear()  <span class="co"># Clear previous frame</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> years[year_index]</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>    yearly_data <span class="op">=</span> gapminder[gapminder[<span class="st">'year'</span>] <span class="op">==</span> year]</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create boxplot grouped by continent</span></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>    yearly_data.boxplot(column<span class="op">=</span><span class="st">'life_exp'</span>, by<span class="op">=</span><span class="st">'continent'</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Customize plot appearance</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'Life Expectancy by Continent (</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">)'</span>)</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Continent'</span>)</span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>    plt.suptitle(<span class="st">''</span>)  <span class="co"># Remove automatic title added by Pandas boxplot</span></span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Create animation</span></span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>ani <span class="op">=</span> animation.FuncAnimation(fig, update, frames<span class="op">=</span><span class="bu">len</span>(years), interval<span class="op">=</span><span class="dv">800</span>, repeat<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Save as GIF (requires 'pillow')</span></span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a>ani.save(<span class="st">'life_expectancy_boxplot.gif'</span>, writer<span class="op">=</span><span class="st">'pillow'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="GIFs/life_expectancy_boxplot.gif" class="img-fluid"></p>
 <p>Similarly, we can create an animated visualisation showing the relationship between GDP and life expectancy over time for different countries, segmented by continent.</p>
 <ul>
@@ -895,50 +963,50 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <li>Title updates dynamically to reflect the current year.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill NaN values in the 'continent' column with a default value</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>gapminder[<span class="st">'continent'</span>] <span class="op">=</span> gapminder[<span class="st">'continent'</span>].fillna(<span class="st">'Unknown'</span>)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure and axis</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get unique years sorted</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> <span class="bu">sorted</span>(gapminder[<span class="st">'year'</span>].unique())</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(year_index):</span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    ax.clear()  <span class="co"># Clear previous frame</span></span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> years[year_index]</span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    yearly_data <span class="op">=</span> gapminder[gapminder[<span class="st">'year'</span>] <span class="op">==</span> year]</span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ensure there are no NaN values in the data used for plotting</span></span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    yearly_data <span class="op">=</span> yearly_data.dropna(subset<span class="op">=</span>[<span class="st">'gdp'</span>, <span class="st">'life_exp'</span>])</span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Map continents to colours, handling 'Unknown' as grey</span></span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>    continent_colors <span class="op">=</span> yearly_data[<span class="st">'continent'</span>].<span class="bu">map</span>({</span>
-<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Asia'</span>: <span class="st">'red'</span>, <span class="st">'Europe'</span>: <span class="st">'blue'</span>, <span class="st">'Africa'</span>: <span class="st">'green'</span>, </span>
-<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Americas'</span>: <span class="st">'yellow'</span>, <span class="st">'Oceania'</span>: <span class="st">'purple'</span>, <span class="st">'Unknown'</span>: <span class="st">'grey'</span></span>
-<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>    }).fillna(<span class="st">'grey'</span>)  <span class="co"># Fill any remaining NaN values with 'grey'</span></span>
-<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create scatter plot</span></span>
-<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>    scatter <span class="op">=</span> ax.scatter(yearly_data[<span class="st">'gdp'</span>], yearly_data[<span class="st">'life_exp'</span>], </span>
-<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>                         c<span class="op">=</span>continent_colors, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Customize plot appearance</span></span>
-<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'Year: </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'GDP'</span>)</span>
-<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Life Expectancy'</span>)</span>
-<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>    ax.set_xscale(<span class="st">'log'</span>)  <span class="co"># Use logarithmic scale for GDP</span></span>
-<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(gapminder[<span class="st">'gdp'</span>].<span class="bu">min</span>(), gapminder[<span class="st">'gdp'</span>].<span class="bu">max</span>())</span>
-<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(gapminder[<span class="st">'life_exp'</span>].<span class="bu">min</span>(), gapminder[<span class="st">'life_exp'</span>].<span class="bu">max</span>())</span>
-<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Create animation</span></span>
-<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>ani <span class="op">=</span> animation.FuncAnimation(fig, update, frames<span class="op">=</span><span class="bu">len</span>(years), interval<span class="op">=</span><span class="dv">800</span>, repeat<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Save as GIF (requires 'pillow')</span></span>
-<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>ani.save(<span class="st">'life_expectancy_vs_gdp.gif'</span>, writer<span class="op">=</span><span class="st">'pillow'</span>, dpi<span class="op">=</span><span class="dv">80</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill NaN values in the 'continent' column with a default value</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>gapminder[<span class="st">'continent'</span>] <span class="op">=</span> gapminder[<span class="st">'continent'</span>].fillna(<span class="st">'Unknown'</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure and axis</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get unique years sorted</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> <span class="bu">sorted</span>(gapminder[<span class="st">'year'</span>].unique())</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update(year_index):</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    ax.clear()  <span class="co"># Clear previous frame</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> years[year_index]</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    yearly_data <span class="op">=</span> gapminder[gapminder[<span class="st">'year'</span>] <span class="op">==</span> year]</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ensure there are no NaN values in the data used for plotting</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    yearly_data <span class="op">=</span> yearly_data.dropna(subset<span class="op">=</span>[<span class="st">'gdp'</span>, <span class="st">'life_exp'</span>])</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Map continents to colours, handling 'Unknown' as grey</span></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    continent_colors <span class="op">=</span> yearly_data[<span class="st">'continent'</span>].<span class="bu">map</span>({</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Asia'</span>: <span class="st">'red'</span>, <span class="st">'Europe'</span>: <span class="st">'blue'</span>, <span class="st">'Africa'</span>: <span class="st">'green'</span>, </span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Americas'</span>: <span class="st">'yellow'</span>, <span class="st">'Oceania'</span>: <span class="st">'purple'</span>, <span class="st">'Unknown'</span>: <span class="st">'grey'</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    }).fillna(<span class="st">'grey'</span>)  <span class="co"># Fill any remaining NaN values with 'grey'</span></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create scatter plot</span></span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>    scatter <span class="op">=</span> ax.scatter(yearly_data[<span class="st">'gdp'</span>], yearly_data[<span class="st">'life_exp'</span>], </span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>                         c<span class="op">=</span>continent_colors, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Customize plot appearance</span></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'Year: </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'GDP'</span>)</span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>    ax.set_xscale(<span class="st">'log'</span>)  <span class="co"># Use logarithmic scale for GDP</span></span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(gapminder[<span class="st">'gdp'</span>].<span class="bu">min</span>(), gapminder[<span class="st">'gdp'</span>].<span class="bu">max</span>())</span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(gapminder[<span class="st">'life_exp'</span>].<span class="bu">min</span>(), gapminder[<span class="st">'life_exp'</span>].<span class="bu">max</span>())</span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Create animation</span></span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>ani <span class="op">=</span> animation.FuncAnimation(fig, update, frames<span class="op">=</span><span class="bu">len</span>(years), interval<span class="op">=</span><span class="dv">800</span>, repeat<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Save as GIF (requires 'pillow')</span></span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>ani.save(<span class="st">'life_expectancy_vs_gdp.gif'</span>, writer<span class="op">=</span><span class="st">'pillow'</span>, dpi<span class="op">=</span><span class="dv">80</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="GIFs/life_expectancy_vs_gdp.gif" class="img-fluid"></p>
 <!--#################################################-->
 </section>
@@ -1099,20 +1167,364 @@ We will work through examples of various plot types - scatter plots, boxplots, a
 <!--#################################################-->
 <!--#################################################-->
 <!--#################################################-->
-<!--#################################################-->
 </section>
 </section>
 <section id="manipulate-data" class="level2">
 <h2 class="anchored" data-anchor-id="manipulate-data">5. Manipulate Data</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Contents
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="#select">Selecting and Filtering Data</a></li>
+<li><a href="#filter">Handling Missing Values</a></li>
+<li><a href="#FeatureEng">Creating New Variables (Feature Engineering Basics)</a></li>
+<li><a href="#combiningDatasets">Combining Datasets</a></li>
+<li><a href="#groupData">Reshaping Data (Pivoting and Melting)</a></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Once you’ve imported and inspected your data, the next crucial step in any data science workflow is data manipulation. This involves transforming raw data into a clean, structured, and analysis-ready format. Think of it as refining raw materials before building something incredible – whether it’s an insightful visualization or a powerful predictive model.</p>
+<p>This section will introduce you to essential techniques using pandas, your go-to library for efficient data manipulation in Python. We’ll cover how to select and filter data, handle missing values, create new variables, and combine datasets.</p>
+<!--#################################################-->
+<section id="select" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="select">Selecting and Filtering Data</h3>
+<p>Effectively extracting specific subsets of your data is fundamental. This allows you to focus on relevant information, analyze particular groups, or prepare data for specific operations.</p>
+<p>You can select one or multiple columns from a pandas DataFrame using single or double square brackets.</p>
+<ul>
+<li>Selecting a single column</li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'gapminder' DataFrame is loaded from previous sections</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># (e.g., gapminder = pd.read_csv("filepath-to-your-dataset"))</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the 'life_exp' column</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>life_expectancy <span class="op">=</span> gapminder[<span class="st">'life_exp'</span>]</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(life_expectancy.head())</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(life_expectancy)) <span class="co"># Output will be &lt;class 'pandas.core.series.Series'&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Selecting multiple columns:</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 'gdp' and 'life_exp' columns</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>gdp_life_exp <span class="op">=</span> gapminder[[<span class="st">'gdp'</span>, <span class="st">'life_exp'</span>]]</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gdp_life_exp.head())</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(gdp_life_exp)) <span class="co"># Output will be &lt;class 'pandas.core.frame.DataFrame'&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Notice the difference in output type: a single column selection returns a Series, while multiple columns return a DataFrame.</p>
 <!--#################################################-->
 </section>
-<section id="reshape-data" class="level2">
-<h2 class="anchored" data-anchor-id="reshape-data">6. Reshape Data</h2>
+</section>
+<section id="filter" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="filter">Handling Missing Values</h2>
+<p>Filtering rows, also known as subsetting, allows you to select data based on specific conditions. This is often done using boolean indexing.</p>
+<ul>
+<li>Filtering by a single condition: Let’s say we want to look at data only for the ‘Europe’ continent.</li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for data where continent is 'Europe'</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>europe_data <span class="op">=</span> gapminder[gapminder[<span class="st">'continent'</span>] <span class="op">==</span> <span class="st">'Europe'</span>]</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(europe_data.head())</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of rows for Europe: </span><span class="sc">{</span><span class="bu">len</span>(europe_data)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Filtering by multiple conditions: You can combine multiple conditions using logical operators (&amp; for AND, | for OR, ~ for NOT). Remember to wrap each condition in parentheses.</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for data where continent is 'Asia' AND life expectancy is greater than 70</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>asia_high_life_exp <span class="op">=</span> gapminder[(gapminder[<span class="st">'continent'</span>] <span class="op">==</span> <span class="st">'Asia'</span>) <span class="op">&amp;</span> (gapminder[<span class="st">'life_exp'</span>] <span class="op">&gt;</span> <span class="dv">70</span>)]</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(asia_high_life_exp.head())</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of rows for Asia with high life expectancy: </span><span class="sc">{</span><span class="bu">len</span>(asia_high_life_exp)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Real-world datasets are rarely perfect and often contain missing values (represented as NaN - Not a Number in pandas). Dealing with these is a critical step in data cleaning, as they can lead to errors or biased results in your analysis.</p>
+<p>You’ve briefly touched on dropna() when saving a cleaned file, but here we’ll delve deeper into strategies.</p>
+<ul>
+<li>Identifying Missing Values: Use isnull() or isna() to get a boolean DataFrame indicating missing values, and sum() to count them per column.</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for missing values across the entire DataFrame</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gapminder.isnull().<span class="bu">sum</span>())</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for missing values in a specific column, e.g., 'gdp'</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Missing values in 'gdp' column: </span><span class="sc">{</span>gapminder[<span class="st">'gdp'</span>]<span class="sc">.</span>isnull()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Dropping Missing Values: dropna() Removes rows or columns containing missing values.</li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows with ANY missing values</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>df_cleaned_rows <span class="op">=</span> gapminder.dropna()</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Original rows: </span><span class="sc">{</span><span class="bu">len</span>(gapminder)<span class="sc">}</span><span class="ss">, Rows after dropping NaNs: </span><span class="sc">{</span><span class="bu">len</span>(df_cleaned_rows)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop columns with ANY missing values</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>df_cleaned_cols <span class="op">=</span> gapminder.dropna(axis<span class="op">=</span><span class="dv">1</span>) <span class="co"># axis=1 for columns</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Original columns: </span><span class="sc">{</span>gapminder<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">, Columns after dropping NaNs: </span><span class="sc">{</span>df_cleaned_cols<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows only if ALL values are missing</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>df_cleaned_all <span class="op">=</span> gapminder.dropna(how<span class="op">=</span><span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Caution: Be careful when dropping data, especially rows. This can lead to significant data loss and might not always be the best approach, particularly with small datasets or if missingness carries important information.</p>
+<ul>
+<li>Imputing Missing Values (Filling): fillna() Replaces missing values with a specified value or method. This is generally preferred over dropping when you want to retain as much data as possible.</li>
+</ul>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill missing 'gdp' values with the mean of the 'gdp' column</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>mean_gdp <span class="op">=</span> gapminder[<span class="st">'gdp'</span>].mean()</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>gapminder_filled_mean <span class="op">=</span> gapminder[<span class="st">'gdp'</span>].fillna(mean_gdp)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"GDP after filling with mean:</span><span class="ch">\n</span><span class="sc">{</span>gapminder_filled_mean<span class="sc">.</span>head()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill missing values in 'continent' with 'Unknown' (as done in animation example)</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>gapminder[<span class="st">'continent'</span>] <span class="op">=</span> gapminder[<span class="st">'continent'</span>].fillna(<span class="st">'Unknown'</span>)</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Continent column after filling NaNs:</span><span class="ch">\n</span><span class="sc">{</span>gapminder[<span class="st">'continent'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Forward fill (propagates last valid observation forward to next valid)</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>gapminder_ffill <span class="op">=</span> gapminder[<span class="st">'life_exp'</span>].fillna(method<span class="op">=</span><span class="st">'ffill'</span>)</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Backward fill (propagates next valid observation backward to next valid)</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>gapminder_bfill <span class="op">=</span> gapminder[<span class="st">'life_exp'</span>].fillna(method<span class="op">=</span><span class="st">'bfill'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Choosing an imputation strategy depends heavily on the nature of your data and the reason for the missingness. Common strategies include using the mean, median, mode, or more advanced techniques like interpolation.</p>
+<!--#################################################-->
+<section id="FeatureEng" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="FeatureEng">Creating New Variables (Feature Engineering Basics)</h3>
+<p>Feature engineering is the process of creating new variables (features) from existing ones to improve the performance of predictive models or reveal new insights. This can be as simple as a mathematical transformation or as complex as extracting information from text. - Mathematical Operations: You can easily perform arithmetic operations on existing columns to create new ones.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new 'gdp_per_person' column</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>gapminder[<span class="st">'gdp_per_person'</span>] <span class="op">=</span> gapminder[<span class="st">'gdp'</span>] <span class="op">/</span> gapminder[<span class="st">'population'</span>]</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gapminder[[<span class="st">'gdp'</span>, <span class="st">'population'</span>, <span class="st">'gdp_per_person'</span>]].head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Applying Functions: Use the .apply() method to apply a custom function to a Series or DataFrame.</li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorize countries into 'High' or 'Low' life expectancy based on a threshold</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> categorize_life_exp(life_exp):</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'High'</span> <span class="cf">if</span> life_exp <span class="op">&gt;</span> <span class="dv">70</span> <span class="cf">else</span> <span class="st">'Low'</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>gapminder[<span class="st">'life_exp_category'</span>] <span class="op">=</span> gapminder[<span class="st">'life_exp'</span>].<span class="bu">apply</span>(categorize_life_exp)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gapminder[[<span class="st">'life_exp'</span>, <span class="st">'life_exp_category'</span>]].head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Using numpy for Conditional Logic: For more complex conditional logic, numpy.where is very useful.</li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 'wealth_category' based on GDP</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>gapminder[<span class="st">'wealth_category'</span>] <span class="op">=</span> np.where(gapminder[<span class="st">'gdp'</span>] <span class="op">&gt;</span> <span class="dv">1000000000000</span>, <span class="st">'Very High'</span>,</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>                                        np.where(gapminder[<span class="st">'gdp'</span>] <span class="op">&gt;</span> <span class="dv">100000000000</span>, <span class="st">'High'</span>, <span class="st">'Medium/Low'</span>))</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gapminder[[<span class="st">'gdp'</span>, <span class="st">'wealth_category'</span>]].head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!--#################################################-->
 </section>
-<section id="eda-for-modelling" class="level2">
-<h2 class="anchored" data-anchor-id="eda-for-modelling">7. EDA for Modelling</h2>
+<section id="combiningDatasets" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="combiningDatasets">Combining Datasets</h3>
+<p>Often, the data you need for an analysis is spread across multiple files or DataFrames. pandas provides powerful functions to combine them. - Concatenating DataFrames (pd.concat()): Used to stack DataFrames vertically (rows) or horizontally (columns).</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two small DataFrames for demonstration</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame({<span class="st">'A'</span>: [<span class="st">'A0'</span>, <span class="st">'A1'</span>], <span class="st">'B'</span>: [<span class="st">'B0'</span>, <span class="st">'B1'</span>]}, index<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">'A'</span>: [<span class="st">'A2'</span>, <span class="st">'A3'</span>], <span class="st">'B'</span>: [<span class="st">'B2'</span>, <span class="st">'B3'</span>]}, index<span class="op">=</span>[<span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate vertically (default)</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>result_concat_rows <span class="op">=</span> pd.concat([df1, df2])</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Concatenated Rows:</span><span class="ch">\n</span><span class="st">"</span>, result_concat_rows)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate horizontally</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> pd.DataFrame({<span class="st">'C'</span>: [<span class="st">'C0'</span>, <span class="st">'C1'</span>], <span class="st">'D'</span>: [<span class="st">'D0'</span>, <span class="st">'D1'</span>]}, index<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>result_concat_cols <span class="op">=</span> pd.concat([df1, df3], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Concatenated Columns:</span><span class="ch">\n</span><span class="st">"</span>, result_concat_cols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Merging DataFrames (pd.merge()): Similar to SQL joins, merge() combines DataFrames based on common columns (keys). This is crucial for combining related information from different sources.</li>
+</ul>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two sample DataFrames: one with country info, one with additional stats</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>country_info <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'country'</span>: [<span class="st">'Afghanistan'</span>, <span class="st">'Albania'</span>, <span class="st">'Algeria'</span>, <span class="st">'Angola'</span>],</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'capital'</span>: [<span class="st">'Kabul'</span>, <span class="st">'Tirana'</span>, <span class="st">'Algiers'</span>, <span class="st">'Luanda'</span>]</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>country_stats <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'country'</span>: [<span class="st">'Afghanistan'</span>, <span class="st">'Albania'</span>, <span class="st">'Algeria'</span>, <span class="st">'Argentina'</span>],</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'population_2020'</span>: [<span class="dv">38928346</span>, <span class="dv">2877797</span>, <span class="dv">43851044</span>, <span class="dv">45195774</span>]</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Inner merge: only includes rows where the 'country' key exists in both DataFrames</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>merged_data_inner <span class="op">=</span> pd.merge(country_info, country_stats, on<span class="op">=</span><span class="st">'country'</span>, how<span class="op">=</span><span class="st">'inner'</span>)</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Inner Merge:</span><span class="ch">\n</span><span class="st">"</span>, merged_data_inner)</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Left merge: includes all rows from the left DataFrame and matching rows from the right</span></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>merged_data_left <span class="op">=</span> pd.merge(country_info, country_stats, on<span class="op">=</span><span class="st">'country'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Left Merge:</span><span class="ch">\n</span><span class="st">"</span>, merged_data_left)</span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Right merge: includes all rows from the right DataFrame and matching rows from the left</span></span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>merged_data_right <span class="op">=</span> pd.merge(country_info, country_stats, on<span class="op">=</span><span class="st">'country'</span>, how<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Right Merge:</span><span class="ch">\n</span><span class="st">"</span>, merged_data_right)</span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Outer merge: includes all rows from both DataFrames, filling missing with NaN</span></span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>merged_data_outer <span class="op">=</span> pd.merge(country_info, country_stats, on<span class="op">=</span><span class="st">'country'</span>, how<span class="op">=</span><span class="st">'outer'</span>)</span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Outer Merge:</span><span class="ch">\n</span><span class="st">"</span>, merged_data_outer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Choosing the correct how argument (inner, left, right, outer) is essential depending on how you want to handle non-matching keys.</p>
 <!--#################################################-->
+</section>
+<section id="groupData" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="groupData">Reshaping Data (Pivoting and Melting)</h3>
+<p>Reshaping data involves changing the layout of your DataFrame. This is particularly useful when you need to transform data from a “long” format to a “wide” format, or vice-versa, for analysis or visualization.</p>
+<p><strong>Pivoting (df.pivot_table() or df.pivot())</strong> Pivoting transforms unique values from one or more columns into new columns, typically aggregating data in the process. pivot_table is more flexible as it can handle duplicate entries in the index and allows for aggregation.</p>
+<p>Imagine your gapminder data has multiple entries for a country across different years, and you want to see life expectancy for each continent as columns, with years as rows.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's create a simplified DataFrame for pivoting example</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>pivot_df <span class="op">=</span> gapminder[[<span class="st">'year'</span>, <span class="st">'continent'</span>, <span class="st">'life_exp'</span>]]</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean life expectancy per continent per year</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>avg_life_exp_pivot <span class="op">=</span> pivot_df.pivot_table(index<span class="op">=</span><span class="st">'year'</span>,</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>                                          columns<span class="op">=</span><span class="st">'continent'</span>,</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>                                          values<span class="op">=</span><span class="st">'life_exp'</span>,</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>                                          aggfunc<span class="op">=</span><span class="st">'mean'</span>)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Pivoted Average Life Expectancy:</span><span class="ch">\n</span><span class="st">"</span>, avg_life_exp_pivot.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Melting (pd.melt())</strong></p>
+<p>Melting is the opposite of pivoting; it transforms data from a “wide” format into a “long” format. This is useful for reshaping dataframes for certain types of analysis or plotting libraries (like Seaborn, which often prefers long-format data).</p>
+<p>Consider our avg_life_exp_pivot from above. If we wanted to “unpivot” it back into a long format.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset index to make 'year' a regular column</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>avg_life_exp_pivot_reset <span class="op">=</span> avg_life_exp_pivot.reset_index()</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Melt the DataFrame</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>melted_life_exp <span class="op">=</span> pd.melt(avg_life_exp_pivot_reset,</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>                         id_vars<span class="op">=</span>[<span class="st">'year'</span>], <span class="co"># Columns to keep as identifier variables</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>                         var_name<span class="op">=</span><span class="st">'continent'</span>, <span class="co"># Name for the new column storing melted column headers</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>                         value_name<span class="op">=</span><span class="st">'average_life_expectancy'</span>) <span class="co"># Name for the new column storing values</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Melted Average Life Expectancy:</span><span class="ch">\n</span><span class="st">"</span>, melted_life_exp.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!--#################################################-->
+</section>
+</section>
+<section id="group-and-aggregate-data" class="level2">
+<h2 class="anchored" data-anchor-id="group-and-aggregate-data">6. Group and Aggregate Data</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Contents
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="#groupBy">The groupby() Method</a></li>
+<li><a href="#agg">Common Aggregation Functions</a></li>
+<li><a href="#multiColGroup">Grouping by Multiple Columns</a></li>
+<li><a href="#multiArg">Applying Multiple Aggregations</a></li>
+<li><a href="#Customfunctions">Using agg() with Custom Functions</a></li>
+<li><a href="#pivotTables">Pivot Tables Revisited for Aggregation</a></li>
+</ul>
+</div>
+</div>
+</div>
+<p>After you’ve cleaned and manipulated your data, you often need to summarize it to uncover patterns, trends, or characteristics within different categories. This is where grouping and aggregation become indispensable. These techniques allow you to perform calculations on subsets of your data, rather than on the entire dataset at once.</p>
+<p>Think of it like getting summary reports for different departments in a company, rather than looking at every single transaction. You’re combining rows based on shared characteristics and then applying functions (like sum, average, count) to those groups.</p>
+<p>This section will introduce you to groupby() and various aggregation functions in pandas, enabling you to derive meaningful insights from your prepared data</p>
+<!--#################################################-->
+<section id="groupBy" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="groupBy">The groupby() Method</h3>
+<p>The core of grouping in pandas is the <code>groupby()</code> method. It allows you to split your DataFrame into groups based on one or more columns, apply a function to each group independently, and then combine the results into a single DataFrame. This process is often referred to as the “split-apply-combine” strategy.</p>
+<p><strong>Basic Grouping</strong> Let’s use the gapminder dataset. A common task might be to find the average life expectancy for each continent.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'gapminder' DataFrame is loaded and 'continent' column is clean</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># (e.g., gapminder = pd.read_csv("filepath-to-your-dataset"))</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co"># If 'continent' has NaNs, ensure they are handled as per the previous chapter, e.g.,</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="co"># gapminder['continent'] = gapminder['continent'].fillna('Unknown')</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by 'continent' and calculate the mean of 'life_exp'</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>avg_life_exp_by_continent <span class="op">=</span> gapminder.groupby(<span class="st">'continent'</span>)[<span class="st">'life_exp'</span>].mean()</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average Life Expectancy by Continent:</span><span class="ch">\n</span><span class="st">"</span>, avg_life_exp_by_continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example:</p>
+<ol type="1">
+<li>gapminder.groupby(‘continent’) splits the DataFrame into separate groups for each unique continent (e.g., ‘Asia’, ‘Europe’, ‘Africa’).</li>
+<li>[‘life_exp’] selects the life_exp column from each of these groups.</li>
+<li><code>.mean()</code> applies the mean function to the life_exp values within each continent group.</li>
+<li>Pandas then combines these results into a new Series.</li>
+</ol>
+<!--#################################################-->
+</section>
+<section id="agg" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="agg">Common Aggregation Functions</h3>
+<p>After grouping, you can apply various aggregation functions. Some of the most common include: - <code>.mean()</code>: Calculates the average. - <code>.sum()</code>: Calculates the total. - <code>.count()</code>: Counts non-null observations. - <code>.median()</code>: Calculates the median. - <code>.min()</code>: Finds the minimum value. - <code>.max()</code>: Finds the maximum value. - <code>.std()</code>: Calculates the standard deviation. - <code>.var()</code>: Calculates the variance. - <code>.size()</code>: Counts the total number of rows in each group (including NaNs).</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by 'continent' and find the sum of 'population'</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>total_pop_by_continent <span class="op">=</span> gapminder.groupby(<span class="st">'continent'</span>)[<span class="st">'population'</span>].<span class="bu">sum</span>()</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Total Population by Continent:</span><span class="ch">\n</span><span class="st">"</span>, total_pop_by_continent)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by 'year' and find the median 'gdp'</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>median_gdp_by_year <span class="op">=</span> gapminder.groupby(<span class="st">'year'</span>)[<span class="st">'gdp'</span>].median()</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Median GDP by Year:</span><span class="ch">\n</span><span class="st">"</span>, median_gdp_by_year.head())</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by 'continent' and find the number of unique countries</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>country_count_by_continent <span class="op">=</span> gapminder.groupby(<span class="st">'continent'</span>)[<span class="st">'country'</span>].nunique()</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Number of Unique Countries by Continent:</span><span class="ch">\n</span><span class="st">"</span>, country_count_by_continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!--#################################################-->
+</section>
+<section id="multiColGroup" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="multiColGroup">Grouping by Multiple Columns</h3>
+<p>You can group your data using more than one column. This creates hierarchical groups, allowing for more granular analysis.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by 'year' AND 'continent' to find average life expectancy</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>avg_life_exp_year_continent <span class="op">=</span> gapminder.groupby([<span class="st">'year'</span>, <span class="st">'continent'</span>])[<span class="st">'life_exp'</span>].mean()</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Average Life Expectancy by Year and Continent:</span><span class="ch">\n</span><span class="st">"</span>, avg_life_exp_year_continent.head(<span class="dv">10</span>))</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The result is a Series with a MultiIndex. You can access specific levels:</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Life expectancy for Europe in 1952:"</span>, avg_life_exp_year_continent.loc[(<span class="dv">1952</span>, <span class="st">'Europe'</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This multi-level index (MultiIndex) is very powerful for slicing and dicing your data further.</p>
+<!--#################################################-->
+</section>
+<section id="multiArg" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="multiArg">Applying Multiple Aggregations</h3>
+<p>Sometimes, you need to calculate several summary statistics for each group simultaneously. The <code>.agg()</code> method (or <code>.aggregate()</code>) is perfect for this.</p>
+<p><strong>Aggregating a Single Column with Multiple Functions</strong></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by 'continent' and calculate mean, min, and max of 'life_exp'</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>multi_agg_life_exp <span class="op">=</span> gapminder.groupby(<span class="st">'continent'</span>)[<span class="st">'life_exp'</span>].agg([<span class="st">'mean'</span>, <span class="st">'min'</span>, <span class="st">'max'</span>, <span class="st">'std'</span>])</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Multiple Aggregations of Life Expectancy by Continent:</span><span class="ch">\n</span><span class="st">"</span>, multi_agg_life_exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Aggregating Multiple Columns with Multiple Functions</strong> You can specify different aggregation functions for different columns using a dictionary.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by 'continent' and aggregate 'life_exp' and 'gdp'</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>multi_col_agg <span class="op">=</span> gapminder.groupby(<span class="st">'continent'</span>).agg(</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    avg_life_exp<span class="op">=</span>(<span class="st">'life_exp'</span>, <span class="st">'mean'</span>), <span class="co"># Renames the output column to 'avg_life_exp'</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    total_gdp<span class="op">=</span>(<span class="st">'gdp'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    min_pop<span class="op">=</span>(<span class="st">'population'</span>, <span class="st">'min'</span>)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Multi-Column Aggregation by Continent:</span><span class="ch">\n</span><span class="st">"</span>, multi_col_agg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This gives you fine-grained control over your summary statistics, allowing you to name the resulting columns clearly.</p>
+<!--#################################################-->
+</section>
+<section id="Customfunctions" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="Customfunctions">Using agg() with Custom Functions</h3>
+<p>The <code>agg()</code> method is highly flexible and can even apply custom functions you define.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a custom function to calculate the range (max - min)</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> data_range(series):</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> series.<span class="bu">max</span>() <span class="op">-</span> series.<span class="bu">min</span>()</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by 'continent' and apply the custom 'data_range' function to 'life_exp'</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>custom_agg_life_exp <span class="op">=</span> gapminder.groupby(<span class="st">'continent'</span>)[<span class="st">'life_exp'</span>].agg(data_range)</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Life Expectancy Range by Continent (Custom Function):</span><span class="ch">\n</span><span class="st">"</span>, custom_agg_life_exp)</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also pass a lambda function directly</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>lambda_agg_gdp <span class="op">=</span> gapminder.groupby(<span class="st">'continent'</span>)[<span class="st">'gdp'</span>].agg(<span class="kw">lambda</span> x: x.quantile(<span class="fl">0.75</span>) <span class="op">-</span> x.quantile(<span class="fl">0.25</span>))</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Interquartile Range of GDP by Continent (Lambda Function):</span><span class="ch">\n</span><span class="st">"</span>, lambda_agg_gdp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!--#################################################-->
+</section>
+<section id="pivotTables" class="level3 unnumbered unlisted">
+<h3 class="unnumbered unlisted anchored" data-anchor-id="pivotTables">Pivot Tables Revisited for Aggregation</h3>
+<p>You’ve seen pivot_table used for reshaping. It’s also incredibly powerful for aggregation, often providing a more intuitive syntax than <code>groupby().agg()</code> for certain types of summaries.</p>
+<p>Recall our example of average life expectancy by year and continent:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean life expectancy using pivot_table</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># index: the column(s) to become the new DataFrame index (rows)</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># columns: the column(s) whose unique values will become the new DataFrame columns</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># values: the column(s) to aggregate</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co"># aggfunc: the aggregation function (default is 'mean')</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>avg_life_exp_pivot_table <span class="op">=</span> pd.pivot_table(gapminder,</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>                                          index<span class="op">=</span><span class="st">'year'</span>,</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>                                          columns<span class="op">=</span><span class="st">'continent'</span>,</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>                                          values<span class="op">=</span><span class="st">'life_exp'</span>,</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>                                          aggfunc<span class="op">=</span><span class="st">'mean'</span>)</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Average Life Expectancy by Year and Continent (using pivot_table):</span><span class="ch">\n</span><span class="st">"</span>, avg_life_exp_pivot_table.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The result is the same as the groupby([‘year’, ‘continent’])[‘life_exp’].mean() with an <code>unstack()</code> operation, but pivot_table often makes the intention clearer when you want a cross-tabulated summary.</p>
+<p>You can also apply multiple aggregation functions in pivot_table:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot table with multiple aggregation functions for 'life_exp'</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>multi_agg_pivot_table <span class="op">=</span> pd.pivot_table(gapminder,</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                                       index<span class="op">=</span><span class="st">'continent'</span>,</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>                                       values<span class="op">=</span><span class="st">'life_exp'</span>,</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>                                       aggfunc<span class="op">=</span>[<span class="st">'mean'</span>, <span class="st">'median'</span>, <span class="st">'std'</span>])</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Multiple Aggregations of Life Expectancy (using pivot_table):</span><span class="ch">\n</span><span class="st">"</span>, multi_agg_pivot_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Mastering grouping and aggregation allows you to transform large datasets into concise, insightful summaries that are essential for reporting, making decisions, and preparing data for more advanced analytical techniques.</p>
+<!--#################################################-->
+<!--#################################################-->
+</section>
 </section>
 </section>
 <section id="statistical-inference" class="level1">
