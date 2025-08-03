@@ -101,6 +101,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -181,7 +210,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#manipulate-data" id="toc-manipulate-data" class="nav-link" data-scroll-target="#manipulate-data">5. Manipulate Data</a></li>
   <li><a href="#group-and-aggregate-data" id="toc-group-and-aggregate-data" class="nav-link" data-scroll-target="#group-and-aggregate-data">6. Group and Aggregate Data</a></li>
   </ul></li>
-  <li><a href="#statistical-inference" id="toc-statistical-inference" class="nav-link" data-scroll-target="#statistical-inference"><strong>Statistical Inference</strong></a></li>
+  <li><a href="#statistical-inference" id="toc-statistical-inference" class="nav-link" data-scroll-target="#statistical-inference"><strong>Statistical Inference</strong></a>
+  <ul class="collapse">
+  <li><a href="#intro" id="toc-intro" class="nav-link" data-scroll-target="#intro">Introduction to Statistical Inference</a></li>
+  <li><a href="#probdist" id="toc-probdist" class="nav-link" data-scroll-target="#probdist">Probability Distributions</a></li>
+  <li><a href="#Normal" id="toc-Normal" class="nav-link" data-scroll-target="#Normal">Normal (Gaussian) Distribution</a></li>
+  <li><a href="#confidenceIntervals" id="toc-confidenceIntervals" class="nav-link" data-scroll-target="#confidenceIntervals">Confidence Intervals</a></li>
+  <li><a href="#HypTesting" id="toc-HypTesting" class="nav-link" data-scroll-target="#HypTesting">Hypothesis Testing</a></li>
+  </ul></li>
   <li><a href="#data-modelling" id="toc-data-modelling" class="nav-link" data-scroll-target="#data-modelling"><strong>Data Modelling</strong></a></li>
   </ul>
 </nav>
@@ -1530,6 +1566,99 @@ Contents
 <section id="statistical-inference" class="level1">
 <h1><strong>Statistical Inference</strong></h1>
 <!--#################################################-->
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Contents
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="#intro">Introduction to Statistical Inference</a></li>
+<li><a href="#probdist">Probability Distributions</a></li>
+<li><a href="#Normal">Normal (Gaussian) Distribution</a></li>
+<li><a href="#Estimation">Estimation</a></li>
+<li><a href="#confidenceIntervals">Confidence Intervals</a></li>
+<li><a href="#HypTesting">Hypothesis Testing</a></li>
+</ul>
+</div>
+</div>
+</div>
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Introduction to Statistical Inference</h2>
+<p>This section will introduce the core ideas behind statistical inference, explaining how we move from simply describing data to making informed judgments about larger populations.</p>
+<p><strong>What is Statistical Inference?</strong> - The goal is to predict and forecast values of population parameters, test hypotheses about them, and make decisions based on sample statistics derived from limited and incomplete sample information. - Population vs.&nbsp;Sample: Descriptive statistics describe the whole population (its properties are called parameters, e.g., μ, σ). Inferential statistics use a random sample to infer something about the population; properties calculated from samples are called sample statistics (estimators, e.g.&nbsp;<span class="math inline">\(\bar{x}\)</span>, s), which are used to estimate population parameters. Different samples will typically have different statistics.</p>
+<!--#################################################-->
+</section>
+<section id="probdist" class="level2">
+<h2 class="anchored" data-anchor-id="probdist">Probability Distributions</h2>
+<p>Probability distributions are fundamental to statistical inference. They describe how data is spread and form the basis for many statistical tests.</p>
+<p><strong>What are Probability Distributions?</strong> - A probability distribution is an expression that describes the relative frequency (height of the curve) for every possible outcome or a range of outcomes. - A probability model (e.g., the Normal distribution) attempts to capture the essential structure of the real world by asking what the world might look like if an infinite number of observations were obtained. - The main purpose of a distribution is to indicate error, not accuracy; no single observation is a perfect example of generality.</p>
+<!--#################################################-->
+</section>
+<section id="Normal" class="level2">
+<h2 class="anchored" data-anchor-id="Normal">Normal (Gaussian) Distribution</h2>
+<ul>
+<li>Properties: Bell-shaped curve.</li>
+<li>Standard Normal Distribution (Z-distribution): A special case where the mean (μ) is 0 and the standard deviation (σ) is 1, as shown below.</li>
+</ul>
+<p><img src="Images/normal_or_z_dist.png" class="img-fluid"></p>
+<ul>
+<li>Z-score: Represents the number of standard deviations an observation falls above or below the mean, hense Z = (observation−mean)/SD</li>
+</ul>
+<p><img src="Images/zScoreFormula.png" class="img-fluid"></p>
+<ul>
+<li>Approximately 95% of observations fall within ±1.96 standard deviations of the mean in a Normal distribution. Observations with a Z-score &gt; 2 or &lt; -2 are usually considered unusual.</li>
+</ul>
+<p><img src="Images/normalDist_with_CI.jpg" class="img-fluid"></p>
+<ul>
+<li>Caution: Not all continuous variables are normally distributed; some are skewed, and the Normal distribution allows for negative values, which may not be appropriate for all real-world data.</li>
+</ul>
+<p>The Normal is just 1 distributions, there are many such distributions including Uniform, Binomial, Exponential, and Log-Normal distributions (But we will not be looking at any of these other distributions)</p>
+<!--#################################################-->
+</section>
+<section id="confidenceIntervals" class="level2">
+<h2 class="anchored" data-anchor-id="confidenceIntervals">Confidence Intervals</h2>
+<p>This section focuses on interval estimation, providing a range within which the true population parameter is likely to fall, along with a specified level of confidence.</p>
+<p><strong>What is a Confidence Interval?</strong> - Confidence Intervals: Provide a range within which the true population parameter is likely to fall. - Confidence Level: Typically 90%, 95%, or 99% (e.g., “We are 95% confident that the true population mean lies within this interval”). - Confidence level + signficiance level = 100% - So if we have a 95% confidence level, we can say we have a significance level a 5% OR a significance level of 2.5% in each tail.</p>
+<p><img src="Images/sigLevels.png" class="img-fluid"></p>
+<p><strong>Constructing Confidence Intervals for Means:</strong></p>
+<ul>
+<li><strong>Distribution:</strong> It uses the <strong>t-distribution</strong> with degrees of freedom (df) equal to <span class="math inline">\(n-1\)</span>.</li>
+<li><strong>Conditions:</strong> The conditions for using this method are:
+<ul>
+<li>The sample size (<span class="math inline">\(n\)</span>) is greater than or equal to 30 (<span class="math inline">\(n \ge 30\)</span>).</li>
+<li><strong>OR</strong> the data is approximately normally distributed.</li>
+</ul></li>
+<li><strong>Standard Error (SE):</strong> The standard error for the mean is calculated as:</li>
+</ul>
+<p><span class="math display">\[ \text{SE} = \sqrt{\frac{s^2}{n}} = \frac{s}{\sqrt{n}} \]</span></p>
+<p>where <span class="math inline">\(s\)</span> is the sample standard deviation and <span class="math inline">\(n\)</span> is the sample size.</p>
+<p><strong>Constructing Confidence Intervals for Proportions:</strong></p>
+<ul>
+<li><strong>Distribution:</strong> It typically uses the <strong>Normal distribution</strong>.</li>
+<li><strong>Conditions:</strong> The conditions for using this method (often called the “success-failure condition”) are met when:
+<ul>
+<li>The number of expected “successes” (<span class="math inline">\(np\)</span>) is at least 10 (<span class="math inline">\(np \ge 10\)</span>).</li>
+<li><strong>AND</strong> the number of expected “failures” (<span class="math inline">\(n(1-p)\)</span>) is also at least 10 (<span class="math inline">\(n(1-p) \ge 10\)</span>).</li>
+<li><em>Note: In practice, we often use the sample proportion <span class="math inline">\(\hat{p}\)</span> instead of the true proportion <span class="math inline">\(p\)</span> to check these conditions, i.e., <span class="math inline">\(n\hat{p} \ge 10\)</span> and <span class="math inline">\(n(1-\hat{p}) \ge 10\)</span>.</em></li>
+</ul></li>
+<li><strong>Standard Error (SE):</strong> The standard error for the proportion is calculated using the sample proportion (<span class="math inline">\(\hat{p}\)</span>):</li>
+</ul>
+<p><span class="math display">\[ \text{SE} = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \]</span></p>
+<p>where <span class="math inline">\(\hat{p}\)</span> is the sample proportion and <span class="math inline">\(n\)</span> is the sample size.</p>
+<p><strong>Bootstrapping</strong> Bootstrap Estimation: Can be used for confidence intervals. The process involves specifying variables, generating data (via bootstrapping), calculating a statistic, and visualizing. In Python, this is achieved using NumPy for data manipulation and random sampling, SciPy’s bootstrap function for efficient resampling and confidence interval calculation, and Matplotlib or Seaborn for visualizing the bootstrap distribution.</p>
+<!--#################################################-->
+</section>
+<section id="HypTesting" class="level2">
+<h2 class="anchored" data-anchor-id="HypTesting">Hypothesis Testing</h2>
+<!--#################################################-->
+</section>
 </section>
 <section id="data-modelling" class="level1">
 <h1><strong>Data Modelling</strong></h1>

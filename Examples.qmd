@@ -1386,14 +1386,120 @@ Mastering grouping and aggregation allows you to transform large datasets into c
 
 
 
+<!--#################################################-->
+
+# **Statistical Inference**
+
+<!--#################################################-->
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Introduction to Statistical Inference](#intro)
+- [Probability Distributions](#probdist)
+- [Normal (Gaussian) Distribution](#Normal)
+- [Estimation](#Estimation)
+- [Confidence Intervals](#confidenceIntervals)
+- [Hypothesis Testing](#HypTesting)
+
+:::
 
 
+## Introduction to Statistical Inference {#intro}
 
+This section will introduce the core ideas behind statistical inference, explaining how we move from simply describing data to making informed judgments about larger populations.
+
+**What is Statistical Inference?**
+- The goal is to predict and forecast values of population parameters, test hypotheses about them, and make decisions based on sample statistics derived from limited and incomplete sample information.
+- Population vs. Sample: Descriptive statistics describe the whole population (its properties are called parameters, e.g., μ, σ). Inferential statistics use a random sample to infer something about the population; properties calculated from samples are called sample statistics (estimators, e.g. $\bar{x}$, s), which are used to estimate population parameters. Different samples will typically have different statistics.
 
 
 <!--#################################################-->
 
-# **Statistical Inference**
+## Probability Distributions {#probdist}
+Probability distributions are fundamental to statistical inference. They describe how data is spread and form the basis for many statistical tests.
+
+**What are Probability Distributions?**
+- A probability distribution is an expression that describes the relative frequency (height of the curve) for every possible outcome or a range of outcomes.
+- A probability model (e.g., the Normal distribution) attempts to capture the essential structure of the real world by asking what the world might look like if an infinite number of observations were obtained.
+- The main purpose of a distribution is to indicate error, not accuracy; no single observation is a perfect example of generality.
+
+<!--#################################################-->
+
+## Normal (Gaussian) Distribution {#Normal}
+
+- Properties: Bell-shaped curve.
+- Standard Normal Distribution (Z-distribution): A special case where the mean (μ) is 0 and the standard deviation (σ) is 1, as shown below.
+
+![](Images/normal_or_z_dist.png)
+
+- Z-score: Represents the number of standard deviations an observation falls above or below the mean, hense Z = (observation−mean)/SD
+
+![](Images/zScoreFormula.png)
+
+- Approximately 95% of observations fall within ±1.96 standard deviations of the mean in a Normal distribution. Observations with a Z-score > 2 or < -2 are usually considered unusual.
+
+
+![](Images/normalDist_with_CI.jpg)
+
+- Caution: Not all continuous variables are normally distributed; some are skewed, and the Normal distribution allows for negative values, which may not be appropriate for all real-world data.
+
+The Normal is just 1 distributions, there are many such distributions including Uniform, Binomial, Exponential, and Log-Normal distributions (But we will not be looking at any of these other distributions)
+
+<!--#################################################-->
+
+
+## Confidence Intervals {#confidenceIntervals}
+
+This section focuses on interval estimation, providing a range within which the true population parameter is likely to fall, along with a specified level of confidence.
+
+**What is a Confidence Interval?**
+- Confidence Intervals: Provide a range within which the true population parameter is likely to fall.
+- Confidence Level: Typically 90%, 95%, or 99% (e.g., "We are 95% confident that the true population mean lies within this interval").
+- Confidence level + signficiance level = 100%
+- So if we have a 95% confidence level, we can say we have a significance level a 5% OR a significance level of 2.5% in each tail.
+
+![](Images/sigLevels.png)
+
+**Constructing Confidence Intervals for Means:**
+
+- **Distribution:** It uses the **t-distribution** with degrees of freedom (df) equal to $n-1$.
+- **Conditions:** The conditions for using this method are:
+    * The sample size ($n$) is greater than or equal to 30 ($n \ge 30$).
+    * **OR** the data is approximately normally distributed.
+- **Standard Error (SE):** The standard error for the mean is calculated as:
+
+
+$$ \text{SE} = \sqrt{\frac{s^2}{n}} = \frac{s}{\sqrt{n}} $$
+  
+  
+  where $s$ is the sample standard deviation and $n$ is the sample size.
+
+
+**Constructing Confidence Intervals for Proportions:**
+
+- **Distribution:** It typically uses the **Normal distribution**.
+- **Conditions:** The conditions for using this method (often called the "success-failure condition") are met when:
+    * The number of expected "successes" ($np$) is at least 10 ($np \ge 10$).
+    * **AND** the number of expected "failures" ($n(1-p)$) is also at least 10 ($n(1-p) \ge 10$).
+    * *Note: In practice, we often use the sample proportion $\hat{p}$ instead of the true proportion $p$ to check these conditions, i.e., $n\hat{p} \ge 10$ and $n(1-\hat{p}) \ge 10$.*
+- **Standard Error (SE):** The standard error for the proportion is calculated using the sample proportion ($\hat{p}$):
+
+
+$$ \text{SE} = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} $$
+    
+
+where $\hat{p}$ is the sample proportion and $n$ is the sample size.
+
+
+
+**Bootstrapping**
+Bootstrap Estimation: Can be used for confidence intervals. The process involves specifying variables, generating data (via bootstrapping), calculating a statistic, and visualizing. In Python, this is achieved using NumPy for data manipulation and random sampling, SciPy's bootstrap function for efficient resampling and confidence interval calculation, and Matplotlib or Seaborn for visualizing the bootstrap distribution.
+
+
+<!--#################################################-->
+
+## Hypothesis Testing {#HypTesting}
+
 
 
 
