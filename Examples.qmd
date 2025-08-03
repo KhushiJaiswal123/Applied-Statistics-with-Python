@@ -1500,7 +1500,73 @@ Bootstrap Estimation: Can be used for confidence intervals. The process involves
 
 ## Hypothesis Testing {#HypTesting}
 
+This is the core of statistical inference, where we formally test claims or assumptions about a population using evidence from our sample.
 
+- **Null Hypothesis ($H_0$):** This is a statement of no effect or no difference. It represents a model of the world under the assumption that the effect we are investigating is not real (e.g., there is no difference between two groups, or a new drug has no effect). We assume the null hypothesis is true until we find sufficient evidence to the contrary.
+
+- **Alternative Hypothesis ($H_A$ or $H_1$):** This is the claim we are trying to find evidence for. It proposes that there *is* an effect or a difference (e.g., there *is* a difference between groups, or the new drug *does* have an effect).
+
+- **Significance Level ($\alpha$):** This is the predetermined threshold for how improbable the observed data must be, assuming the null hypothesis is true, for us to reject the null hypothesis. It represents the maximum probability of making a Type I error that we are willing to accept.
+    * Commonly set at 5% (0.05).
+    * Can be set lower, such as 1% (0.01) or less, particularly in fields where false positives are costly (e.g., medicine, particle physics).
+    * This concept is analogous to the legal principle of "beyond reasonable doubt" in a court of law.
+
+- **p-value:** The p-value is the probability of observing data as extreme as, or more extreme than, what was actually observed, *assuming that the null hypothesis ($H_0$) is true*. It quantifies the strength of evidence against the null hypothesis.
+
+
+### Interpreting the p-value
+
+- **If the p-value < $\alpha$:** This means the observed data is highly improbable if the null hypothesis were true. We consider this a "surprising" effect, suggesting that the data is not just random noise. In this case, we **reject the null hypothesis ($H_0$)**. This implies there is statistically significant evidence to support the alternative hypothesis.
+
+- **If the p-value > $\alpha$:** This means the observed data is *not* surprising under the assumption that the null hypothesis is true. The data is consistent with random variation. In this case, we **fail to reject the null hypothesis ($H_0$)**. This means there isn't enough statistically significant evidence to support the alternative hypothesis.
+
+
+### Types of Errors
+
+When making a decision about the null hypothesis, there's always a possibility of making an error:
+
+- **Type I Error ($\alpha$):** This occurs when we **reject a true null hypothesis**. It's a "false positive" – concluding there's an effect when there isn't one. The significance level ($\alpha$) directly controls the probability of making a Type I error.
+
+- **Type II Error ($\beta$):** This occurs when we **fail to reject a false null hypothesis**. It's a "false negative" – concluding there's no effect when there actually is one.
+
+
+### Drawing Conclusions
+
+In hypothesis testing, our conclusions are precise:
+
+- We either **Reject $H_0$** or **Fail to Reject $H_0$**.
+- It's crucial to avoid language that implies absolute proof or disproof. For example, we should never say, "The person is innocent," but rather, "There is not sufficient evidence to show that the person is guilty." Similarly, we don't "accept" the null hypothesis; we simply state that we "fail to reject" it.
+
+
+
+### Tests for Comparing Groups
+
+When comparing two independent groups, different statistical tests and formulas for standard error are used based on whether you're comparing proportions or means.
+
+
+#### Difference in Means
+
+- **Distribution:** Uses the **t-distribution**.
+- **Degrees of Freedom (df):** The degrees of freedom are conservatively estimated as the smaller of $n_1-1$ or $n_2-1$. More precise methods (like Welch's t-test) use a more complex formula for df.
+- **Conditions:**
+    * $n_1 \ge 30$ or data from group 1 is approximately normal.
+    * **AND** $n_2 \ge 30$ or data from group 2 is approximately normal.
+- **Standard Error (SE):** The standard error for the difference in means is:
+
+$$ \text{SE} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}} $$
+
+where $s_1^2$ and $s_2^2$ are the sample variances for group 1 and group 2, respectively, and $n_1$ and $n_2$ are their respective sample sizes.
+
+
+#### Difference in Proportions
+
+- **Distribution:** Uses the **Normal distribution**.
+- **Conditions:** All counts for both groups must be at least 10. That is, for Group 1: $n_1\hat{p}_1 \ge 10$ and $n_1(1-\hat{p}_1) \ge 10$; and for Group 2: $n_2\hat{p}_2 \ge 10$ and $n_2(1-\hat{p}_2) \ge 10$.
+- **Standard Error (SE):** The standard error for the difference in proportions is:
+
+$$ \text{SE} = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}} $$
+
+where $\hat{p}_1$ and $\hat{p}_2$ are the sample proportions for group 1 and group 2, respectively, and $n_1$ and $n_2$ are their respective sample sizes.
 
 
 

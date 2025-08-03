@@ -216,7 +216,13 @@ window.Quarto = {
   <li><a href="#probdist" id="toc-probdist" class="nav-link" data-scroll-target="#probdist">Probability Distributions</a></li>
   <li><a href="#Normal" id="toc-Normal" class="nav-link" data-scroll-target="#Normal">Normal (Gaussian) Distribution</a></li>
   <li><a href="#confidenceIntervals" id="toc-confidenceIntervals" class="nav-link" data-scroll-target="#confidenceIntervals">Confidence Intervals</a></li>
-  <li><a href="#HypTesting" id="toc-HypTesting" class="nav-link" data-scroll-target="#HypTesting">Hypothesis Testing</a></li>
+  <li><a href="#HypTesting" id="toc-HypTesting" class="nav-link" data-scroll-target="#HypTesting">Hypothesis Testing</a>
+  <ul class="collapse">
+  <li><a href="#interpreting-the-p-value" id="toc-interpreting-the-p-value" class="nav-link" data-scroll-target="#interpreting-the-p-value">Interpreting the p-value</a></li>
+  <li><a href="#types-of-errors" id="toc-types-of-errors" class="nav-link" data-scroll-target="#types-of-errors">Types of Errors</a></li>
+  <li><a href="#drawing-conclusions" id="toc-drawing-conclusions" class="nav-link" data-scroll-target="#drawing-conclusions">Drawing Conclusions</a></li>
+  <li><a href="#tests-for-comparing-groups" id="toc-tests-for-comparing-groups" class="nav-link" data-scroll-target="#tests-for-comparing-groups">Tests for Comparing Groups</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#data-modelling" id="toc-data-modelling" class="nav-link" data-scroll-target="#data-modelling"><strong>Data Modelling</strong></a></li>
   </ul>
@@ -1657,7 +1663,71 @@ Contents
 </section>
 <section id="HypTesting" class="level2">
 <h2 class="anchored" data-anchor-id="HypTesting">Hypothesis Testing</h2>
+<p>This is the core of statistical inference, where we formally test claims or assumptions about a population using evidence from our sample.</p>
+<ul>
+<li><p><strong>Null Hypothesis (<span class="math inline">\(H_0\)</span>):</strong> This is a statement of no effect or no difference. It represents a model of the world under the assumption that the effect we are investigating is not real (e.g., there is no difference between two groups, or a new drug has no effect). We assume the null hypothesis is true until we find sufficient evidence to the contrary.</p></li>
+<li><p><strong>Alternative Hypothesis (<span class="math inline">\(H_A\)</span> or <span class="math inline">\(H_1\)</span>):</strong> This is the claim we are trying to find evidence for. It proposes that there <em>is</em> an effect or a difference (e.g., there <em>is</em> a difference between groups, or the new drug <em>does</em> have an effect).</p></li>
+<li><p><strong>Significance Level (<span class="math inline">\(\alpha\)</span>):</strong> This is the predetermined threshold for how improbable the observed data must be, assuming the null hypothesis is true, for us to reject the null hypothesis. It represents the maximum probability of making a Type I error that we are willing to accept.</p>
+<ul>
+<li>Commonly set at 5% (0.05).</li>
+<li>Can be set lower, such as 1% (0.01) or less, particularly in fields where false positives are costly (e.g., medicine, particle physics).</li>
+<li>This concept is analogous to the legal principle of “beyond reasonable doubt” in a court of law.</li>
+</ul></li>
+<li><p><strong>p-value:</strong> The p-value is the probability of observing data as extreme as, or more extreme than, what was actually observed, <em>assuming that the null hypothesis (<span class="math inline">\(H_0\)</span>) is true</em>. It quantifies the strength of evidence against the null hypothesis.</p></li>
+</ul>
+<section id="interpreting-the-p-value" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-the-p-value">Interpreting the p-value</h3>
+<ul>
+<li><p><strong>If the p-value &lt; <span class="math inline">\(\alpha\)</span>:</strong> This means the observed data is highly improbable if the null hypothesis were true. We consider this a “surprising” effect, suggesting that the data is not just random noise. In this case, we <strong>reject the null hypothesis (<span class="math inline">\(H_0\)</span>)</strong>. This implies there is statistically significant evidence to support the alternative hypothesis.</p></li>
+<li><p><strong>If the p-value &gt; <span class="math inline">\(\alpha\)</span>:</strong> This means the observed data is <em>not</em> surprising under the assumption that the null hypothesis is true. The data is consistent with random variation. In this case, we <strong>fail to reject the null hypothesis (<span class="math inline">\(H_0\)</span>)</strong>. This means there isn’t enough statistically significant evidence to support the alternative hypothesis.</p></li>
+</ul>
+</section>
+<section id="types-of-errors" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-errors">Types of Errors</h3>
+<p>When making a decision about the null hypothesis, there’s always a possibility of making an error:</p>
+<ul>
+<li><p><strong>Type I Error (<span class="math inline">\(\alpha\)</span>):</strong> This occurs when we <strong>reject a true null hypothesis</strong>. It’s a “false positive” – concluding there’s an effect when there isn’t one. The significance level (<span class="math inline">\(\alpha\)</span>) directly controls the probability of making a Type I error.</p></li>
+<li><p><strong>Type II Error (<span class="math inline">\(\beta\)</span>):</strong> This occurs when we <strong>fail to reject a false null hypothesis</strong>. It’s a “false negative” – concluding there’s no effect when there actually is one.</p></li>
+</ul>
+</section>
+<section id="drawing-conclusions" class="level3">
+<h3 class="anchored" data-anchor-id="drawing-conclusions">Drawing Conclusions</h3>
+<p>In hypothesis testing, our conclusions are precise:</p>
+<ul>
+<li>We either <strong>Reject <span class="math inline">\(H_0\)</span></strong> or <strong>Fail to Reject <span class="math inline">\(H_0\)</span></strong>.</li>
+<li>It’s crucial to avoid language that implies absolute proof or disproof. For example, we should never say, “The person is innocent,” but rather, “There is not sufficient evidence to show that the person is guilty.” Similarly, we don’t “accept” the null hypothesis; we simply state that we “fail to reject” it.</li>
+</ul>
+</section>
+<section id="tests-for-comparing-groups" class="level3">
+<h3 class="anchored" data-anchor-id="tests-for-comparing-groups">Tests for Comparing Groups</h3>
+<p>When comparing two independent groups, different statistical tests and formulas for standard error are used based on whether you’re comparing proportions or means.</p>
+<section id="difference-in-means" class="level4">
+<h4 class="anchored" data-anchor-id="difference-in-means">Difference in Means</h4>
+<ul>
+<li><strong>Distribution:</strong> Uses the <strong>t-distribution</strong>.</li>
+<li><strong>Degrees of Freedom (df):</strong> The degrees of freedom are conservatively estimated as the smaller of <span class="math inline">\(n_1-1\)</span> or <span class="math inline">\(n_2-1\)</span>. More precise methods (like Welch’s t-test) use a more complex formula for df.</li>
+<li><strong>Conditions:</strong>
+<ul>
+<li><span class="math inline">\(n_1 \ge 30\)</span> or data from group 1 is approximately normal.</li>
+<li><strong>AND</strong> <span class="math inline">\(n_2 \ge 30\)</span> or data from group 2 is approximately normal.</li>
+</ul></li>
+<li><strong>Standard Error (SE):</strong> The standard error for the difference in means is:</li>
+</ul>
+<p><span class="math display">\[ \text{SE} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}} \]</span></p>
+<p>where <span class="math inline">\(s_1^2\)</span> and <span class="math inline">\(s_2^2\)</span> are the sample variances for group 1 and group 2, respectively, and <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are their respective sample sizes.</p>
+</section>
+<section id="difference-in-proportions" class="level4">
+<h4 class="anchored" data-anchor-id="difference-in-proportions">Difference in Proportions</h4>
+<ul>
+<li><strong>Distribution:</strong> Uses the <strong>Normal distribution</strong>.</li>
+<li><strong>Conditions:</strong> All counts for both groups must be at least 10. That is, for Group 1: <span class="math inline">\(n_1\hat{p}_1 \ge 10\)</span> and <span class="math inline">\(n_1(1-\hat{p}_1) \ge 10\)</span>; and for Group 2: <span class="math inline">\(n_2\hat{p}_2 \ge 10\)</span> and <span class="math inline">\(n_2(1-\hat{p}_2) \ge 10\)</span>.</li>
+<li><strong>Standard Error (SE):</strong> The standard error for the difference in proportions is:</li>
+</ul>
+<p><span class="math display">\[ \text{SE} = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}} \]</span></p>
+<p>where <span class="math inline">\(\hat{p}_1\)</span> and <span class="math inline">\(\hat{p}_2\)</span> are the sample proportions for group 1 and group 2, respectively, and <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are their respective sample sizes.</p>
 <!--#################################################-->
+</section>
+</section>
 </section>
 </section>
 <section id="data-modelling" class="level1">
