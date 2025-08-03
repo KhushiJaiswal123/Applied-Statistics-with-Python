@@ -8,7 +8,7 @@ jupyter: python3
 ---
 
 
-# **Resources**
+
 ::: {.callout-tip collapse=false}
 
 ## Contents
