@@ -1,24 +1,69 @@
 ---
-title: "Applied Statistics with Python"
+toc: false # Add this line to disable the Table of Contents for this page
 ---
+<div style="background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%); color: white; padding: 50px 30px; border-radius: 12px; text-align: center; margin: 0px 0 0px 0; position: relative; top: -10px;">
 
+<h3 style="font-size: 1.1em; margin-bottom: 0px; opacity: 0.9;">Welcome to AM01</h3>
+<p style="color: white; margin-bottom: 20px; font-size: 2em;">Applied Statistics with Python</p>
+<p style="font-size: 1em; opacity: 0.8;">This website is your comprehensive guide to understanding, analyzing, and leveraging data effectively. Whether you're a beginner curious about data or looking to deepen your analytical skills, you'll find the tools and knowledge you need right here.</p>
+</div>
+
+## What You'll Explore
+
+::: {.columns}
+
+::: {.column width="33%"}
+<div style="background: white; padding: 35px 25px; border-radius: 12px; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-top: 4px solid #28a745; transition: transform 0.3s ease;">
+<div style="font-size: 3em; margin-bottom: 15px; text-align: center;">📊</div>
+<h3 style="color: #28a745; margin-bottom: 20px; text-align: center; font-size: 1.3em;">Exploratory Data Analysis</h3>
+<p style="line-height: 1.7; color: #6c757d; text-align: center;">Learn how to inspect, clean, and visualize your data to uncover hidden patterns, identify anomalies, and formulate initial hypotheses. Get to know your data inside and out.</p>
+</div>
+:::
+
+::: {.column width="33%"}
+<div style="background: white; padding: 35px 25px; border-radius: 12px; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-top: 4px solid #dc3545; transition: transform 0.3s ease;">
+<div style="font-size: 3em; margin-bottom: 15px; text-align: center;">🧠</div>
+<h3 style="color: #dc3545; margin-bottom: 20px; text-align: center; font-size: 1.3em;">Statistical Inference</h3>
+<p style="line-height: 1.7; color: #6c757d; text-align: center;">Dive into making informed decisions about populations based on sample data. Master probability distributions, confidence intervals, and hypothesis testing.</p>
+</div>
+:::
+
+::: {.column width="33%"}
+<div style="background: white; padding: 35px 25px; border-radius: 12px; height: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-top: 4px solid #ffc107; transition: transform 0.3s ease;">
+<div style="font-size: 3em; margin-bottom: 15px; text-align: center;">💻</div>
+<h3 style="color: #e68900; margin-bottom: 20px; text-align: center; font-size: 1.3em;">Data Modelling</h3>
+<p style="line-height: 1.7; color: #6c757d; text-align: center;">Build and interpret statistical models that explain relationships and make predictions. Master correlation, linear regression, and real-world problem solving.</p>
+</div>
+:::
+
+:::
+
+<h2 style="margin-top: 0px; padding-top: 60px;"></h2>
 
 ::: {.columns}
   
 ::: {.column width="33%"}
-### Instructor
-****
-
+<div style="text-align: center; padding: 30px 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+<div style="font-size: 2.5em; margin-bottom: 15px;">👨‍🏫</div>
+<h3 style="color: #007BFF; margin-bottom: 15px; font-size: 1.2em;">Instructor</h3>
+<p style="color: #6c757d; line-height: 1.6;">-----------------------</p>
+</div>
 :::
 
 ::: {.column width="33%"}
-### Course details 
-**** 
+<div style="text-align: center; padding: 30px 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+<div style="font-size: 2.5em; margin-bottom: 15px;">📚</div>
+<h3 style="color: #007BFF; margin-bottom: 15px; font-size: 1.2em;">Course Details</h3>
+<p style="color: #6c757d; line-height: 1.6;">----------------------------------</p>
+</div>
 :::
 
 ::: {.column width="33%"}
-### Contact me  
-****
+<div style="text-align: center; padding: 30px 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+<div style="font-size: 2.5em; margin-bottom: 15px;">🚀</div>
+<h3 style="color: #007BFF; margin-bottom: 15px; font-size: 1.2em;">Contact Me</h3>
+<p style="color: #6c757d; line-height: 1.6;">------------------------------------------</p>
+</div>
 :::
 
 :::

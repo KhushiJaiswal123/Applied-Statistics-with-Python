@@ -149,9 +149,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Applied Statistics with Python",
+    "title": "Applied Statistics",
     "section": "",
-    "text": "Instructor\n\n\n\n\nCourse details\n\n\n\n\nContact me"
+    "text": "Applied Statistics with Python\n\n\nThis website is your comprehensive guide to understanding, analyzing, and leveraging data effectively. Whether you’re a beginner curious about data or looking to deepen your analytical skills, you’ll find the tools and knowledge you need right here."
   },
   {
     "objectID": "Schedule.html",
@@ -236,5 +236,19 @@
     "title": "Examples",
     "section": "Examples of Regression Applications",
     "text": "Examples of Regression Applications\nRegression models are widely used. Examples include:\n\nBrexit Data Models: Analyzing factors influencing “leave share” in the Brexit referendum, considering variables like born_in_uk, degree, and age_18to24. These models often involve assessing correlations between variables.\nEarnings and Height/Gender: Investigating if height and gender impact earnings. This highlights the importance of considering confounding variables that might bias estimates if omitted from the model.\nPick-up Time Analysis: Modelling the relationship between average pick-up times, number of drivers, and surge price in a mobility platform."
+  },
+  {
+    "objectID": "index.html#what-youll-explore",
+    "href": "index.html#what-youll-explore",
+    "title": "Applied Statistics",
+    "section": "What You’ll Explore",
+    "text": "What You’ll Explore\n\n\n\n\n📊\n\n\nExploratory Data Analysis\n\n\nLearn how to inspect, clean, and visualize your data to uncover hidden patterns, identify anomalies, and formulate initial hypotheses. Get to know your data inside and out.\n\n\n\n\n\n🧠\n\n\nStatistical Inference\n\n\nDive into making informed decisions about populations based on sample data. Master probability distributions, confidence intervals, and hypothesis testing.\n\n\n\n\n\n💻\n\n\nData Modelling\n\n\nBuild and interpret statistical models that explain relationships and make predictions. Master correlation, linear regression, and real-world problem solving.\n\n\n\n\n\n\n\n\n\n\n👨‍🏫\n\n\nInstructor\n\n\n———————–\n\n\n\n\n\n📚\n\n\nCourse Details\n\n\n———————————-\n\n\n\n\n\n🚀\n\n\nContact Me\n\n\n——————————————"
+  },
+  {
+    "objectID": "index.html#happy-learning",
+    "href": "index.html#happy-learning",
+    "title": "Applied Statistics with Python",
+    "section": "Happy learning :)",
+    "text": "Happy learning :)\n\n\n\n\n👨‍🏫\n\n\nInstruction\n\n\n———————–\n\n\n\n\n\n📚\n\n\nCourse Details\n\n\n———————————-\n\n\n\n\n\n🚀\n\n\nContact Me\n\n\n——————————————"
   }
 ]
