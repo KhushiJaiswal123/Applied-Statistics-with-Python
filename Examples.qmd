@@ -1414,7 +1414,6 @@ This section will introduce the core ideas behind statistical inference, explain
 
 
 <!--#################################################-->
-
 ## Probability Distributions {#probdist}
 Probability distributions are fundamental to statistical inference. They describe how data is spread and form the basis for many statistical tests.
 
@@ -1446,6 +1445,7 @@ Probability distributions are fundamental to statistical inference. They describ
 The Normal is just 1 distributions, there are many such distributions including Uniform, Binomial, Exponential, and Log-Normal distributions (But we will not be looking at any of these other distributions)
 
 <!--#################################################-->
+
 
 
 ## Confidence Intervals {#confidenceIntervals}
@@ -1497,6 +1497,7 @@ Bootstrap Estimation: Can be used for confidence intervals. The process involves
 
 
 <!--#################################################-->
+
 
 ## Hypothesis Testing {#HypTesting}
 
@@ -1572,5 +1573,216 @@ where $\hat{p}_1$ and $\hat{p}_2$ are the sample proportions for group 1 and gro
 
 <!--#################################################-->
 
-
 # **Data Modelling**
+
+<!--#################################################-->
+
+::: {.callout-tip collapse=false}
+## Contents
+- [Introduction](#DMintro)
+- [Classical Machine Learning](#classical-ml)
+- [The Modelling Process](#modelling-process)
+- [Understanding Relationships: Correlation](#correlation)
+- [Regression Models](#regression-models)
+- [Finding the Best Fit: Ordinary Least Squares (OLS)](#ols)
+- [Splitting Variability: Coefficient of Determination ($R^2$)](#r-squared)
+- [Sampling Error in Regression and Significance of Estimates](#sampling-error)
+- [Prediction Intervals](#prediction-intervals)
+- [Collinearity](#collinearity)
+- [Categorical Variables](#categorical-variables)
+- [Examples of Regression Applications](#regression-applications)
+
+:::
+
+### Introduction {#DMintro}
+Data modelling is a crucial step in understanding relationships between variables and building predictive or explanatory frameworks. It moves beyond simple descriptive statistics to develop models that can analyze performance, forecast trends, and make informed decisions in various business applications, such as targeting customers, credit scoring, understanding market share drivers, and forecasting sales. The primary objective is to determine how much of the variability in data can be explained by a model versus random error.
+
+---
+
+### Classical Machine Learning {#classical-ml}
+
+Data modelling often falls under the umbrella of machine learning, which can be broadly categorized into:
+
+* **Supervised Learning:** Deals with labelled datd e.g. pre-categorized/numerical data to predict an outcome.
+    * **Classification:** Predicts a category (e.g., "Divide the socks by color").
+    * **Regression:** Predicts a number (e.g., "Divide the ties by length").
+
+* **Unsupervised Learning:** Works with unlabeled data to find inherent structures or relationships.
+    * **Clustering:** Divides data by similarity (e.g., "Split up similar clothing into stacks").
+    * **Association:** Identifies sequences or hidden dependencies (e.g., "Find what clothes I often wear together").
+    * **Dimension Reduction:** Focuses on generalization (e.g., "Make the best outfits from the given clothes").
+
+---
+
+### The Modelling Process {#modelling-process}
+
+A typical data modelling process involves several stages:
+
+* **Import:** Read the data.
+
+* **Inspect:** Understand variable definitions, units, and identify data issues such as missing values or incorrect entries.
+
+* **Clean:** Address missing values (e.g., impute) and correctly code variables (numerical, factors, dates). Data may need to be rearranged into a tidy format using functions that we have previously learnt about.
+
+* **Explore (Exploratory Data Analysis - EDA):** Articulate hypotheses, discuss with experts, and use visual tools like correlation charts, histograms, and scatter plots to understand the data's patterns. This is critical to "get a feel" for the data and spot potential problems.
+
+---
+
+### Understanding Relationships: Correlation {#correlation}
+
+Before building complex models, it's essential to understand the relationships between individual variables.
+
+### What is Correlation?
+
+**Correlation** measures how closely two variables are related and the direction of their relationship. It indicates whether variables tend to move in the same (positive relationship) or opposite (negative relationship) direction.
+
+The **Pearson correlation coefficient ($r_{xy}$)** is calculated using the formula:
+
+$$ r_{xy} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2 \sum_{i=1}^{n}(y_i - \bar{y})^2}} $$
+
+### Key Properties of Correlation:
+
+* It is always between -1 and +1.
+* A value of **+1** indicates a **perfect positive correlation** (variables move together in the same direction).
+* A value of **-1** indicates a **perfect negative correlation** (variables move in opposite directions).
+* A correlation of **zero** implies no linear relationship between the variables.
+
+
+### Interpreting Correlation Strength:
+
+* **0:** No relationship
+* **0.01-0.19:** Little to no relationship
+* **0.20-0.29:** Weak relationship
+* **0.30-0.39:** Moderate relationship
+* **0.40-0.69:** Strong relationship
+* **0.70-0.99:** Very strong relationship
+* **1:** Perfect relationship
+
+### Visualizing Correlation:
+
+**Scatter plots** are essential for visualizing relationships and can reveal non-linear patterns even if the correlation coefficient is moderate.
+
+![](Images/correlations.png)
+
+---
+
+### Regression Models {#regression-models}
+
+**Regression analysis** is used to find actual relationships between variables and to forecast or explain outcomes.
+
+### Purposes of Regression:
+
+* **Prediction:** Focuses on forecasting future outcomes (Y). The goal is to make the best prediction of Y, often including many variables (e.g., predicting the price of a used car, guessing your next Netflix show).
+* **Explanation:** Focuss on understanding the effect of specific explanatory variables (X) on the outcome (Y). This requires a theoretical reason for including each variable (e.g., effect of mileage on car price, effect of time of day on show selection).
+
+### Terminology:
+
+| Variable you want to explain or predict | Variable to help you explain changes in Y |
+| :-------------------------------------- | :---------------------------------------- |
+| Outcome variable                        | Explanatory variable                      |
+| Response variable                       | Predictor variable                        |
+| **Dependent variable (Y)** | **Independent variable (X or Xs)** |
+| Target variable                         | Regressor                                 |
+| Export to Sheets                        |                                           |
+
+### Linear Regression Equation
+
+A simple linear regression model estimates the relationship between two variables using a straight line. The equation is typically represented as:
+
+$$ y = \beta_0 + \beta_1 x_1 + \epsilon $$
+
+Or, more simply:
+
+$$ y = mx + b $$
+
+Where:
+
+* $y$: The dependent/outcome variable.
+* $x$ (or $x_1$): The independent/explanatory variable.
+* $m$ (or $\beta_1$): The slope or gradient, representing the change in $y$ for a one-unit change in $x$.
+* $b$ (or $\beta_0$): The y-intercept, the predicted value of $y$ when $x$ is zero.
+* $\epsilon$: The error term or residual, representing the difference between the observed $y$ value and the value predicted by the model.
+
+**Multiple regression** involves multiple explanatory variables.
+
+---
+
+### Finding the Best Fit: Ordinary Least Squares {#OLS}
+
+The **Ordinary Least Squares (OLS)** algorithm is used to find the "best-fitting" line by determining the parameters (slope and intercept) that satisfy two conditions:
+
+* The **average error is zero**: Under-estimates and over-estimates cancel out, ensuring no bias. This also means the regression line passes through the point of the average x-value and average y-value ($\bar{x}, \bar{y}$).
+* The **average squared error is as small as possible**: This minimizes the scatter of points around the line, making the standard deviation of the residual errors as small as possible.
+
+---
+
+### Splitting Variability: Coefficient of Determination ($R^2$) {#r-squared}
+
+Regression models aim to explain the total variability in the dependent variable (Y). This variability can be split into parts explained by the model and parts remaining as error.
+
+* **SST (Total Sum of Squares):** Total variability between Y variable values and the mean value of Y.
+* **SSR (Residual Sum of Squares):** Residual/Error variability, the variability between the regression model and the actual data.
+* **SSM (Model Sum of Squares):** Model variability, the difference in variability between the model and the mean.
+
+The relationship is: $SST_{Total} = SSM_{Model} + SSR_{Residual}$
+
+**$R^2$ (R-squared)** is the proportion of the total variability of Y that is explained by the model. It is calculated as:
+
+$$ R^2 = \frac{SSM}{SST} $$
+
+$R^2$ ranges from 0% to 100%. A higher $R^2$ indicates that the model explains a larger proportion of the variance in the dependent variable. **Adjusted $R^2$** accounts for the number of observations and independent variables, providing a more robust measure of fit.
+
+---
+
+### Sampling Error in Regression and Significance of Estimates {#sampling-error}
+
+Since regression parameters (coefficients $b_0$ and $b_1$ or $\beta_0$ and $\beta_1$) are estimated from a sample, they are subject to sampling error. To determine if an explanatory variable "really" matters or if its coefficient estimate is due to random sampling error, we perform a hypothesis test:
+
+* **Null Hypothesis ($H_0$):** The coefficient of the explanatory variable is 0 (i.e., the variable has no effect on Y).
+* **Alternative Hypothesis ($H_A$):** The coefficient of the explanatory variable is not 0 (i.e., the variable has a significant effect on Y).
+
+We use the **t-value** and **p-value** to assess significance:
+
+* **t-value:** Measures how many standard errors the coefficient estimate is away from zero. If $|t-\text{value}| > 2$ (or less than -2), the coefficient estimate is considered "very far" from 0.
+* **p-value:** The probability of observing a coefficient estimate as extreme as, or more extreme than, what was observed, assuming the null hypothesis is true. If the p-value is less than the chosen significance level (e.g., 5%), we reject the null hypothesis, concluding the coefficient is statistically significant.
+
+---
+
+### Prediction Intervals {#prediction-intervals}
+
+After obtaining a regression model, you can predict values for Y based on new X values. An approximate 95% prediction interval for a predicted value is typically calculated as:
+
+$$ \text{Predicted value} \pm 2 * \text{SE} $$
+
+Where $\text{SE}$ is the standard error of the estimate, or standard deviation of residuals.
+
+---
+
+### Collinearity {#collinearity}
+
+**Collinearity** occurs when two or more explanatory variables in a regression model are highly correlated with each other. This can cause problems in estimating the individual effects of the correlated variables. A common indicator of problematic collinearity is a **Variance Inflation Factor (VIF) > 10** for a variable, suggesting it might need to be dropped and the regression re-run.
+
+---
+
+### Categorical Variables {#categorical-variables}
+
+Regression models can also incorporate **categorical variables** (e.g., gender, region) in addition to numerical ones.
+
+---
+
+## Examples of Regression Applications {#regression-applications}
+
+Regression models are widely used. Examples include:
+
+* **Brexit Data Models:** Analyzing factors influencing "leave share" in the Brexit referendum, considering variables like `born_in_uk`, `degree`, and `age_18to24`. These models often involve assessing correlations between variables.
+* **Earnings and Height/Gender:** Investigating if height and gender impact earnings. This highlights the importance of considering confounding variables that might bias estimates if omitted from the model.
+* **Pick-up Time Analysis:** Modelling the relationship between average pick-up times, number of drivers, and surge price in a mobility platform.
+
+
+
+
+
+
+
+
+

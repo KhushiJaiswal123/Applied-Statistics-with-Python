@@ -224,7 +224,28 @@ window.Quarto = {
   <li><a href="#tests-for-comparing-groups" id="toc-tests-for-comparing-groups" class="nav-link" data-scroll-target="#tests-for-comparing-groups">Tests for Comparing Groups</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#data-modelling" id="toc-data-modelling" class="nav-link" data-scroll-target="#data-modelling"><strong>Data Modelling</strong></a></li>
+  <li><a href="#data-modelling" id="toc-data-modelling" class="nav-link" data-scroll-target="#data-modelling"><strong>Data Modelling</strong></a>
+  <ul class="collapse">
+  <li><a href="#DMintro" id="toc-DMintro" class="nav-link" data-scroll-target="#DMintro">Introduction</a></li>
+  <li><a href="#classical-ml" id="toc-classical-ml" class="nav-link" data-scroll-target="#classical-ml">Classical Machine Learning</a></li>
+  <li><a href="#modelling-process" id="toc-modelling-process" class="nav-link" data-scroll-target="#modelling-process">The Modelling Process</a></li>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation">Understanding Relationships: Correlation</a></li>
+  <li><a href="#what-is-correlation" id="toc-what-is-correlation" class="nav-link" data-scroll-target="#what-is-correlation">What is Correlation?</a></li>
+  <li><a href="#key-properties-of-correlation" id="toc-key-properties-of-correlation" class="nav-link" data-scroll-target="#key-properties-of-correlation">Key Properties of Correlation:</a></li>
+  <li><a href="#interpreting-correlation-strength" id="toc-interpreting-correlation-strength" class="nav-link" data-scroll-target="#interpreting-correlation-strength">Interpreting Correlation Strength:</a></li>
+  <li><a href="#visualizing-correlation" id="toc-visualizing-correlation" class="nav-link" data-scroll-target="#visualizing-correlation">Visualizing Correlation:</a></li>
+  <li><a href="#regression-models" id="toc-regression-models" class="nav-link" data-scroll-target="#regression-models">Regression Models</a></li>
+  <li><a href="#purposes-of-regression" id="toc-purposes-of-regression" class="nav-link" data-scroll-target="#purposes-of-regression">Purposes of Regression:</a></li>
+  <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology">Terminology:</a></li>
+  <li><a href="#linear-regression-equation" id="toc-linear-regression-equation" class="nav-link" data-scroll-target="#linear-regression-equation">Linear Regression Equation</a></li>
+  <li><a href="#OLS" id="toc-OLS" class="nav-link" data-scroll-target="#OLS">Finding the Best Fit: Ordinary Least Squares</a></li>
+  <li><a href="#r-squared" id="toc-r-squared" class="nav-link" data-scroll-target="#r-squared">Splitting Variability: Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</a></li>
+  <li><a href="#sampling-error" id="toc-sampling-error" class="nav-link" data-scroll-target="#sampling-error">Sampling Error in Regression and Significance of Estimates</a></li>
+  <li><a href="#prediction-intervals" id="toc-prediction-intervals" class="nav-link" data-scroll-target="#prediction-intervals">Prediction Intervals</a></li>
+  <li><a href="#collinearity" id="toc-collinearity" class="nav-link" data-scroll-target="#collinearity">Collinearity</a></li>
+  <li><a href="#categorical-variables" id="toc-categorical-variables" class="nav-link" data-scroll-target="#categorical-variables">Categorical Variables</a></li>
+  <li><a href="#regression-applications" id="toc-regression-applications" class="nav-link" data-scroll-target="#regression-applications">Examples of Regression Applications</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -1732,8 +1753,237 @@ Contents
 </section>
 <section id="data-modelling" class="level1">
 <h1><strong>Data Modelling</strong></h1>
+<!--#################################################-->
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Contents
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="#DMintro">Introduction</a></li>
+<li><a href="#classical-ml">Classical Machine Learning</a></li>
+<li><a href="#modelling-process">The Modelling Process</a></li>
+<li><a href="#correlation">Understanding Relationships: Correlation</a></li>
+<li><a href="#regression-models">Regression Models</a></li>
+<li><a href="#ols">Finding the Best Fit: Ordinary Least Squares (OLS)</a></li>
+<li><a href="#r-squared">Splitting Variability: Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</a></li>
+<li><a href="#sampling-error">Sampling Error in Regression and Significance of Estimates</a></li>
+<li><a href="#prediction-intervals">Prediction Intervals</a></li>
+<li><a href="#collinearity">Collinearity</a></li>
+<li><a href="#categorical-variables">Categorical Variables</a></li>
+<li><a href="#regression-applications">Examples of Regression Applications</a></li>
+</ul>
+</div>
+</div>
+</div>
+<section id="DMintro" class="level3">
+<h3 class="anchored" data-anchor-id="DMintro">Introduction</h3>
+<p>Data modelling is a crucial step in understanding relationships between variables and building predictive or explanatory frameworks. It moves beyond simple descriptive statistics to develop models that can analyze performance, forecast trends, and make informed decisions in various business applications, such as targeting customers, credit scoring, understanding market share drivers, and forecasting sales. The primary objective is to determine how much of the variability in data can be explained by a model versus random error.</p>
+<hr>
+</section>
+<section id="classical-ml" class="level3">
+<h3 class="anchored" data-anchor-id="classical-ml">Classical Machine Learning</h3>
+<p>Data modelling often falls under the umbrella of machine learning, which can be broadly categorized into:</p>
+<ul>
+<li><strong>Supervised Learning:</strong> Deals with labelled datd e.g.&nbsp;pre-categorized/numerical data to predict an outcome.
+<ul>
+<li><strong>Classification:</strong> Predicts a category (e.g., “Divide the socks by color”).</li>
+<li><strong>Regression:</strong> Predicts a number (e.g., “Divide the ties by length”).</li>
+</ul></li>
+<li><strong>Unsupervised Learning:</strong> Works with unlabeled data to find inherent structures or relationships.
+<ul>
+<li><strong>Clustering:</strong> Divides data by similarity (e.g., “Split up similar clothing into stacks”).</li>
+<li><strong>Association:</strong> Identifies sequences or hidden dependencies (e.g., “Find what clothes I often wear together”).</li>
+<li><strong>Dimension Reduction:</strong> Focuses on generalization (e.g., “Make the best outfits from the given clothes”).</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="modelling-process" class="level3">
+<h3 class="anchored" data-anchor-id="modelling-process">The Modelling Process</h3>
+<p>A typical data modelling process involves several stages:</p>
+<ul>
+<li><p><strong>Import:</strong> Read the data.</p></li>
+<li><p><strong>Inspect:</strong> Understand variable definitions, units, and identify data issues such as missing values or incorrect entries.</p></li>
+<li><p><strong>Clean:</strong> Address missing values (e.g., impute) and correctly code variables (numerical, factors, dates). Data may need to be rearranged into a tidy format using functions that we have previously learnt about.</p></li>
+<li><p><strong>Explore (Exploratory Data Analysis - EDA):</strong> Articulate hypotheses, discuss with experts, and use visual tools like correlation charts, histograms, and scatter plots to understand the data’s patterns. This is critical to “get a feel” for the data and spot potential problems.</p></li>
+</ul>
+<hr>
+</section>
+<section id="correlation" class="level3">
+<h3 class="anchored" data-anchor-id="correlation">Understanding Relationships: Correlation</h3>
+<p>Before building complex models, it’s essential to understand the relationships between individual variables.</p>
+</section>
+<section id="what-is-correlation" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-correlation">What is Correlation?</h3>
+<p><strong>Correlation</strong> measures how closely two variables are related and the direction of their relationship. It indicates whether variables tend to move in the same (positive relationship) or opposite (negative relationship) direction.</p>
+<p>The <strong>Pearson correlation coefficient (<span class="math inline">\(r_{xy}\)</span>)</strong> is calculated using the formula:</p>
+<p><span class="math display">\[ r_{xy} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2 \sum_{i=1}^{n}(y_i - \bar{y})^2}} \]</span></p>
+</section>
+<section id="key-properties-of-correlation" class="level3">
+<h3 class="anchored" data-anchor-id="key-properties-of-correlation">Key Properties of Correlation:</h3>
+<ul>
+<li>It is always between -1 and +1.</li>
+<li>A value of <strong>+1</strong> indicates a <strong>perfect positive correlation</strong> (variables move together in the same direction).</li>
+<li>A value of <strong>-1</strong> indicates a <strong>perfect negative correlation</strong> (variables move in opposite directions).</li>
+<li>A correlation of <strong>zero</strong> implies no linear relationship between the variables.</li>
+</ul>
+</section>
+<section id="interpreting-correlation-strength" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-correlation-strength">Interpreting Correlation Strength:</h3>
+<ul>
+<li><strong>0:</strong> No relationship</li>
+<li><strong>0.01-0.19:</strong> Little to no relationship</li>
+<li><strong>0.20-0.29:</strong> Weak relationship</li>
+<li><strong>0.30-0.39:</strong> Moderate relationship</li>
+<li><strong>0.40-0.69:</strong> Strong relationship</li>
+<li><strong>0.70-0.99:</strong> Very strong relationship</li>
+<li><strong>1:</strong> Perfect relationship</li>
+</ul>
+</section>
+<section id="visualizing-correlation" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-correlation">Visualizing Correlation:</h3>
+<p><strong>Scatter plots</strong> are essential for visualizing relationships and can reveal non-linear patterns even if the correlation coefficient is moderate.</p>
+<p><img src="Images/correlations.png" class="img-fluid"></p>
+<hr>
+</section>
+<section id="regression-models" class="level3">
+<h3 class="anchored" data-anchor-id="regression-models">Regression Models</h3>
+<p><strong>Regression analysis</strong> is used to find actual relationships between variables and to forecast or explain outcomes.</p>
+</section>
+<section id="purposes-of-regression" class="level3">
+<h3 class="anchored" data-anchor-id="purposes-of-regression">Purposes of Regression:</h3>
+<ul>
+<li><strong>Prediction:</strong> Focuses on forecasting future outcomes (Y). The goal is to make the best prediction of Y, often including many variables (e.g., predicting the price of a used car, guessing your next Netflix show).</li>
+<li><strong>Explanation:</strong> Focuss on understanding the effect of specific explanatory variables (X) on the outcome (Y). This requires a theoretical reason for including each variable (e.g., effect of mileage on car price, effect of time of day on show selection).</li>
+</ul>
+</section>
+<section id="terminology" class="level3">
+<h3 class="anchored" data-anchor-id="terminology">Terminology:</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 48%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable you want to explain or predict</th>
+<th style="text-align: left;">Variable to help you explain changes in Y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Outcome variable</td>
+<td style="text-align: left;">Explanatory variable</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Response variable</td>
+<td style="text-align: left;">Predictor variable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Dependent variable (Y)</strong></td>
+<td style="text-align: left;"><strong>Independent variable (X or Xs)</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Target variable</td>
+<td style="text-align: left;">Regressor</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Export to Sheets</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="linear-regression-equation" class="level3">
+<h3 class="anchored" data-anchor-id="linear-regression-equation">Linear Regression Equation</h3>
+<p>A simple linear regression model estimates the relationship between two variables using a straight line. The equation is typically represented as:</p>
+<p><span class="math display">\[ y = \beta_0 + \beta_1 x_1 + \epsilon \]</span></p>
+<p>Or, more simply:</p>
+<p><span class="math display">\[ y = mx + b \]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(y\)</span>: The dependent/outcome variable.</li>
+<li><span class="math inline">\(x\)</span> (or <span class="math inline">\(x_1\)</span>): The independent/explanatory variable.</li>
+<li><span class="math inline">\(m\)</span> (or <span class="math inline">\(\beta_1\)</span>): The slope or gradient, representing the change in <span class="math inline">\(y\)</span> for a one-unit change in <span class="math inline">\(x\)</span>.</li>
+<li><span class="math inline">\(b\)</span> (or <span class="math inline">\(\beta_0\)</span>): The y-intercept, the predicted value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x\)</span> is zero.</li>
+<li><span class="math inline">\(\epsilon\)</span>: The error term or residual, representing the difference between the observed <span class="math inline">\(y\)</span> value and the value predicted by the model.</li>
+</ul>
+<p><strong>Multiple regression</strong> involves multiple explanatory variables.</p>
+<hr>
+</section>
+<section id="OLS" class="level3">
+<h3 class="anchored" data-anchor-id="OLS">Finding the Best Fit: Ordinary Least Squares</h3>
+<p>The <strong>Ordinary Least Squares (OLS)</strong> algorithm is used to find the “best-fitting” line by determining the parameters (slope and intercept) that satisfy two conditions:</p>
+<ul>
+<li>The <strong>average error is zero</strong>: Under-estimates and over-estimates cancel out, ensuring no bias. This also means the regression line passes through the point of the average x-value and average y-value (<span class="math inline">\(\bar{x}, \bar{y}\)</span>).</li>
+<li>The <strong>average squared error is as small as possible</strong>: This minimizes the scatter of points around the line, making the standard deviation of the residual errors as small as possible.</li>
+</ul>
+<hr>
+</section>
+<section id="r-squared" class="level3">
+<h3 class="anchored" data-anchor-id="r-squared">Splitting Variability: Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</h3>
+<p>Regression models aim to explain the total variability in the dependent variable (Y). This variability can be split into parts explained by the model and parts remaining as error.</p>
+<ul>
+<li><strong>SST (Total Sum of Squares):</strong> Total variability between Y variable values and the mean value of Y.</li>
+<li><strong>SSR (Residual Sum of Squares):</strong> Residual/Error variability, the variability between the regression model and the actual data.</li>
+<li><strong>SSM (Model Sum of Squares):</strong> Model variability, the difference in variability between the model and the mean.</li>
+</ul>
+<p>The relationship is: <span class="math inline">\(SST_{Total} = SSM_{Model} + SSR_{Residual}\)</span></p>
+<p><strong><span class="math inline">\(R^2\)</span> (R-squared)</strong> is the proportion of the total variability of Y that is explained by the model. It is calculated as:</p>
+<p><span class="math display">\[ R^2 = \frac{SSM}{SST} \]</span></p>
+<p><span class="math inline">\(R^2\)</span> ranges from 0% to 100%. A higher <span class="math inline">\(R^2\)</span> indicates that the model explains a larger proportion of the variance in the dependent variable. <strong>Adjusted <span class="math inline">\(R^2\)</span></strong> accounts for the number of observations and independent variables, providing a more robust measure of fit.</p>
+<hr>
+</section>
+<section id="sampling-error" class="level3">
+<h3 class="anchored" data-anchor-id="sampling-error">Sampling Error in Regression and Significance of Estimates</h3>
+<p>Since regression parameters (coefficients <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> or <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>) are estimated from a sample, they are subject to sampling error. To determine if an explanatory variable “really” matters or if its coefficient estimate is due to random sampling error, we perform a hypothesis test:</p>
+<ul>
+<li><strong>Null Hypothesis (<span class="math inline">\(H_0\)</span>):</strong> The coefficient of the explanatory variable is 0 (i.e., the variable has no effect on Y).</li>
+<li><strong>Alternative Hypothesis (<span class="math inline">\(H_A\)</span>):</strong> The coefficient of the explanatory variable is not 0 (i.e., the variable has a significant effect on Y).</li>
+</ul>
+<p>We use the <strong>t-value</strong> and <strong>p-value</strong> to assess significance:</p>
+<ul>
+<li><strong>t-value:</strong> Measures how many standard errors the coefficient estimate is away from zero. If <span class="math inline">\(|t-\text{value}| &gt; 2\)</span> (or less than -2), the coefficient estimate is considered “very far” from 0.</li>
+<li><strong>p-value:</strong> The probability of observing a coefficient estimate as extreme as, or more extreme than, what was observed, assuming the null hypothesis is true. If the p-value is less than the chosen significance level (e.g., 5%), we reject the null hypothesis, concluding the coefficient is statistically significant.</li>
+</ul>
+<hr>
+</section>
+<section id="prediction-intervals" class="level3">
+<h3 class="anchored" data-anchor-id="prediction-intervals">Prediction Intervals</h3>
+<p>After obtaining a regression model, you can predict values for Y based on new X values. An approximate 95% prediction interval for a predicted value is typically calculated as:</p>
+<p><span class="math display">\[ \text{Predicted value} \pm 2 * \text{SE} \]</span></p>
+<p>Where <span class="math inline">\(\text{SE}\)</span> is the standard error of the estimate, or standard deviation of residuals.</p>
+<hr>
+</section>
+<section id="collinearity" class="level3">
+<h3 class="anchored" data-anchor-id="collinearity">Collinearity</h3>
+<p><strong>Collinearity</strong> occurs when two or more explanatory variables in a regression model are highly correlated with each other. This can cause problems in estimating the individual effects of the correlated variables. A common indicator of problematic collinearity is a <strong>Variance Inflation Factor (VIF) &gt; 10</strong> for a variable, suggesting it might need to be dropped and the regression re-run.</p>
+<hr>
+</section>
+<section id="categorical-variables" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h3>
+<p>Regression models can also incorporate <strong>categorical variables</strong> (e.g., gender, region) in addition to numerical ones.</p>
+<hr>
+</section>
+<section id="regression-applications" class="level2">
+<h2 class="anchored" data-anchor-id="regression-applications">Examples of Regression Applications</h2>
+<p>Regression models are widely used. Examples include:</p>
+<ul>
+<li><strong>Brexit Data Models:</strong> Analyzing factors influencing “leave share” in the Brexit referendum, considering variables like <code>born_in_uk</code>, <code>degree</code>, and <code>age_18to24</code>. These models often involve assessing correlations between variables.</li>
+<li><strong>Earnings and Height/Gender:</strong> Investigating if height and gender impact earnings. This highlights the importance of considering confounding variables that might bias estimates if omitted from the model.</li>
+<li><strong>Pick-up Time Analysis:</strong> Modelling the relationship between average pick-up times, number of drivers, and surge price in a mobility platform.</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
