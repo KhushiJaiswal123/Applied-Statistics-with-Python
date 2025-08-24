@@ -28,7 +28,6 @@ Here’s your roadmap for the course
 
 * **Content** [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd): This contains the readings, slides, data files, etc. for each session. These will also be added on Canvas on the day of each session. It helps to read the material before each session.
 * **Example** [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) : This page contains worked examples of fully annotated R code that you can use as a reference. This is only a reference page—you don’t have to necessarily do anything here.
-* **Exercise** [(<span class="fa-solid fa-chalkboard-user"></span>)](Exercises.qmd): These are interactive exercises where you have to provide R code in your browser to solve a problem, much like Datacamp. These are not graded, but are always there for your reference.
 * **Assignment** [(<span class="fa-solid fa-pen-ruler"></span>)](Assignments.qmd): This page contains instructions for the three workshop exercises (3-4 brief tasks plus a challenge), for the individual portfolio website project, and the final group project. 
 
 
@@ -37,27 +36,27 @@ Assignments are due by **11:59 PM UTC on the day they’re listed.**
 
 
 
-| Week | Date             | Session                                                   | Content | Example | Exercise | Assignment    |
-|------|------------------|-----------------------------------------------------------|---------|---------|----------|---------------|
+| Week | Date             | Session                                                   | Content | Example | Assignment    |
+|------|------------------|-----------------------------------------------------------|---------|---------|---------------|
 | **Foundations: EDA and Intro to Data Science** |
-| 1    | 28^th^ Aug | Lecture 1: Exploratory Data Analysis                      | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | [(<span class="fa-solid fa-chalkboard-user"></span>)](Exercises.qmd) | - |
-| 2    | 28^th^ Aug | Workshop 1: Import, visualise, and manipulate data        | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | [(<span class="fa-solid fa-chalkboard-user"></span>)](Exercises.qmd) | - |
-|      | 29^th^ Aug |                   Homework 1 due                          | -  | -  | - | [(<span class="fa-solid fa-pen-ruler"></span>)](Assignments.qmd) |
+| 1    | 28^th^ Aug | Lecture 1: Exploratory Data Analysis                      | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - |
+| 2    | 28^th^ Aug | Workshop 1: Import, visualise, and manipulate data        | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - |
+|      | 29^th^ Aug |                   Homework 1 due                          | -  | - | [(<span class="fa-solid fa-pen-ruler"></span>)](Assignments.qmd) |
 | **Inferential Statistics**                                                                                                          |
-| 3    | 30^th^ Aug | Lecture 2: Sampling and Probability Distributions          | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | [(<span class="fa-solid fa-chalkboard-user"></span>)](Exercises.qmd) | - |
-| 4    | 30^th^ Aug | Workshop 2: Confidence Intervals; reshape data             | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | [(<span class="fa-solid fa-chalkboard-user"></span>)](Exercises.qmd) | - |
-|      | 03^rd^ Sep |                    Homework 2 due                          | -  | -  | - | [(<span class="fa-solid fa-pen-ruler"></span>)](Assignments.qmd) |
-| 5    | 04^th^ Sep | Lecture 3: Hypothesis Testing; there is only one test      | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | [(<span class="fa-solid fa-chalkboard-user"></span>)](Exercises.qmd) | - |
-| 6    | 04^th^ Sep | Workshop 3: Hypothesis testing; A/B testing; simulating    | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - | - |
-|      | 08^th^ Sep |                    Homework 3 due                         | -  | -  | - | [(<span class="fa-solid fa-pen-ruler"></span>)](Assignments.qmd) |
+| 3    | 30^th^ Aug | Lecture 2: Sampling and Probability Distributions          | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - |
+| 4    | 30^th^ Aug | Workshop 2: Confidence Intervals; reshape data             | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - |
+|      | 03^rd^ Sep |                    Homework 2 due                          | -  | - | [(<span class="fa-solid fa-pen-ruler"></span>)](Assignments.qmd) |
+| 5    | 04^th^ Sep | Lecture 3: Hypothesis Testing; there is only one test      | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - |
+| 6    | 04^th^ Sep | Workshop 3: Hypothesis testing; A/B testing; simulating    | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - |
+|      | 08^th^ Sep |                    Homework 3 due                         | -  | - | [(<span class="fa-solid fa-pen-ruler"></span>)](Assignments.qmd) |
 | **Regression Modelling**                                                                                                            |
-| 7    | 09^th^ Sep | Lecture 4: Introduction to regression models              | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - | - |
-| 8    | 09^th^ Sep | Workshop 4: Workshop on regression                        | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - | - |
-| 9    | 11^th^ Sep | Lecture 5: Further regression; regression diagnostics     | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - | - |
-| 10   | 11^th^ Sep | Final group project                                       | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | - | - | - |
-|      | 11^th^ Sep|            Final Group Project due                         | -  | -  | - | [(<span class="fa-solid fa-pen-ruler"></span>)](Assignments.qmd) |
-|      | 18^th^ Sep | Revision Session                                          | -  | -  | - | - |
-|      | 20^th^ Sep | Final Exam                                                | -  | -  | - | [(<span class="fa-solid fa-pen-ruler"></span>)](Assignments.qmd) |
+| 7    | 09^th^ Sep | Lecture 4: Introduction to regression models              | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - |
+| 8    | 09^th^ Sep | Workshop 4: Workshop on regression                        | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - |
+| 9    | 11^th^ Sep | Lecture 5: Further regression; regression diagnostics     | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | [(<span class="fa-solid fa-laptop-code"></span>)](Examples.qmd) | - |
+| 10   | 11^th^ Sep | Final group project                                       | [(<span class="fa-solid fa-book-open-reader"></span>)](Content.qmd) | - | - |
+|      | 11^th^ Sep|            Final Group Project due                         | -  | -  | [(<span class="fa-solid fa-pen-ruler"></span>)](Assignments.qmd) |
+|      | 18^th^ Sep | Revision Session                                          | -  | -  | - |
+|      | 20^th^ Sep | Final Exam                                                | -  | -  | [(<span class="fa-solid fa-pen-ruler"></span>)](Assignments.qmd) |
 
 
 : {.striped .hover}
