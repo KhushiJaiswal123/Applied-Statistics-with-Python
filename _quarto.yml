@@ -21,7 +21,7 @@ website:
         href: https://github.com/kostis-christodoulou/am01
         target: _blank
       - icon: slack
-        href: https://mam2024.slack.com/
+        href: https://mam2025.slack.com/
         target: _blank
   page-footer:
     ## Icons in footer need to be fixed !!!
@@ -29,14 +29,15 @@ website:
       **AM01: Applied Statistics with Python**  
       (Autumn 2024)  
       London Business School  
-      [Kostis Christodoulou](https://www.kostischristodoulou.com)  
-      [kchristodoulou@london.edu](mailto:kchristodoulou@london.edu)  
+      [Kostis Christodoulou](https://www.london.edu/faculty-and-research/faculty-profiles/k/kostis-christodoulou){target="_blank"}  
+      [kchristodoulou@london.edu](mailto:kchristodoulou@london.edu){target="_blank"}  
       all days     all times  
       Sussex Place LTs
     right: |
-      All content licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).  
+      All content licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/){target="_blank"}.   
       Content © 2024 Kostis Christodoulou  
-      This site created with the [Academic theme](https://github.com/wowchemy/starter-hugo-academic) in [blogdown](https://bookdown.org/yihui/blogdown/) and [Hugo](https://gohugo.io/), with template modifications by [Andrew Heiss](https://www.andrewheiss.com/). Interactive tutorials were developed by [Mohannad Shaheen](https://mohannadshaheen.netlify.app/), LBS MAM 2020.
+      
+      This site, created with the [cosmo theme](https://bootswatch.com/cosmo/) in [quarto](https://quarto.org/), is developed by [Khushi Jaiswal](https://www.linkedin.com/in/khushijaiswal-london/){target="_blank"}, LBS MAM 2024.  
 
 format:
   html:
