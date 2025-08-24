@@ -67,19 +67,12 @@ To get started with GitHub:
 
 # **Textbooks**
 
-::: {.callout-tip collapse=false}
-## Contents
- - [Textbooks](#textbooks)
- - [Videos](#videos)
- 
-:::
 
 ## Textbooks {#textbooks}
- - test
 
-## Videos{#videos}
- - test
-
+* <a href="https://leanpub.com/os" target="_blank">OpenIntro Statistics</a>
+* <a href="https://byuidatascience.github.io/python4ds/" target="_blank">Python for Data Science</a>
+* <a href="https://allendowney.github.io/ElementsOfDataScience/index.html" target="_blank">Elements of Data Science</a>
 
 <!--#################################################-->
 
