@@ -328,8 +328,6 @@ Visual Studio Code (VS Code) is a lightweight editor that works seamlessly with 
    - *Getting Started guide* (this file)  
    - *pre_programme.ipynb* (a Jupyter notebook)  
 
----
-
 2. **Open the folder in VS Code**.  
 
 3. **Work in `pre_programme.ipynb`:**  
@@ -338,28 +336,19 @@ Visual Studio Code (VS Code) is a lightweight editor that works seamlessly with 
    - Fill out the provided code cells (you may adapt from DataCamp)  
    - Answer all written questions  
 
----
-
 4. **When finished:**  
    - Click the **“Export”** icon (box with arrow, top right in the notebook editor toolbar)  
    - From the dropdown, select **“Export to HTML”**  
    - VS Code will generate the `.html` file (usually in the same folder)  
 
----
-
 5. **Submit your work:**  
    - Upload the exported `.html` file to **Canvas** as your pre-programme submission  
-
 
 
 ::: callout-tip
 💡 **Tip:** Make sure you have **uv installed** and your project opened in **VS Code** before starting the assignment.  
 :::
 
-<!--#################################################-->
-<!--#################################################-->
-<!--#################################################-->
-<!--#################################################-->
 <!--#################################################-->
 
 # **Github**
@@ -402,11 +391,282 @@ To get started with GitHub:
 - [World Bank](#worldBank)
 :::
 
-## Finance Data {#finance}
+<!--#################################################-->
 
-- Yahoo Finance: [finance.yahoo.com](https://finance.yahoo.com)
-- Alpha Vantage: [alphavantage.co](https://www.alphavantage.co)
-- Quandl: [quandl.com](https://www.quandl.com)
+## Returns of Financial Stocks {#finance}
+
+> You may find useful the material on [finance data sources](https://am01-sep24.netlify.app/reference/finance_data/).
+
+We will use the `yfinance` package to download historical data of stock prices, calculate returns, and examine the distribution of returns.
+
+Below are the imports and graph settings that we will be working with :
+```python 
+# Import required libraries
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import yfinance as yf
+from datetime import datetime
+import warnings
+warnings.filterwarnings('ignore')
+
+# Set style for better looking plots
+plt.style.use('seaborn-v0_8')
+sns.set_palette("husl")
+plt.rcParams['figure.figsize'] = (6.75, 6.75)
+```
+
+
+Before downloading data, we need to identify which stocks to track using their **ticker symbols**:  
+- Apple → `AAPL`  
+- Microsoft → `MSFT`  
+- McDonald's → `MCD`  
+
+The file `nyse.csv` contains **508 stocks listed on the NYSE** with columns:  
+- `symbol` → ticker symbol  
+- `name` → company name  
+- `ipo` → IPO year  
+- `sector` → sector of the company  
+- `industry` → industry classification  
+
+```python 
+# Load NYSE data
+
+nyse = pd.read_csv('../data/nyse.csv')
+
+print(nyse.head())
+
+print("nData info: ")
+
+print(nyse.info())
+```
+
+Based on this dataset, create a table and a bar plot that shows the number of companies per sector, in descending order
+
+```python 
+# Companies per sector
+
+sector_counts = nyse['sector'].value_counts()
+
+print( "Companies per sector: ")
+
+print(sector_counts)
+
+
+# Bar plot
+
+plt.figure(figsize=(12, 8))
+
+sector_counts.plot(kind = 'bar')
+plt.title('Number of Companies per Sector')
+plt.xlabel('Sector')
+plt.ylabel('Number of Companies')
+plt.xticks(rotation=45)
+
+plt.tight_layout()
+plt.show()
+
+
+
+# Reset index to make it suitable for seaborn plotting
+sector_counts = sector_counts.reset_index()
+sector_counts.columns = ['Sector', 'Number of Companies']
+
+plt.figure(figsize=(12, 8))
+sns.set_theme(style="whitegrid")
+
+# Horizontal barplot with biggest sector at the top
+sns.barplot(
+    data=sector_counts,
+    y='Sector',                     # Sectors on Y-axis (so bars are horizontal)
+    x='Number of Companies',        # Counts on X-axis
+    order=sector_counts['Sector']   # Order ensures sorting by count from top
+)
+
+plt.title('Number of Companies per Sector')
+plt.xlabel('Number of Companies')
+plt.ylabel('Sector')
+plt.tight_layout()
+plt.show()
+
+```
+See the output below:
+
+![](Images/financeData1.png)
+![](Images/financeData2.png)
+Next, let's choose some stocks and their ticker symbols and download some data. You **MUST** choose 6 different stocks from the ones listed below; You should, however, add `SPY` which is the SP500 ETF (Exchange Traded Fund).
+
+
+```python 
+# List of stock symbols to download
+my_stocks = ["AAPL",  "JPM",  "DIS",  "DPZ",  "ANF", "XOM", "SPY"]
+
+# Dictionary to store each individual stock DataFrame
+stock_data = {}
+
+# Loop through each stock symbol
+for symbol in my_stocks:
+    try:
+        # Download stock data with auto_adjust=False to include both 'Close' and 'Adj Close'
+        stock = yf.download(
+            symbol,
+            start="2013-01-01",
+            end="2024-08-31",
+            auto_adjust=False,   # Ensures 'Adj Close' is included explicitly
+            actions=True,        # Optional: includes dividends and splits if present
+            progress=False
+        )
+
+        # Add stock symbol as a column to identify source
+        stock['Symbol'] = symbol
+
+        # Save stock DataFrame in dictionary
+        stock_data[symbol] = stock
+
+        # Print progress
+        print(f"✅ Downloaded {symbol}: {len(stock)} rows")
+
+    except Exception as e:
+        print(f"⚠️ Error downloading {symbol}: {e}")
+
+
+
+
+# Combine all data
+
+my_stocks_df = pd.concat(stock_data.values(), ignore_index=True)
+
+print("nCombined data shape:", my_stocks_df.shape)
+print("nData info:")
+print(my_stocks_df.info())
+
+my_stocks_df.head()
+
+
+print(hist.columns)
+
+```
+
+Financial performance analysis depend on returns; If I buy a stock today for 100 and I sell it tomorrow for 101.75, my one-day return, assuming no transaction costs, is 1.75%. So given the adjusted closing prices, our first step is to calculate daily and monthly returns.
+
+```python
+
+# Calculate returns
+
+returns_data = {}
+
+for symbol in my_stocks:
+    if symbol in stock_data:
+        stock = stock_data[symbol]
+        
+        # Daily returns (log returns)
+        stock['daily_returns'] = stock['Adj Close'].pct_change()
+        
+         # Monthly returns (arithmetic)
+        stock['monthly_returns'] = stock['Adj Close'].resample('M').last().pct_change()
+        
+        # Yearly returns (arithmetic)
+        stock['yearly_returns'] = stock['Adj Close'].resample('Y').last().pct_change()
+        
+        returns_data[symbol] = stock
+
+print("Returns calculated for all stocks")
+
+```
+
+Returns calculated for all stocks
+
+Now, create a table where you summarise monthly returns for each of the stocks and `SPY`; min, max, median, mean, SD.
+
+```python 
+# Summary of monthly returns
+
+monthly_summary = {}
+
+for symbol in my_stocks:
+    if symbol in returns_data:
+        monthly_returns = returns_data[symbol]['monthly_returns'].dropna()
+        monthly_summary[symbol] = {
+            
+            'min': monthly_returns.min(),
+            
+            'max': monthly_returns.max(),
+            
+            'median': monthly_returns.median(),
+
+            'mean': monthly_returns.mean(),
+
+            'std': monthly_returns.std()
+             
+        }
+
+monthly_summary_df = pd.DataFrame(monthly_summary).T.round(4)
+
+print("Monthly returns summary:")
+print(monthly_summary_df)
+
+```
+
+Plot a density plot, using `sns.kdeplot()`, for each of the stocks
+
+```python 
+# Density plot of monthly returns
+
+plt.figure(figsize=(12, 8))
+
+for symbol in my_stocks:
+    if symbol in returns_data:
+        monthly_returns = returns_data[symbol]['monthly_returns'].dropna()
+        sns.kdeplot(monthly_returns, label=symbol, alpha=0.7)
+
+plt.xlabel('Monthly Returns')
+plt.ylabel('Density')
+plt.title('Density Plot of Monthly Returns by Stock')
+plt.legend()
+plt.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+
+```
+![](Images/financeData3.png)
+
+What can you infer from this plot? Which stock is the riskiest? The least risky?
+
+
+Finally, make a plot that shows the expected monthly return (mean) of a stock on the Y axis and the risk (standard deviation) in the X-axis. Please use `plt.annotate()` to label each stock
+
+```python 
+# Risk-return plot
+
+plt.figure(figsize=(10, 8))
+
+for symbol in my_stocks:
+    if symbol in monthly_summary:
+        risk = monthly_summary[symbol]['std']
+        return_val = monthly_summary[symbol]['mean']
+        plt.scatter(risk, return_val, s=100, alpha=0.7)
+        plt.annotate(symbol, (risk, return_val), xytext=(5, 5), textcoords='offset points')
+
+
+plt.xlabel('Risk (Standard Deviation)')
+plt.ylabel('Expected Monthly Return (Mean)')
+plt.title('Risk-Return Profile of Stocks')
+plt.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+
+```
+![](Images/financeData4.png)
+What can you infer from this plot? Are there any stocks which, while being riskier, do not have a higher expected return?
+
+
+<!--#################################################-->
 
 ## World Bank {#worldBank}
 
