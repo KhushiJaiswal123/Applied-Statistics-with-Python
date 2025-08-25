@@ -11,28 +11,35 @@
     "href": "Resources.html",
     "title": "Resources",
     "section": "",
-    "text": "Contents\n\n\n\n\n\n\nInstalling Python\nInstalling vs Code\nOther tools"
+    "text": "Contents\n\n\n\n\n\n\nPre-Programme Setup\nDataCamp Courses\nInstalling uv\nGetting Started with the Console\nManaging Python & Projects\nVisual Studio Code\nPre-Programme Assignment"
   },
   {
-    "objectID": "Resources.html#installing",
-    "href": "Resources.html#installing",
+    "objectID": "Resources.html#console",
+    "href": "Resources.html#console",
     "title": "Resources",
-    "section": "Installing Python",
-    "text": "Installing Python\nTo install Python:\n\nDownload from the official website: python.org\nRecommended version: 3.10 or higher\nFor Mac: Consider using Homebrew\n\nFor Windows: Use the Microsoft Store or installer"
+    "section": "Getting Started with the Console",
+    "text": "Getting Started with the Console\nThink of the console (a.k.a. terminal, command prompt, or shell) as a way to “talk” directly to your computer using text commands.\n\nWindows\n\nOpen PowerShell / Command Prompt (step-by-step guide)\n\nNavigate to your project folder\n\nTest installation:\n\nuv --version\nmacOS\n\nOpen Terminal\nTest installation:\n\nuv --version\n\nIgnore any warnings about “zsh.”"
   },
   {
-    "objectID": "Resources.html#code",
-    "href": "Resources.html#code",
+    "objectID": "Resources.html#projects",
+    "href": "Resources.html#projects",
     "title": "Resources",
-    "section": "Installing VS Code",
-    "text": "Installing VS Code\nSteps to install VS Code:\n\nDownload from: code.visualstudio.com\nRecommended extensions:\n\nPython\nQuarto\nGitLens\nJupyter"
+    "section": "Managing Python & Projects with uv",
+    "text": "Managing Python & Projects with uv\nOne of uv’s best features is automatic Python management. You don’t even need to install Python, you can do it through uv!\n\nInstalling Python\nuv python install          # Install the latest Python version\nuv python install 3.13     # Install a specific version\nuv python list             # List available versions\n\n\nCreating a New Project\nuv init my-project\ncd my-project\nThis will create: - pyproject.toml (project configuration) - README.md (project documentation) - main.py (sample Python file) - .gitignore (Git ignore file) - .python-version (Python version specification)\n\n\nAdding Dependencies\nInstead of manually managing virtual environments, uv handles everything automatically. Open the terminal, and please go to the folder where you set up my-project.\nuv add numpy pandas matplotlib scikit-learn seaborn statsmodels gapminder nycflights13\nuv add --dev pytest jupyter utils\n\nThis will:\n\nCreate a virtual environment (if none exists)\nInstall the specified packages\nUpdate pyproject.toml\nCreate/update uv.lock for reproducibility\n\n\n\nRunning Python Code\nuv run python main.py\n\n\nSynchronizing Environments\nWhen switching between machines or working with others:\nuv sync\nThis ensures your environment matches exactly what’s specified in the lock file. (This has been a life saver for me switching between my work and home machines.)\n\n\nVirtual Environment Management\nuv venv\nActivate the environment manually: #### Windows\n.venv\\Scripts\\activate\n\nmacOS/Linux:\nsource .venv/bin/activate\n\n\n\nKey Advantages Over Anaconda\n\nVisual Studio Code\n\n\n\n\nFeature\nuv (Recommended)\nAnaconda (Traditional)\n\n\n\n\nSize\nLightweight\n3GB+ installation\n\n\nPython Management\nAutomatic, multiple versions\nManual setup\n\n\nEnvironment Mgmt.\nAutomatic\nManual activation required\n\n\nConfiguration\nModern pyproject.toml\nMultiple config files\n\n\nPackage Ecosystem\nFull PyPI access\nCurated subset"
   },
   {
-    "objectID": "Resources.html#tools",
-    "href": "Resources.html#tools",
+    "objectID": "Resources.html#vscode",
+    "href": "Resources.html#vscode",
     "title": "Resources",
-    "section": "Other Tools",
-    "text": "Other Tools\nComing soon…"
+    "section": "Getting Started with VS Code",
+    "text": "Getting Started with VS Code\nVisual Studio Code (VS Code) is a lightweight editor that works seamlessly with Python projects.\n\nOpen a Project\n\nGo to: File → Open Folder\nSelect your uv project directory\n\n\n\nOpen Integrated Terminal\n\nMenu: View → Terminal\nShortcut: Ctrl + `\n\n\n\nSelect Python Interpreter\n\nOpen Command Palette: Ctrl/Cmd + Shift + P\n\nSearch: Python: Select Interpreter\n\nChoose the interpreter from your .venv created by uv\n\n\n\nSelect Kernel for Notebooks\n\nOpen your Jupyter Notebook file: your-name-pre-course.ipynb\n\nVS Code will prompt for a kernel (top-right corner)\n\nChoose the kernel from your .venv (e.g., Python 3.13.x installed via uv)\n\n\n\nCreate a Python File\n\nMenu: File → New File\n\nSave as .py\n\n\n\nRun Python Code\n\nRight-click → Run Python File in Terminal\n\n\n\nRun Code Line by Line (or by Cell)\n\nPlace your cursor on a line (or select multiple lines)\n\nPress Shift + Enter\n\nExecutes code in terminal or interactive window\n\nRequires Python or Jupyter extension\n\n💡 Tip: This is great for experimenting interactively without running the whole script."
+  },
+  {
+    "objectID": "Resources.html#assignment",
+    "href": "Resources.html#assignment",
+    "title": "Resources",
+    "section": "Pre-Programme Assignment",
+    "text": "Pre-Programme Assignment\n\nDownload and unzip the file pre_programme_assignment.zip into your my-project folder.\nThe archive contains:\n\nGetting Started guide (this file)\n\npre_programme.ipynb (a Jupyter notebook)\n\n\n\n\nOpen the folder in VS Code.\nWork in pre_programme.ipynb:\n\nAdd your name\n\nWrite a short biography in Markdown\n\nFill out the provided code cells (you may adapt from DataCamp)\n\nAnswer all written questions\n\n\n\n\nWhen finished:\n\nClick the “Export” icon (box with arrow, top right in the notebook editor toolbar)\n\nFrom the dropdown, select “Export to HTML”\n\nVS Code will generate the .html file (usually in the same folder)\n\n\n\n\nSubmit your work:\n\nUpload the exported .html file to Canvas as your pre-programme submission\n\n\n\n\n\n\n\n\nTip\n\n\n\n💡 Tip: Make sure you have uv installed and your project opened in VS Code before starting the assignment."
   },
   {
     "objectID": "Resources.html#github",
@@ -165,7 +172,7 @@
     "href": "Assignments.html",
     "title": "Assignments",
     "section": "",
-    "text": "Assignment details\n\n\n\n\n\n\nContents\n\n\n\n\n\n\nWeekly Homeworks\nFinal Project\nFinal Exam\n\n\n\n\n\n\nWeekly Homeworks\nTo practice writing R code, exploring datasets, and running statistical models you will complete a series of weekly homeworks.\nThere are 3 weekly homeworks to be undertaken with your group and these will be graded using a check system:\n\n5/5: Problem set is 100% completed. Every question was attempted and answered, and most answers are correct. Document is clean and easy to follow. Work is exceptional. I will not assign these often.\n3/5: Problem set is 70–99% complete and most answers are correct. This is the expected level of performance.\n1/5: Problem set is less than 70% complete and/or most answers are incorrect. This indicates that you need to improve next time. I will hopefully not assign these often.\n\n\n\n\nFinal Project\nAt the end of the course, you will demonstrate your knowledge by working on a group assignment… Complete details for the final project will be made available here.\n\n\n\nFinal Exam\nThere will be a final exam that will cover: * 1. Programming in R and the tidyverse (about a third of total marks) * the core statistical tools of inferential statistics and linear models.\nYou will take the final exam in-person in a lecture theatre. This is a closed-book, 1.5-hour exam. A formula sheet will be provided, but you will not have online access to Google.\n\n\n\n\nHomeworks\n\n\nHomework 1\n\n\n\n\n\n\nContents\n\n\n\n\n\n\nhomework1.Rmd\nInstruction\nRubric\n\n\n\n\n\n\n\nHomework 2\n\n\n\n\n\n\nContents\n\n\n\n\n\n\nhomework1.Rmd\nInstruction\nRubric\n\n\n\n\n\n\n\nHomework 3\n\n\n\n\n\n\nContents\n\n\n\n\n\n\nhomework1.Rmd\nInstruction\nRubric\n\n\n\n\n\n\n\n\nProjects\n\n\nFinal Group Project\n\n\n\n\n\n\nContents\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinal Exam\n\n\n\n\n\n\nContents\n\n\n\n\n\n\n\n\n\n\n\n\nDue by 11:59 PM on Friday, September 20, 2024"
+    "text": "Assignment details\n\n\n\n\n\n\nContents\n\n\n\n\n\n\nWeekly Homeworks\nFinal Project\nFinal Exam\n\n\n\n\n\n\nWeekly Homeworks\nTo practice writing Python code, exploring datasets, and running statistical models you will complete a series of weekly homeworks.\nThere are 3 weekly homeworks to be undertaken with your group and these will be graded using a check system:\n\n5/5: Problem set is 100% completed. Every question was attempted and answered, and most answers are correct. Document is clean and easy to follow. Work is exceptional. I will not assign these often.\n3/5: Problem set is 70–99% complete and most answers are correct. This is the expected level of performance.\n1/5: Problem set is less than 70% complete and/or most answers are incorrect. This indicates that you need to improve next time. I will hopefully not assign these often.\n\n\n\n\nFinal Project\nAt the end of the course, you will demonstrate your knowledge by working on a group assignment… Complete details for the final project will be made available here.\n\n\n\nFinal Exam\nThere will be a final exam that will cover:\n\n\nProgramming in Python (about a third of total marks)\n\n\nthe core statistical tools of inferential statistics and linear models.\n\n\nYou will take the final exam in-person in a lecture theatre. This is a closed-book, 1.5-hour exam. A formula sheet will be provided, but you will not have online access to Google.\n\n\n\n\nHomeworks\n\n\nHomework 1\n\n\n\n\n\n\nContents\n\n\n\n\n\n\nhomework1.Rmd\nInstruction\nRubric\n\n\n\n\n\n\n\nHomework 2\n\n\n\n\n\n\nContents\n\n\n\n\n\n\nhomework1.Rmd\nInstruction\nRubric\n\n\n\n\n\n\n\nHomework 3\n\n\n\n\n\n\nContents\n\n\n\n\n\n\nhomework1.Rmd\nInstruction\nRubric\n\n\n\n\n\n\n\n\nProjects\n\n\nFinal Group Project\n\n\n\n\n\n\nContents\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinal Exam\n\n\n\n\n\n\nContents\n\n\n\n\n\n\n\n\n\n\n\n\nDue by 11:59 PM on Friday, September 20, 2024"
   },
   {
     "objectID": "Content.html",

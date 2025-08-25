@@ -7,44 +7,362 @@ format: html
 jupyter: python3
 ---
 
-
-
 ::: {.callout-tip collapse=false}
 
 ## Contents
-- [Installing Python](#installing)
-- [Installing vs Code](#code)
-- [Other tools](#tools)
+
+- [Pre-Programme Setup](#preprogramme)
+- [DataCamp Courses](#datacamp)
+- [Installing uv](#uv)
+- [Getting Started with the Console](#console)
+- [Managing Python & Projects](#projects)
+- [Visual Studio Code](#vscode)
+- [Pre-Programme Assignment](#assignment)
 
 :::
 
-## Installing Python {#installing}
+<!--#################################################-->
 
-To install Python:
+# **Pre-Programme Setup** {#preprogramme}
 
-- Download from the official website: [python.org](https://www.python.org)
-- Recommended version: 3.10 or higher
-- For Mac: Consider using Homebrew  
-- For Windows: Use the Microsoft Store or installer
+Python is an open-source, versatile, high-level programming language known for its simplicity and readability.  
+Widely used in web development, data analysis, artificial intelligence, and automation, Python empowers both beginners and professionals to build powerful applications efficiently.  
 
-## Installing VS Code {#code}
+In this course, we’ll use modern Python development tools that are faster, more efficient, and easier to manage than traditional approaches:
 
-Steps to install VS Code:
+- **uv**: A lightning-fast Python package manager and project manager written in Rust  
+- **Visual Studio Code**: A powerful, free code editor with excellent Python support and rich extension ecosystem  
 
-- Download from: [code.visualstudio.com](https://code.visualstudio.com/)
-- Recommended extensions:
-  - Python
-  - Quarto
-  - GitLens
-  - Jupyter
+📧 Questions or issues? Please contact **kchristodoulou@london.edu**. It’s easy to get stuck when starting, so don’t hesitate to reach out.  
 
-## Other Tools {#tools}
-
-Coming soon...
 
 <!--#################################################-->
 
-# **Guides**
+# **DataCamp Courses** {#datacamp}
+
+- You should have received an invitation to the **DataCamp group "Applied Stats with Python"** using your LBS email.  
+- You are required to complete a couple of DataCamp courses (3–4 hours each).  
+- You can stop midway and resume later; only completion matters (not hints/solutions used).  
+- Take notes if you find it useful, but the key is **practice over perfection**.  
+- Complete all videos **before the deadline**.  
+- Once finished, proceed with software installation.  
+
+<!--#################################################-->
+
+# **Installing uv** {#uv}
+
+**uv** is a fast Python package/project manager written in Rust, designed to replace pip, virtualenv, poetry, and others.  
+
+### Why uv?
+- 🚀 **Speed**: 10–100x faster than pip  
+- 🛠 **All-in-one**: Handles environments & Python versions  
+- 📦 **Modern**: Uses `pyproject.toml`  
+- 💻 **Cross-platform**: Works on Windows, macOS, Linux
+
+### Installation
+**Windows**  
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+```
+
+**macOS/Linux**  
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+```
+
+**macOS with Homebrew**  
+```bash
+brew install uv
+
+```
+
+**Verify Installation**  
+```bash
+uv --version
+
+```
+
+<!--#################################################-->
+
+## **Getting Started with the Console** {#console}
+
+Think of the console (a.k.a. terminal, command prompt, or shell) as a way to “talk” directly to your computer using text commands.
+
+### Windows
+
+- Open PowerShell / Command Prompt ([step-by-step guide](https://www.digitalcitizen.life/open-cmd/))  
+- Navigate to your project folder  
+- Test installation:  
+
+```bash
+uv --version
+```
+
+**macOS** 
+
+ - [Open Terminal](https://www.wikihow.com/Get-to-the-Command-Line-on-a-Mac)
+ - Test installation:
+ 
+```bash
+uv --version
+
+```
+- Ignore any warnings about “zsh.”
+
+<!--#################################################-->
+
+## Managing Python & Projects with uv {#projects}
+
+One of uv’s best features is automatic Python management. You don’t even need to install Python, you can do it through uv!
+
+### Installing Python
+
+```bash
+uv python install          # Install the latest Python version
+uv python install 3.13     # Install a specific version
+uv python list             # List available versions
+```
+### Creating a New Project
+
+```bash
+uv init my-project
+cd my-project
+
+```
+
+This will create:
+ - pyproject.toml (project configuration)
+ - README.md (project documentation)
+ - main.py (sample Python file)
+ - .gitignore (Git ignore file)
+ - .python-version (Python version specification)
+
+### Adding Dependencies
+
+Instead of manually managing virtual environments, uv handles everything automatically. Open the terminal, and please go to the folder where you set up my-project.
+
+```bash
+uv add numpy pandas matplotlib scikit-learn seaborn statsmodels gapminder nycflights13
+uv add --dev pytest jupyter utils
+
+
+```
+This will: 
+
+ - Create a virtual environment (if none exists)
+ - Install the specified packages
+ - Update pyproject.toml
+ - Create/update uv.lock for reproducibility
+
+### Running Python Code
+```bash
+uv run python main.py
+
+```
+### Synchronizing Environments
+When switching between machines or working with others:
+```bash
+uv sync
+
+```
+
+This ensures your environment matches exactly what’s specified in the lock file. (This has been a life saver for me switching between my work and home machines.)
+
+### Virtual Environment Management
+```bash
+uv venv
+
+```
+
+Activate the environment manually:
+#### Windows
+```bash
+.venv\Scripts\activate
+
+```
+
+#### macOS/Linux:
+```bash
+source .venv/bin/activate
+
+```
+
+### Key Advantages Over Anaconda
+
+- [Visual Studio Code](#vscode)
+
+| Feature | uv (Recommended) | Anaconda (Traditional) |
+|:--- |:--- |:--- |
+| Size | Lightweight | 3GB+ installation |
+| Python Management | Automatic, multiple versions | Manual setup |
+| Environment Mgmt. | Automatic | Manual activation required |
+| Configuration | Modern pyproject.toml | Multiple config files |
+| Package Ecosystem | Full PyPI access | Curated subset |
+
+<!--#################################################-->
+
+## Visual Studio Code IDE {#vscode}
+
+Visual Studio Code (VS Code) is a free, powerful, and highly customizable code editor developed by Microsoft.  
+It has become the most popular choice among Python developers due to its excellent Python support, rich extension ecosystem, and integrated development features.
+
+
+### Why Choose VS Code?
+
+- **Free and Open Source:** Completely free with no licensing restrictions  
+- **Excellent Python Support:** Outstanding IntelliSense, debugging, and linting  
+- **Rich Extension Ecosystem:** Thousands of extensions for every programming need  
+- **Integrated Terminal:** Built-in terminal for running commands and scripts  
+- **Git Integration:** Built-in version control with visual diff and merge tools  
+- **Cross-Platform:** Available for Windows, macOS, and Linux  
+- **Jupyter Support:** Native notebook editing and execution  
+
+
+### Installation
+
+1. Visit [code.visualstudio.com](https://code.visualstudio.com/)  
+2. Download the installer for your operating system  
+3. Install like any normal application  
+
+
+### Essential Extensions for Python Data Science
+
+After installing VS Code, you need to install the following extensions:
+
+1. Click the **Extensions** icon in the sidebar (`Ctrl+Shift+X`)  
+2. Search for the extension name  
+3. Click **Install**  
+
+**Core Python Extensions**  
+1. Python (Microsoft) – Essential Python support  
+2. Pylance (Microsoft) – Advanced Python language server  
+3. Python Debugger (Microsoft) – Python debugging support  
+
+**Data Science Extensions**  
+4. Jupyter (Microsoft) – Jupyter notebook support  
+5. Jupyter Keymap (Microsoft) – Familiar Jupyter shortcuts  
+6. Jupyter Notebook Renderers (Microsoft) – Enhanced output rendering  
+
+**Productivity Extensions**  
+7. GitLens (GitKraken) – Enhanced Git capabilities  
+8. Bracket Pair Colorizer 2 – Visual bracket matching  
+9. indent-rainbow – Visual indentation guides  
+10. Ruff – Extremely fast Python linter and code formatter  
+11. Python Docstring Generator – Automatic docstring generation  
+
+
+### VS Code Configuration for Python
+
+**Setting up Python Interpreter**  
+1. Open Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS)  
+2. Type **Python: Select Interpreter**  
+3. Choose your **uv-managed Python environment**  
+
+**Recommended Settings**  
+Create a `.vscode/settings.json` file in your project root:
+
+```json
+{
+  "python.defaultInterpreterPath": "./.venv/bin/python", 
+  // Windows: ".venv\\Scripts\\python.exe"
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.ruffEnabled": true, 
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": true // Auto-fix lint errors on save
+    }
+  },
+  "jupyter.askForKernelRestart": false,
+  "files.autoSave": "afterDelay"
+}
+```
+
+## Getting Started with VS Code {#vscode}
+
+Visual Studio Code (VS Code) is a lightweight editor that works seamlessly with Python projects.
+
+### Open a Project
+- Go to: **File → Open Folder**
+- Select your **uv project directory**
+
+### Open Integrated Terminal
+- Menu: **View → Terminal**
+- Shortcut: <kbd>Ctrl</kbd> + <kbd>`</kbd>
+
+### Select Python Interpreter
+1. Open Command Palette: <kbd>Ctrl/Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>  
+2. Search: **Python: Select Interpreter**  
+3. Choose the interpreter from your **`.venv`** created by `uv`
+
+### Select Kernel for Notebooks
+1. Open your Jupyter Notebook file: `your-name-pre-course.ipynb`  
+2. VS Code will prompt for a **kernel** (top-right corner)  
+3. Choose the kernel from your **`.venv`** (e.g., Python 3.13.x installed via `uv`)
+
+### Create a Python File
+- Menu: **File → New File**  
+- Save as **`.py`**
+
+### Run Python Code
+- Right-click → **Run Python File in Terminal**
+
+### Run Code Line by Line (or by Cell)
+- Place your cursor on a line (or select multiple lines)  
+- Press <kbd>Shift</kbd> + <kbd>Enter</kbd>  
+- Executes code in terminal or interactive window  
+- Requires Python or Jupyter extension  
+
+💡 *Tip: This is great for experimenting interactively without running the whole script.*
+
+
+<!--#################################################-->
+
+## Pre-Programme Assignment {#assignment}
+
+1. **Download and unzip** the file `pre_programme_assignment.zip` into your `my-project` folder.  
+
+   The archive contains:  
+   - *Getting Started guide* (this file)  
+   - *pre_programme.ipynb* (a Jupyter notebook)  
+
+---
+
+2. **Open the folder in VS Code**.  
+
+3. **Work in `pre_programme.ipynb`:**  
+   - Add your name  
+   - Write a short biography in **Markdown**  
+   - Fill out the provided code cells (you may adapt from DataCamp)  
+   - Answer all written questions  
+
+---
+
+4. **When finished:**  
+   - Click the **“Export”** icon (box with arrow, top right in the notebook editor toolbar)  
+   - From the dropdown, select **“Export to HTML”**  
+   - VS Code will generate the `.html` file (usually in the same folder)  
+
+---
+
+5. **Submit your work:**  
+   - Upload the exported `.html` file to **Canvas** as your pre-programme submission  
+
+
+
+::: callout-tip
+💡 **Tip:** Make sure you have **uv installed** and your project opened in **VS Code** before starting the assignment.  
+:::
+
+<!--#################################################-->
+<!--#################################################-->
+<!--#################################################-->
+<!--#################################################-->
+<!--#################################################-->
+
+# **Github**
 
 ::: {.callout-tip collapse=false}
 ## Contents
@@ -94,6 +412,9 @@ To get started with GitHub:
 
 - World Bank Open Data: [data.worldbank.org](https://data.worldbank.org)
 - WDI R package: `WDI` on CRAN
+
+
+
 
 
 

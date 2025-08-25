@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -118,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://mam2024.slack.com/" target="_blank"> <i class="bi bi-slack" role="img">
+    <a class="nav-link" href="https://mam2025.slack.com/" target="_blank"> <i class="bi bi-slack" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -137,10 +171,46 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#installing" id="toc-installing" class="nav-link active" data-scroll-target="#installing">Installing Python</a></li>
-  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Installing VS Code</a></li>
-  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">Other Tools</a></li>
-  <li><a href="#guides" id="toc-guides" class="nav-link" data-scroll-target="#guides"><strong>Guides</strong></a>
+  <li><a href="#preprogramme" id="toc-preprogramme" class="nav-link active" data-scroll-target="#preprogramme"><strong>Pre-Programme Setup</strong></a></li>
+  <li><a href="#datacamp" id="toc-datacamp" class="nav-link" data-scroll-target="#datacamp"><strong>DataCamp Courses</strong></a></li>
+  <li><a href="#uv" id="toc-uv" class="nav-link" data-scroll-target="#uv"><strong>Installing uv</strong></a>
+  <ul class="collapse">
+  <li><a href="#why-uv" id="toc-why-uv" class="nav-link" data-scroll-target="#why-uv">Why uv?</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#console" id="toc-console" class="nav-link" data-scroll-target="#console"><strong>Getting Started with the Console</strong></a>
+  <ul class="collapse">
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
+  </ul></li>
+  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">Managing Python &amp; Projects with uv</a>
+  <ul class="collapse">
+  <li><a href="#installing-python" id="toc-installing-python" class="nav-link" data-scroll-target="#installing-python">Installing Python</a></li>
+  <li><a href="#creating-a-new-project" id="toc-creating-a-new-project" class="nav-link" data-scroll-target="#creating-a-new-project">Creating a New Project</a></li>
+  <li><a href="#adding-dependencies" id="toc-adding-dependencies" class="nav-link" data-scroll-target="#adding-dependencies">Adding Dependencies</a></li>
+  <li><a href="#running-python-code" id="toc-running-python-code" class="nav-link" data-scroll-target="#running-python-code">Running Python Code</a></li>
+  <li><a href="#synchronizing-environments" id="toc-synchronizing-environments" class="nav-link" data-scroll-target="#synchronizing-environments">Synchronizing Environments</a></li>
+  <li><a href="#virtual-environment-management" id="toc-virtual-environment-management" class="nav-link" data-scroll-target="#virtual-environment-management">Virtual Environment Management</a></li>
+  <li><a href="#key-advantages-over-anaconda" id="toc-key-advantages-over-anaconda" class="nav-link" data-scroll-target="#key-advantages-over-anaconda">Key Advantages Over Anaconda</a></li>
+  </ul></li>
+  <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode">Visual Studio Code IDE</a>
+  <ul class="collapse">
+  <li><a href="#why-choose-vs-code" id="toc-why-choose-vs-code" class="nav-link" data-scroll-target="#why-choose-vs-code">Why Choose VS Code?</a></li>
+  <li><a href="#installation-1" id="toc-installation-1" class="nav-link" data-scroll-target="#installation-1">Installation</a></li>
+  <li><a href="#essential-extensions-for-python-data-science" id="toc-essential-extensions-for-python-data-science" class="nav-link" data-scroll-target="#essential-extensions-for-python-data-science">Essential Extensions for Python Data Science</a></li>
+  <li><a href="#vs-code-configuration-for-python" id="toc-vs-code-configuration-for-python" class="nav-link" data-scroll-target="#vs-code-configuration-for-python">VS Code Configuration for Python</a></li>
+  </ul></li>
+  <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode">Getting Started with VS Code</a>
+  <ul class="collapse">
+  <li><a href="#open-a-project" id="toc-open-a-project" class="nav-link" data-scroll-target="#open-a-project">Open a Project</a></li>
+  <li><a href="#open-integrated-terminal" id="toc-open-integrated-terminal" class="nav-link" data-scroll-target="#open-integrated-terminal">Open Integrated Terminal</a></li>
+  <li><a href="#select-python-interpreter" id="toc-select-python-interpreter" class="nav-link" data-scroll-target="#select-python-interpreter">Select Python Interpreter</a></li>
+  <li><a href="#select-kernel-for-notebooks" id="toc-select-kernel-for-notebooks" class="nav-link" data-scroll-target="#select-kernel-for-notebooks">Select Kernel for Notebooks</a></li>
+  <li><a href="#create-a-python-file" id="toc-create-a-python-file" class="nav-link" data-scroll-target="#create-a-python-file">Create a Python File</a></li>
+  <li><a href="#run-python-code" id="toc-run-python-code" class="nav-link" data-scroll-target="#run-python-code">Run Python Code</a></li>
+  <li><a href="#run-code-line-by-line-or-by-cell" id="toc-run-code-line-by-line-or-by-cell" class="nav-link" data-scroll-target="#run-code-line-by-line-or-by-cell">Run Code Line by Line (or by Cell)</a></li>
+  </ul></li>
+  <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Pre-Programme Assignment</a></li>
+  </ul></li>
+  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github"><strong>Github</strong></a>
   <ul class="collapse">
   <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github">Using GitHub</a></li>
   </ul></li>
@@ -195,47 +265,407 @@ Contents
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
-<li><a href="#installing">Installing Python</a></li>
-<li><a href="#code">Installing vs Code</a></li>
-<li><a href="#tools">Other tools</a></li>
+<li><a href="#preprogramme">Pre-Programme Setup</a></li>
+<li><a href="#datacamp">DataCamp Courses</a></li>
+<li><a href="#uv">Installing uv</a></li>
+<li><a href="#console">Getting Started with the Console</a></li>
+<li><a href="#projects">Managing Python &amp; Projects</a></li>
+<li><a href="#vscode">Visual Studio Code</a></li>
+<li><a href="#assignment">Pre-Programme Assignment</a></li>
 </ul>
 </div>
 </div>
 </div>
-<section id="installing" class="level2">
-<h2 class="anchored" data-anchor-id="installing">Installing Python</h2>
-<p>To install Python:</p>
+<!--#################################################-->
+<section id="preprogramme" class="level1">
+<h1><strong>Pre-Programme Setup</strong></h1>
+<p>Python is an open-source, versatile, high-level programming language known for its simplicity and readability.<br>
+Widely used in web development, data analysis, artificial intelligence, and automation, Python empowers both beginners and professionals to build powerful applications efficiently.</p>
+<p>In this course, we’ll use modern Python development tools that are faster, more efficient, and easier to manage than traditional approaches:</p>
 <ul>
-<li>Download from the official website: <a href="https://www.python.org">python.org</a></li>
-<li>Recommended version: 3.10 or higher</li>
-<li>For Mac: Consider using Homebrew<br>
+<li><strong>uv</strong>: A lightning-fast Python package manager and project manager written in Rust<br>
 </li>
-<li>For Windows: Use the Microsoft Store or installer</li>
+<li><strong>Visual Studio Code</strong>: A powerful, free code editor with excellent Python support and rich extension ecosystem</li>
 </ul>
-</section>
-<section id="code" class="level2">
-<h2 class="anchored" data-anchor-id="code">Installing VS Code</h2>
-<p>Steps to install VS Code:</p>
-<ul>
-<li>Download from: <a href="https://code.visualstudio.com/">code.visualstudio.com</a></li>
-<li>Recommended extensions:
-<ul>
-<li>Python</li>
-<li>Quarto</li>
-<li>GitLens</li>
-<li>Jupyter</li>
-</ul></li>
-</ul>
-</section>
-<section id="tools" class="level2">
-<h2 class="anchored" data-anchor-id="tools">Other Tools</h2>
-<p>Coming soon…</p>
+<p>📧 Questions or issues? Please contact <strong>kchristodoulou@london.edu</strong>. It’s easy to get stuck when starting, so don’t hesitate to reach out.</p>
 <!--#################################################-->
 </section>
-<section id="guides" class="level1">
-<h1><strong>Guides</strong></h1>
+<section id="datacamp" class="level1">
+<h1><strong>DataCamp Courses</strong></h1>
+<ul>
+<li>You should have received an invitation to the <strong>DataCamp group “Applied Stats with Python”</strong> using your LBS email.<br>
+</li>
+<li>You are required to complete a couple of DataCamp courses (3–4 hours each).<br>
+</li>
+<li>You can stop midway and resume later; only completion matters (not hints/solutions used).<br>
+</li>
+<li>Take notes if you find it useful, but the key is <strong>practice over perfection</strong>.<br>
+</li>
+<li>Complete all videos <strong>before the deadline</strong>.<br>
+</li>
+<li>Once finished, proceed with software installation.</li>
+</ul>
+<!--#################################################-->
+</section>
+<section id="uv" class="level1">
+<h1><strong>Installing uv</strong></h1>
+<p><strong>uv</strong> is a fast Python package/project manager written in Rust, designed to replace pip, virtualenv, poetry, and others.</p>
+<section id="why-uv" class="level3">
+<h3 class="anchored" data-anchor-id="why-uv">Why uv?</h3>
+<ul>
+<li>🚀 <strong>Speed</strong>: 10–100x faster than pip<br>
+</li>
+<li>🛠 <strong>All-in-one</strong>: Handles environments &amp; Python versions<br>
+</li>
+<li>📦 <strong>Modern</strong>: Uses <code>pyproject.toml</code><br>
+</li>
+<li>💻 <strong>Cross-platform</strong>: Works on Windows, macOS, Linux</li>
+</ul>
+</section>
+<section id="installation" class="level3">
+<h3 class="anchored" data-anchor-id="installation">Installation</h3>
+<p><strong>Windows</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="op">-</span>ExecutionPolicy ByPass <span class="op">-</span>c <span class="st">"irm https://astral.sh/uv/install.ps1 | iex"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>macOS/Linux</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LsSf</span> https://astral.sh/uv/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>macOS with Homebrew</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install uv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Verify Installation</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!--#################################################-->
+</section>
+<section id="console" class="level2">
+<h2 class="anchored" data-anchor-id="console"><strong>Getting Started with the Console</strong></h2>
+<p>Think of the console (a.k.a. terminal, command prompt, or shell) as a way to “talk” directly to your computer using text commands.</p>
+<section id="windows" class="level3">
+<h3 class="anchored" data-anchor-id="windows">Windows</h3>
+<ul>
+<li>Open PowerShell / Command Prompt (<a href="https://www.digitalcitizen.life/open-cmd/">step-by-step guide</a>)<br>
+</li>
+<li>Navigate to your project folder<br>
+</li>
+<li>Test installation:</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>macOS</strong></p>
+<ul>
+<li><a href="https://www.wikihow.com/Get-to-the-Command-Line-on-a-Mac">Open Terminal</a></li>
+<li>Test installation:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Ignore any warnings about “zsh.”</li>
+</ul>
+<!--#################################################-->
+</section>
+</section>
+<section id="projects" class="level2">
+<h2 class="anchored" data-anchor-id="projects">Managing Python &amp; Projects with uv</h2>
+<p>One of uv’s best features is automatic Python management. You don’t even need to install Python, you can do it through uv!</p>
+<section id="installing-python" class="level3">
+<h3 class="anchored" data-anchor-id="installing-python">Installing Python</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python install          <span class="co"># Install the latest Python version</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python install 3.13     <span class="co"># Install a specific version</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python list             <span class="co"># List available versions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="creating-a-new-project" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-new-project">Creating a New Project</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init my-project</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will create: - pyproject.toml (project configuration) - README.md (project documentation) - main.py (sample Python file) - .gitignore (Git ignore file) - .python-version (Python version specification)</p>
+</section>
+<section id="adding-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="adding-dependencies">Adding Dependencies</h3>
+<p>Instead of manually managing virtual environments, uv handles everything automatically. Open the terminal, and please go to the folder where you set up my-project.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add numpy pandas matplotlib scikit-learn seaborn statsmodels gapminder nycflights13</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="at">--dev</span> pytest jupyter utils</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will:</p>
+<ul>
+<li>Create a virtual environment (if none exists)</li>
+<li>Install the specified packages</li>
+<li>Update pyproject.toml</li>
+<li>Create/update uv.lock for reproducibility</li>
+</ul>
+</section>
+<section id="running-python-code" class="level3">
+<h3 class="anchored" data-anchor-id="running-python-code">Running Python Code</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python main.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="synchronizing-environments" class="level3">
+<h3 class="anchored" data-anchor-id="synchronizing-environments">Synchronizing Environments</h3>
+<p>When switching between machines or working with others:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This ensures your environment matches exactly what’s specified in the lock file. (This has been a life saver for me switching between my work and home machines.)</p>
+</section>
+<section id="virtual-environment-management" class="level3">
+<h3 class="anchored" data-anchor-id="virtual-environment-management">Virtual Environment Management</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Activate the environment manually: #### Windows</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv\Scripts\activate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="macoslinux" class="level4">
+<h4 class="anchored" data-anchor-id="macoslinux">macOS/Linux:</h4>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="key-advantages-over-anaconda" class="level3">
+<h3 class="anchored" data-anchor-id="key-advantages-over-anaconda">Key Advantages Over Anaconda</h3>
+<ul>
+<li><a href="#vscode">Visual Studio Code</a></li>
+</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">uv (Recommended)</th>
+<th style="text-align: left;">Anaconda (Traditional)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Size</td>
+<td style="text-align: left;">Lightweight</td>
+<td style="text-align: left;">3GB+ installation</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Python Management</td>
+<td style="text-align: left;">Automatic, multiple versions</td>
+<td style="text-align: left;">Manual setup</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Environment Mgmt.</td>
+<td style="text-align: left;">Automatic</td>
+<td style="text-align: left;">Manual activation required</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Configuration</td>
+<td style="text-align: left;">Modern pyproject.toml</td>
+<td style="text-align: left;">Multiple config files</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Package Ecosystem</td>
+<td style="text-align: left;">Full PyPI access</td>
+<td style="text-align: left;">Curated subset</td>
+</tr>
+</tbody>
+</table>
+<!--#################################################-->
+</section>
+</section>
+<section id="vscode" class="level2">
+<h2 class="anchored" data-anchor-id="vscode">Visual Studio Code IDE</h2>
+<p>Visual Studio Code (VS Code) is a free, powerful, and highly customizable code editor developed by Microsoft.<br>
+It has become the most popular choice among Python developers due to its excellent Python support, rich extension ecosystem, and integrated development features.</p>
+<section id="why-choose-vs-code" class="level3">
+<h3 class="anchored" data-anchor-id="why-choose-vs-code">Why Choose VS Code?</h3>
+<ul>
+<li><strong>Free and Open Source:</strong> Completely free with no licensing restrictions<br>
+</li>
+<li><strong>Excellent Python Support:</strong> Outstanding IntelliSense, debugging, and linting<br>
+</li>
+<li><strong>Rich Extension Ecosystem:</strong> Thousands of extensions for every programming need<br>
+</li>
+<li><strong>Integrated Terminal:</strong> Built-in terminal for running commands and scripts<br>
+</li>
+<li><strong>Git Integration:</strong> Built-in version control with visual diff and merge tools<br>
+</li>
+<li><strong>Cross-Platform:</strong> Available for Windows, macOS, and Linux<br>
+</li>
+<li><strong>Jupyter Support:</strong> Native notebook editing and execution</li>
+</ul>
+</section>
+<section id="installation-1" class="level3">
+<h3 class="anchored" data-anchor-id="installation-1">Installation</h3>
+<ol type="1">
+<li>Visit <a href="https://code.visualstudio.com/">code.visualstudio.com</a><br>
+</li>
+<li>Download the installer for your operating system<br>
+</li>
+<li>Install like any normal application</li>
+</ol>
+</section>
+<section id="essential-extensions-for-python-data-science" class="level3">
+<h3 class="anchored" data-anchor-id="essential-extensions-for-python-data-science">Essential Extensions for Python Data Science</h3>
+<p>After installing VS Code, you need to install the following extensions:</p>
+<ol type="1">
+<li>Click the <strong>Extensions</strong> icon in the sidebar (<code>Ctrl+Shift+X</code>)<br>
+</li>
+<li>Search for the extension name<br>
+</li>
+<li>Click <strong>Install</strong></li>
+</ol>
+<p><strong>Core Python Extensions</strong><br>
+1. Python (Microsoft) – Essential Python support<br>
+2. Pylance (Microsoft) – Advanced Python language server<br>
+3. Python Debugger (Microsoft) – Python debugging support</p>
+<p><strong>Data Science Extensions</strong><br>
+4. Jupyter (Microsoft) – Jupyter notebook support<br>
+5. Jupyter Keymap (Microsoft) – Familiar Jupyter shortcuts<br>
+6. Jupyter Notebook Renderers (Microsoft) – Enhanced output rendering</p>
+<p><strong>Productivity Extensions</strong><br>
+7. GitLens (GitKraken) – Enhanced Git capabilities<br>
+8. Bracket Pair Colorizer 2 – Visual bracket matching<br>
+9. indent-rainbow – Visual indentation guides<br>
+10. Ruff – Extremely fast Python linter and code formatter<br>
+11. Python Docstring Generator – Automatic docstring generation</p>
+</section>
+<section id="vs-code-configuration-for-python" class="level3">
+<h3 class="anchored" data-anchor-id="vs-code-configuration-for-python">VS Code Configuration for Python</h3>
+<p><strong>Setting up Python Interpreter</strong><br>
+1. Open Command Palette (<code>Ctrl+Shift+P</code> or <code>Cmd+Shift+P</code> on macOS)<br>
+2. Type <strong>Python: Select Interpreter</strong><br>
+3. Choose your <strong>uv-managed Python environment</strong></p>
+<p><strong>Recommended Settings</strong><br>
+Create a <code>.vscode/settings.json</code> file in your project root:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"python.defaultInterpreterPath"</span><span class="fu">:</span> <span class="st">"./.venv/bin/python"</span><span class="fu">,</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="er">//</span> <span class="er">Windows</span><span class="fu">:</span> <span class="st">".venv</span><span class="ch">\\</span><span class="st">Scripts</span><span class="ch">\\</span><span class="st">python.exe"</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"python.formatting.provider"</span><span class="er">:</span> <span class="st">"black"</span><span class="fu">,</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"python.linting.enabled"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"python.linting.ruffEnabled"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"[python]"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"editor.codeActionsOnSave"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"source.fixAll.ruff"</span><span class="fu">:</span> <span class="kw">true</span> <span class="er">//</span> <span class="er">Auto-fix</span> <span class="er">lint</span> <span class="er">errors</span> <span class="er">on</span> <span class="er">save</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"jupyter.askForKernelRestart"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"files.autoSave"</span><span class="fu">:</span> <span class="st">"afterDelay"</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="vscode" class="level2">
+<h2 class="anchored" data-anchor-id="vscode">Getting Started with VS Code</h2>
+<p>Visual Studio Code (VS Code) is a lightweight editor that works seamlessly with Python projects.</p>
+<section id="open-a-project" class="level3">
+<h3 class="anchored" data-anchor-id="open-a-project">Open a Project</h3>
+<ul>
+<li>Go to: <strong>File → Open Folder</strong></li>
+<li>Select your <strong>uv project directory</strong></li>
+</ul>
+</section>
+<section id="open-integrated-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="open-integrated-terminal">Open Integrated Terminal</h3>
+<ul>
+<li>Menu: <strong>View → Terminal</strong></li>
+<li>Shortcut: <kbd>Ctrl</kbd> + <kbd>`</kbd></li>
+</ul>
+</section>
+<section id="select-python-interpreter" class="level3">
+<h3 class="anchored" data-anchor-id="select-python-interpreter">Select Python Interpreter</h3>
+<ol type="1">
+<li>Open Command Palette: <kbd>Ctrl/Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd><br>
+</li>
+<li>Search: <strong>Python: Select Interpreter</strong><br>
+</li>
+<li>Choose the interpreter from your <strong><code>.venv</code></strong> created by <code>uv</code></li>
+</ol>
+</section>
+<section id="select-kernel-for-notebooks" class="level3">
+<h3 class="anchored" data-anchor-id="select-kernel-for-notebooks">Select Kernel for Notebooks</h3>
+<ol type="1">
+<li>Open your Jupyter Notebook file: <code>your-name-pre-course.ipynb</code><br>
+</li>
+<li>VS Code will prompt for a <strong>kernel</strong> (top-right corner)<br>
+</li>
+<li>Choose the kernel from your <strong><code>.venv</code></strong> (e.g., Python 3.13.x installed via <code>uv</code>)</li>
+</ol>
+</section>
+<section id="create-a-python-file" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-python-file">Create a Python File</h3>
+<ul>
+<li>Menu: <strong>File → New File</strong><br>
+</li>
+<li>Save as <strong><code>.py</code></strong></li>
+</ul>
+</section>
+<section id="run-python-code" class="level3">
+<h3 class="anchored" data-anchor-id="run-python-code">Run Python Code</h3>
+<ul>
+<li>Right-click → <strong>Run Python File in Terminal</strong></li>
+</ul>
+</section>
+<section id="run-code-line-by-line-or-by-cell" class="level3">
+<h3 class="anchored" data-anchor-id="run-code-line-by-line-or-by-cell">Run Code Line by Line (or by Cell)</h3>
+<ul>
+<li>Place your cursor on a line (or select multiple lines)<br>
+</li>
+<li>Press <kbd>Shift</kbd> + <kbd>Enter</kbd><br>
+</li>
+<li>Executes code in terminal or interactive window<br>
+</li>
+<li>Requires Python or Jupyter extension</li>
+</ul>
+<p>💡 <em>Tip: This is great for experimenting interactively without running the whole script.</em></p>
+<!--#################################################-->
+</section>
+</section>
+<section id="assignment" class="level2">
+<h2 class="anchored" data-anchor-id="assignment">Pre-Programme Assignment</h2>
+<ol type="1">
+<li><p><strong>Download and unzip</strong> the file <code>pre_programme_assignment.zip</code> into your <code>my-project</code> folder.</p>
+<p>The archive contains:</p>
+<ul>
+<li><em>Getting Started guide</em> (this file)<br>
+</li>
+<li><em>pre_programme.ipynb</em> (a Jupyter notebook)</li>
+</ul></li>
+</ol>
+<hr>
+<ol start="2" type="1">
+<li><p><strong>Open the folder in VS Code</strong>.</p></li>
+<li><p><strong>Work in <code>pre_programme.ipynb</code>:</strong></p>
+<ul>
+<li>Add your name<br>
+</li>
+<li>Write a short biography in <strong>Markdown</strong><br>
+</li>
+<li>Fill out the provided code cells (you may adapt from DataCamp)<br>
+</li>
+<li>Answer all written questions</li>
+</ul></li>
+</ol>
+<hr>
+<ol start="4" type="1">
+<li><strong>When finished:</strong>
+<ul>
+<li>Click the <strong>“Export”</strong> icon (box with arrow, top right in the notebook editor toolbar)<br>
+</li>
+<li>From the dropdown, select <strong>“Export to HTML”</strong><br>
+</li>
+<li>VS Code will generate the <code>.html</code> file (usually in the same folder)</li>
+</ul></li>
+</ol>
+<hr>
+<ol start="5" type="1">
+<li><strong>Submit your work:</strong>
+<ul>
+<li>Upload the exported <code>.html</code> file to <strong>Canvas</strong> as your pre-programme submission</li>
+</ul></li>
+</ol>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>💡 <strong>Tip:</strong> Make sure you have <strong>uv installed</strong> and your project opened in <strong>VS Code</strong> before starting the assignment.</p>
+</div>
+</div>
+<!--#################################################-->
+<!--#################################################-->
+<!--#################################################-->
+<!--#################################################-->
+<!--#################################################-->
+</section>
+</section>
+<section id="github" class="level1">
+<h1><strong>Github</strong></h1>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -244,7 +674,7 @@ Contents
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="#github">Using GitHub</a></li>
@@ -284,7 +714,7 @@ Contents
 <section id="data-sources" class="level1">
 <h1><strong>Data Sources</strong></h1>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -293,7 +723,7 @@ Contents
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="#finance">Finance Data</a></li>
@@ -749,8 +1179,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p><strong>AM01: Applied Statistics with Python</strong><br>
 (Autumn 2024)<br>
 London Business School<br>
-<a href="https://www.kostischristodoulou.com">Kostis Christodoulou</a><br>
-<a href="mailto:kchristodoulou@london.edu">kchristodoulou@london.edu</a><br>
+<a href="https://www.london.edu/faculty-and-research/faculty-profiles/k/kostis-christodoulou" target="_blank">Kostis Christodoulou</a><br>
+<a href="mailto:kchristodoulou@london.edu" target="_blank">kchristodoulou@london.edu</a><br>
 all days all times<br>
 Sussex Place LTs</p>
 </div>   
@@ -758,9 +1188,9 @@ Sussex Place LTs</p>
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>All content licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br>
-Content © 2024 Kostis Christodoulou<br>
-This site created with the <a href="https://github.com/wowchemy/starter-hugo-academic">Academic theme</a> in <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> and <a href="https://gohugo.io/">Hugo</a>, with template modifications by <a href="https://www.andrewheiss.com/">Andrew Heiss</a>. Interactive tutorials were developed by <a href="https://mohannadshaheen.netlify.app/">Mohannad Shaheen</a>, LBS MAM 2020.</p>
+<p>All content licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.<br>
+Content © 2024 Kostis Christodoulou</p>
+<p>This site, created with the <a href="https://bootswatch.com/cosmo/">cosmo theme</a> in <a href="https://quarto.org/">quarto</a>, is developed by <a href="https://www.linkedin.com/in/khushijaiswal-london/" target="_blank">Khushi Jaiswal</a>, LBS MAM 2024.</p>
 </div>
   </div>
 </footer>
