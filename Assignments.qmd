@@ -50,68 +50,124 @@ You will take the final exam in-person in a lecture theatre. This is a closed-bo
 
 <!--#################################################-->
 
-### Homework 1
+
+### Homework 1 {#homework1}
 ::: {.callout-tip collapse=false}
 ## Contents
-- [`homework1.Rmd`](#HWrmd)
-- [Instruction](#Instructions)
-- [Rubric](#rubric)
+- [`homework1`](#HWrmd1)
+- [Instructions](#instructions1)
+- [Rubric](#rubric1)
 
-:::
+---
 
+## `homework1` {#HWrmd1}
 
-<!--#################################################-->
+You will be working on the `session2-workshop1.zip` file that contains all necessary session files (data, code, etc.).
 
-### Homework 2
-::: {.callout-tip collapse=false}
-## Contents
-- [`homework1.Rmd`](#HWrmd)
-- [Instruction](#Instructions)
-- [Rubric](#rubric)
+You can download the zip file from Canvas, or by pulling from the course Github repo. Alternatively, open everything within VScode.
 
-:::
+---
 
-<!--#################################################-->
+## Instructions {#instructions1}
 
+- Finish the assignment and submit your work as a **knitted HTML or PDF file** on Canvas.
+- Submit your work **without any of the text provided in the homework file** – include only your code, plots, and explanations/stories.
 
-### Homework 3
-::: {.callout-tip collapse=false}
-## Contents
-- [`homework1.Rmd`](#HWrmd)
-- [Instruction](#Instructions)
-- [Rubric](#rubric)
+---
 
-:::
+## Rubric {#rubric1}
 
+- **Check minus (1/5):**  
+  Displays minimal effort. Doesn’t complete all components. Code is poorly written and not documented. Uses the same type of plot for each graph, or doesn’t use plots appropriate for the variables being analysed.
 
+- **Check (3/5):**  
+  Solid effort. Hits all the elements. No clear mistakes. Easy to follow, both the code and the output.
 
-<!--#################################################-->
-
-# **Projects**
-
-<!--#################################################-->
-
-### Final Group Project
-::: {.callout-tip collapse=false}
-## Contents
-- [ ](# )
-
-:::
-
-
-<!--#################################################-->
-
-
-### Final Exam 
-::: {.callout-tip collapse=false}
-## Contents
-- [ ](# )
+- **Check plus (5/5):**  
+  Finished all components of the assignment correctly and addressed both challenges. Code is well-documented. Graphs and tables are properly labelled. Analysis is clear and easy to follow, either because graphs are labeled clearly or additional text describes how to interpret the output.
 
 :::
 
 
 
-> Due by 11:59 PM on Friday, September 20, 2024
+<!--#################################################-->
+
+### Homework 2 {#homework2}
+::: {.callout-tip collapse=false}
+## Contents
+- [`homework2`](#HWrmd2)
+- [Instructions](#instructions2)
+- [Rubric](#rubric2)
+
+---
+
+## `homework2` {#HWrmd2}
+
+You will be working the `session4-workshop2.zip` file that contains all necessary session files (data, code, etc.).
+
+You can download the zip file from Canvas, or by pulling from the course Github repo. Alternatively, open everything within VScode.
+
+---
+
+## Instructions {#instructions2}
+
+- Finish the assignment and submit your work as a **knitted HTML or PDF file** on Canvas.
+- Submit your work **without any of the text provided in the homework file** – include only your code, plots, and explanations/stories.
+
+---
+
+## Rubric {#rubric2}
+
+- **Check minus (1/5):**  
+  Displays minimal effort. Doesn’t complete all components. Code is poorly written and not documented. Uses the same type of plot for each graph, or doesn’t use plots appropriate for the variables being analysed.
+
+- **Check (3/5):**  
+  Solid effort. Hits all the elements. No clear mistakes. Easy to follow, both the code and the output.
+
+- **Check plus (5/5):**  
+  Finished all components of the assignment correctly and addressed both challenges. Code is well-documented. Graphs and tables are properly labelled. Analysis is clear and easy to follow, either because graphs are labeled clearly or additional text describes how to interpret the output.
+
+:::
+
+<!--#################################################-->
+
+
+### Homework 3 {#homework3}
+::: {.callout-tip collapse=false}
+## Contents
+- [`homework3`](#HWrmd3)
+- [Instructions](#instructions3)
+- [Rubric](#rubric3)
+
+---
+
+## `homework3` {#HWrmd3}
+
+You will be working the `session6-workshop3.zip` file that contains all necessary session files (data, code, etc.).
+
+You can download the zip file from Canvas, or by pulling from the course Github repo. Alternatively, open everything within VScode.
+
+---
+
+## Instructions {#instructions3}
+
+- Finish the assignment and submit your work as a **knitted HTML or PDF file** on Canvas.
+- Submit your work **without any of the text provided in the homework file** – include only your code, plots, and explanations/stories.
+
+---
+
+## Rubric {#rubric3}
+
+- **Check minus (1/5):**  
+  Displays minimal effort. Doesn’t complete all components. Code is poorly written and not documented. Uses the same type of plot for each graph, or doesn’t use plots appropriate for the variables being analysed.
+
+- **Check (3/5):**  
+  Solid effort. Hits all the elements. No clear mistakes. Easy to follow, both the code and the output.
+
+- **Check plus (5/5):**  
+  Finished all components of the assignment correctly and addressed both challenges. Code is well-documented. Graphs and tables are properly labelled. Analysis is clear and easy to follow, either because graphs are labeled clearly or additional text describes how to interpret the output.
+
+:::
 
 
 

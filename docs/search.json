@@ -172,7 +172,70 @@
     "href": "Assignments.html",
     "title": "Assignments",
     "section": "",
-    "text": "Assignment details\n\n\n\n\n\n\nContents\n\n\n\n\n\n\nWeekly Homeworks\nFinal Project\nFinal Exam\n\n\n\n\n\n\nWeekly Homeworks\nTo practice writing Python code, exploring datasets, and running statistical models you will complete a series of weekly homeworks.\nThere are 3 weekly homeworks to be undertaken with your group and these will be graded using a check system:\n\n5/5: Problem set is 100% completed. Every question was attempted and answered, and most answers are correct. Document is clean and easy to follow. Work is exceptional. I will not assign these often.\n3/5: Problem set is 70–99% complete and most answers are correct. This is the expected level of performance.\n1/5: Problem set is less than 70% complete and/or most answers are incorrect. This indicates that you need to improve next time. I will hopefully not assign these often.\n\n\n\n\nFinal Project\nAt the end of the course, you will demonstrate your knowledge by working on a group assignment… Complete details for the final project will be made available here.\n\n\n\nFinal Exam\nThere will be a final exam that will cover:\n\n\nProgramming in Python (about a third of total marks)\n\n\nthe core statistical tools of inferential statistics and linear models.\n\n\nYou will take the final exam in-person in a lecture theatre. This is a closed-book, 1.5-hour exam. A formula sheet will be provided, but you will not have online access to Google.\n\n\n\n\nHomeworks\n\n\nHomework 1\n\n\n\n\n\n\nContents\n\n\n\n\n\n\nhomework1.Rmd\nInstruction\nRubric\n\n\n\n\n\n\n\nHomework 2\n\n\n\n\n\n\nContents\n\n\n\n\n\n\nhomework1.Rmd\nInstruction\nRubric\n\n\n\n\n\n\n\nHomework 3\n\n\n\n\n\n\nContents\n\n\n\n\n\n\nhomework1.Rmd\nInstruction\nRubric\n\n\n\n\n\n\n\n\nProjects\n\n\nFinal Group Project\n\n\n\n\n\n\nContents\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinal Exam\n\n\n\n\n\n\nContents\n\n\n\n\n\n\n\n\n\n\n\n\nDue by 11:59 PM on Friday, September 20, 2024"
+    "text": "Contents\n\n\n\n\n\n\nWeekly Homeworks\nFinal Project\nFinal Exam\n\n\n\n\n\n\n\nTo practice writing Python code, exploring datasets, and running statistical models you will complete a series of weekly homeworks.\nThere are 3 weekly homeworks to be undertaken with your group and these will be graded using a check system:\n\n5/5: Problem set is 100% completed. Every question was attempted and answered, and most answers are correct. Document is clean and easy to follow. Work is exceptional. I will not assign these often.\n3/5: Problem set is 70–99% complete and most answers are correct. This is the expected level of performance.\n1/5: Problem set is less than 70% complete and/or most answers are incorrect. This indicates that you need to improve next time. I will hopefully not assign these often.\n\n\n\n\n\nAt the end of the course, you will demonstrate your knowledge by working on a group assignment… Complete details for the final project will be made available here.\n\n\n\n\nThere will be a final exam that will cover:\n\n\nProgramming in Python (about a third of total marks)\n\n\nthe core statistical tools of inferential statistics and linear models.\n\n\nYou will take the final exam in-person in a lecture theatre. This is a closed-book, 1.5-hour exam. A formula sheet will be provided, but you will not have online access to Google."
+  },
+  {
+    "objectID": "Assignments.html#HWrmd1",
+    "href": "Assignments.html#HWrmd1",
+    "title": "Assignments",
+    "section": "homework1",
+    "text": "homework1\nYou will be working on the session2-workshop1.zip file that contains all necessary session files (data, code, etc.).\nYou can download the zip file from Canvas, or by pulling from the course Github repo. Alternatively, open everything within VScode."
+  },
+  {
+    "objectID": "Assignments.html#instructions1",
+    "href": "Assignments.html#instructions1",
+    "title": "Assignments",
+    "section": "Instructions",
+    "text": "Instructions\n\nFinish the assignment and submit your work as a knitted HTML or PDF file on Canvas.\nSubmit your work without any of the text provided in the homework file – include only your code, plots, and explanations/stories."
+  },
+  {
+    "objectID": "Assignments.html#rubric1",
+    "href": "Assignments.html#rubric1",
+    "title": "Assignments",
+    "section": "Rubric",
+    "text": "Rubric\n\nCheck minus (1/5):\nDisplays minimal effort. Doesn’t complete all components. Code is poorly written and not documented. Uses the same type of plot for each graph, or doesn’t use plots appropriate for the variables being analysed.\nCheck (3/5):\nSolid effort. Hits all the elements. No clear mistakes. Easy to follow, both the code and the output.\nCheck plus (5/5):\nFinished all components of the assignment correctly and addressed both challenges. Code is well-documented. Graphs and tables are properly labelled. Analysis is clear and easy to follow, either because graphs are labeled clearly or additional text describes how to interpret the output."
+  },
+  {
+    "objectID": "Assignments.html#HWrmd2",
+    "href": "Assignments.html#HWrmd2",
+    "title": "Assignments",
+    "section": "homework2",
+    "text": "homework2\nYou will be working the session4-workshop2.zip file that contains all necessary session files (data, code, etc.).\nYou can download the zip file from Canvas, or by pulling from the course Github repo. Alternatively, open everything within VScode."
+  },
+  {
+    "objectID": "Assignments.html#instructions2",
+    "href": "Assignments.html#instructions2",
+    "title": "Assignments",
+    "section": "Instructions",
+    "text": "Instructions\n\nFinish the assignment and submit your work as a knitted HTML or PDF file on Canvas.\nSubmit your work without any of the text provided in the homework file – include only your code, plots, and explanations/stories."
+  },
+  {
+    "objectID": "Assignments.html#rubric2",
+    "href": "Assignments.html#rubric2",
+    "title": "Assignments",
+    "section": "Rubric",
+    "text": "Rubric\n\nCheck minus (1/5):\nDisplays minimal effort. Doesn’t complete all components. Code is poorly written and not documented. Uses the same type of plot for each graph, or doesn’t use plots appropriate for the variables being analysed.\nCheck (3/5):\nSolid effort. Hits all the elements. No clear mistakes. Easy to follow, both the code and the output.\nCheck plus (5/5):\nFinished all components of the assignment correctly and addressed both challenges. Code is well-documented. Graphs and tables are properly labelled. Analysis is clear and easy to follow, either because graphs are labeled clearly or additional text describes how to interpret the output."
+  },
+  {
+    "objectID": "Assignments.html#HWrmd3",
+    "href": "Assignments.html#HWrmd3",
+    "title": "Assignments",
+    "section": "homework3",
+    "text": "homework3\nYou will be working the session6-workshop3.zip file that contains all necessary session files (data, code, etc.).\nYou can download the zip file from Canvas, or by pulling from the course Github repo. Alternatively, open everything within VScode."
+  },
+  {
+    "objectID": "Assignments.html#instructions3",
+    "href": "Assignments.html#instructions3",
+    "title": "Assignments",
+    "section": "Instructions",
+    "text": "Instructions\n\nFinish the assignment and submit your work as a knitted HTML or PDF file on Canvas.\nSubmit your work without any of the text provided in the homework file – include only your code, plots, and explanations/stories."
+  },
+  {
+    "objectID": "Assignments.html#rubric3",
+    "href": "Assignments.html#rubric3",
+    "title": "Assignments",
+    "section": "Rubric",
+    "text": "Rubric\n\nCheck minus (1/5):\nDisplays minimal effort. Doesn’t complete all components. Code is poorly written and not documented. Uses the same type of plot for each graph, or doesn’t use plots appropriate for the variables being analysed.\nCheck (3/5):\nSolid effort. Hits all the elements. No clear mistakes. Easy to follow, both the code and the output.\nCheck plus (5/5):\nFinished all components of the assignment correctly and addressed both challenges. Code is well-documented. Graphs and tables are properly labelled. Analysis is clear and easy to follow, either because graphs are labeled clearly or additional text describes how to interpret the output."
   },
   {
     "objectID": "Content.html",
